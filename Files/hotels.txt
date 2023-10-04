@@ -1,0 +1,8 @@
+Bogura	White_Royal_Resort 	523	432	557	266	198	48	92	1349.99
+Bogura	Park_Paradise_Resort	424	394	291	30	266	155	28	1217.99
+Bogura	Lake_View_Resort	416	446	372	323	182	29	93	2069.99
+Chandpur	River_View_Resort	416	446	372	323	182	29	93	2069.99
+Chandpur	The_Paradise_Inn	434	419	368	67	128	25	88	1799.99
+Chandpur	View_Marin_Hotel	400	414	582	153	58	196	2	248.99
+Chandpur	Paradise_Paradise_Resort	500	334	49	514	179	5	62	163.99
+Chandpur	The_Regent_Inn	402	353	512	324	207	91	35	3144.99
