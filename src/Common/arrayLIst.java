@@ -4,16 +4,16 @@ import javax.swing.ImageIcon;
 
 public class arrayList {
     public String[] cityName = {"Bogura",
-                        "Chandpur",
-                        "Chattogram",
-                        "Cox's Bazar",
-                        "Dhaka",
-                        "Kuakata",
-                        "Saint Martin",
-                        "Sitakund",
-                        "Sylhet",
-                        "Tangail",
-                        "Teknaf"};
+                                "Chandpur",
+                                "Chattogram",
+                                "Cox's Bazar",
+                                "Dhaka",
+                                "Kuakata",
+                                "Saint Martin",
+                                "Sitakund",
+                                "Sylhet",
+                                "Tangail",
+                                "Teknaf"};
 
     public ImageIcon[] geoImages = new ImageIcon[]{new ImageIcon("Images/GeoImage/Bogura.jpeg"),
                                                 new ImageIcon("Images/GeoImage/Chandpur.jpeg"),
