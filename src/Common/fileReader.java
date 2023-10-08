@@ -9,6 +9,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class fileReader {
+    
     private HashMap<String, LinkedList<Hotels>> hotMap = new HashMap<>();
 
     public HashMap<String, LinkedList<Hotels>> hotelHashMap(){
@@ -47,8 +48,7 @@ public class fileReader {
             sc.close();
         }catch(IOException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        catch(Exception e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "File ends with an empty line");
         }
         return hotMap;

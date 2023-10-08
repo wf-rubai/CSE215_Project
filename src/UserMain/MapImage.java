@@ -1,4 +1,4 @@
-package DevMain;
+package UserMain;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -8,13 +8,18 @@ import javax.swing.JPanel;
 
 import Common.arrayList;
 
-public class MapPanel extends JPanel {
-
+public class MapImage extends JPanel {
+    
     private ImageIcon[] images;
     private int currentImageIndex;
+    private boolean dark = false;
 
-    public MapPanel(){
-        images = new arrayList().geoImages;
+    public MapImage(){
+        if(!dark){
+            images = new arrayList().geoImages;
+        }else{
+            images = new arrayList().darkGeoImages;
+        }
 
         currentImageIndex = 0;
     }

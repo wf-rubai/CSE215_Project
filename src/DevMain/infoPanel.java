@@ -1,6 +1,5 @@
 package DevMain;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +7,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -19,20 +20,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Common.HotelInfoButton;
+import Common.Hotels;
 import Common.arrayList;
+import Common.fileReader;
 
 public class infoPanel {
     private JPanel pInfo = new JPanel();
-    // {
-    //     @Override
-    //     protected void paintComponent(Graphics g) {
-    //         super.paintComponent(g);
-    //         ImageIcon imageIcon = new ImageIcon(img);
-    //         Image image = imageIcon.getImage();
-    //         g.drawImage(image, 0, 0, 330, 850, this);
-    //     }
-    // };
-
     private JTextField tf1;
     private JLabel lx;
     private JLabel ly;
@@ -50,13 +44,16 @@ public class infoPanel {
     private JTextField s2 = new JTextField();
     private JTextField s1 = new JTextField();
     private JPanel pPoint = new JPanel();
-    protected JComboBox<String> cb = new JComboBox<String>();
+    private JLabel bdl = new JLabel(new ImageIcon("Images/GeoImage/BD.jpeg"));
+    private JComboBox<String> cb = new JComboBox<String>();
+    
 
     public JPanel panel(){
 
         pInfo.setBounds(70, 0, 1180, 850);
-        pInfo.setOpaque(false);
-        pInfo.setBackground(new Color(0, 0, 0, 0));
+        // pInfo.setOpaque(false);
+        // pInfo.setBackground(new Color(0, 0, 0, 100));
+        // pInfo.setBorder(null);
         pInfo.setLayout(null);
 
         pPoint.setBounds(330, 0, 850, 850);
@@ -87,6 +84,7 @@ public class infoPanel {
         s2.setBounds(30, 310, 100, 30);
         s1.setBounds(30, 340, 100, 30);
         lavg.setBounds(30, 370, 100, 30);
+        bdl.setBounds(330, 0, 850, 850);
 
         pInfo.add(random);
         pPoint.add(cb);
@@ -158,32 +156,52 @@ public class infoPanel {
         }
 
         cb.setBounds(30, 30, 200, 40);
-        SwingUtilities.invokeLater(new Runnable() {
+        MapPanel mp = new MapPanel();
+        pInfo.add(mp.panel());
+        cb.addItemListener(new ItemListener() {
             @Override
-            public void run() {
-                MapPanel mp = new MapPanel();
-                pInfo.add(mp.panel());
-                cb.addItemListener(new ItemListener() {
-                    @Override
-                    public void itemStateChanged(ItemEvent e) {
-                        mp.change(cb.getSelectedIndex());
-                        pPoint.removeAll();
-                        pPoint.add(cb);
-                        SwingUtilities.updateComponentTreeUI(pPoint);
-                    }
-                });
+            public void itemStateChanged(ItemEvent e) {
+                pInfo.remove(bdl);
+                mp.change(cb.getSelectedIndex());
+                pPoint.removeAll();
+                pPoint.add(cb);
+                allHotels(cb.getSelectedItem().toString());
+                SwingUtilities.updateComponentTreeUI(pPoint);
             }
         });
+        pInfo.add(bdl);
 
         return pInfo;
     }
 
-    public void addPoint(int x, int y){
-        ImageIcon ii = new ImageIcon("/Users/washioferdousrubai/Downloads/384501584_3604472916434543_29105.png");
-        JButton b = new JButton(ii);
-        b.setBounds(x-10, y-30, 20, 30);
-        pPoint.add(b);
-        SwingUtilities.updateComponentTreeUI(pPoint);
+    private void addPoint(int x, int y){
+        HotelInfoButton b = new HotelInfoButton(tf1.getText(), 
+                                                Double.parseDouble(lavg.getText()), 
+                                                Double.parseDouble(tfp.getText()), 
+                                                x, y);
+        pPoint.add(b.panel());
+        SwingUtilities.updateComponentTreeUI(pInfo);
+    }
+
+    private void allHotels(String city){
+        HashMap<String, LinkedList<Hotels>> hm = new fileReader().hotelHashMap();
+        if(hm.containsKey(city)){
+            LinkedList<Hotels> ll = hm.get(city);
+            int[] a;
+            for(Hotels hot: ll){
+                a = hot.ratings;
+                double d = 0;
+                int ii = 0;
+                for(int i = 0; i<5; i++){
+                    d+= + (a[i]*(5-i));
+                    ii+= a[i];
+                }
+                d = d/ii;
+                HotelInfoButton b = new HotelInfoButton(hot.hotName, d, hot.price, hot.x, hot.y);
+                pPoint.add(b.panel());
+                SwingUtilities.updateComponentTreeUI(pInfo);
+            }
+        }
     }
 
     private void setRand(){
@@ -217,20 +235,25 @@ public class infoPanel {
         tf1.setText(name1[ran.nextInt(name1.length)] + " " +
                     name1[ran.nextInt(name1.length)] + " " +
                     name2[ran.nextInt(name2.length)]);
+
         tfx.setText((int)(425+(Math.pow(-1,ran.nextInt(2))*ran.nextInt(125))) + "");
         tfy.setText((int)(425+(Math.pow(-1,ran.nextInt(2))*ran.nextInt(125))) + "");
+
         tfp.setText((10+ran.nextInt(50)) + "99.99");
+
         double i5 = (double)ran.nextInt(600);
-        s5.setText((int)(i5) + "");
         int i4 = ran.nextInt(550);
-        s4.setText(i4 + "");
         int i3 = ran.nextInt(300);
-        s3.setText(i3 + "");
         int i2 = ran.nextInt(200);
-        s2.setText(i2 + "");
         int i1 = ran.nextInt(100);
+
+        s5.setText((int)(i5) + "");
+        s4.setText(i4 + "");
+        s3.setText(i3 + "");
+        s2.setText(i2 + "");
         s1.setText(i1 + "");
+
         double d = ((5*i5)+ (4*i4)+ (3*i3)+ (2*i2)+ (1*i1))/(i5+i4+i3+i2+i1);
-        lavg.setText("Avg: " + d);
+        lavg.setText(Double.toString(d));
     }
 }

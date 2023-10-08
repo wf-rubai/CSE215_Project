@@ -16,14 +16,26 @@ public class arrayList {
                                 "Teknaf"};
 
     public ImageIcon[] geoImages = new ImageIcon[]{new ImageIcon("Images/GeoImage/Bogura.jpeg"),
-                                                new ImageIcon("Images/GeoImage/Chandpur.jpeg"),
-                                                new ImageIcon("Images/GeoImage/Chattogram.jpeg"),
-                                                new ImageIcon("Images/GeoImage/Cox's Bazar.jpeg"),
-                                                new ImageIcon("Images/GeoImage/Dhaka.jpeg"),
-                                                new ImageIcon("Images/GeoImage/Kuakata.jpeg"),
-                                                new ImageIcon("Images/GeoImage/Saint martin.jpeg"),
-                                                new ImageIcon("Images/GeoImage/Shitakund.jpeg"),
-                                                new ImageIcon("Images/GeoImage/Sylhet.jpeg"),
-                                                new ImageIcon("Images/GeoImage/Tangail.jpeg"),
-                                                new ImageIcon("Images/GeoImage/Teknaf.jpeg")};
+                                                   new ImageIcon("Images/GeoImage/Chandpur.jpeg"),
+                                                   new ImageIcon("Images/GeoImage/Chattogram.jpeg"),
+                                                   new ImageIcon("Images/GeoImage/Cox's Bazar.jpeg"),
+                                                   new ImageIcon("Images/GeoImage/Dhaka.jpeg"),
+                                                   new ImageIcon("Images/GeoImage/Kuakata.jpeg"),
+                                                   new ImageIcon("Images/GeoImage/Saint martin.jpeg"),
+                                                   new ImageIcon("Images/GeoImage/Sitakund.jpeg"),
+                                                   new ImageIcon("Images/GeoImage/Sylhet.jpeg"),
+                                                   new ImageIcon("Images/GeoImage/Tangail.jpeg"),
+                                                   new ImageIcon("Images/GeoImage/Teknaf.jpeg")};
+
+    public ImageIcon[] darkGeoImages = new ImageIcon[]{new ImageIcon("Images/GeoImage/Bogura 2 2.jpeg"),
+                                                       new ImageIcon("Images/GeoImage/Chandpur 2.jpeg"),
+                                                       new ImageIcon("Images/GeoImage/Chattogram 2.jpeg"),
+                                                       new ImageIcon("Images/GeoImage/Cox's Bazar 2.jpeg"),
+                                                       new ImageIcon("Images/GeoImage/Dhaka 2.jpeg"),
+                                                       new ImageIcon("Images/GeoImage/Kuakata 2.jpeg"),
+                                                       new ImageIcon("Images/GeoImage/Saint martin 2.jpeg"),
+                                                       new ImageIcon("Images/GeoImage/Sitakund 2.jpeg"),
+                                                       new ImageIcon("Images/GeoImage/Sylhet 2.jpeg"),
+                                                       new ImageIcon("Images/GeoImage/Tangail 2.jpeg"),
+                                                       new ImageIcon("Images/GeoImage/Teknaf 2.jpeg")};
 }

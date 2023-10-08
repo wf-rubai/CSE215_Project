@@ -1,7 +1,7 @@
 package DevMain;
 
-public class Main{
+public class DevMain{
     public static void main(String[] args) {
-        new UIGenerator("devoloper window");
+        new DevUIGenerator("Devoloper Window");
     }
 }
