@@ -13,9 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
@@ -31,8 +31,8 @@ public class MapMain extends JButton {
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D) g;
-            g2.setColor(new Color(255, 255, 255, 0));
-            g2.fillRoundRect(7, 7, 675, 35, 35, 35);
+            // g2.setColor(new Color(255, 255, 255, 0));
+            // g2.fillRoundRect(7, 7, 675, 35, 35, 35);
             g2.setStroke(new BasicStroke(3));
             g2.setColor(new Color(255, 255, 255, 255));
             g2.drawRoundRect(7, 7, 675, 35, 35, 35);
@@ -42,8 +42,8 @@ public class MapMain extends JButton {
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D) g;
-            g2.setColor(new Color(255, 255, 255, 0));
-            g2.fillRoundRect(7, 7, 35, 35, 35, 35);
+            // g2.setColor(new Color(255, 255, 255, 0));
+            // g2.fillRoundRect(7, 7, 35, 35, 35, 35);
             g2.setStroke(new BasicStroke(3));
             g2.setColor(new Color(255, 255, 255, 255));
             g2.drawRoundRect(7, 7, 35, 35, 35, 35);
@@ -53,8 +53,8 @@ public class MapMain extends JButton {
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D) g;
-            g2.setColor(new Color(255, 255, 255, 0));
-            g2.fillRoundRect(7, 7, 35, 35, 35, 35);
+            // g2.setColor(new Color(255, 255, 255, 0));
+            // g2.fillRoundRect(7, 7, 35, 35, 35, 35);
             g2.setStroke(new BasicStroke(3));
             g2.setColor(new Color(255, 255, 255, 255));
             g2.drawRoundRect(7, 7, 35, 35, 35, 35);
@@ -63,8 +63,10 @@ public class MapMain extends JButton {
 
     private JPanel mapPanel = new JPanel();
     private JPanel pointPanel = new JPanel();
+    private JPanel spPanel = new JPanel();
     private JPopupMenu popSearch = new JPopupMenu();
     private JLabel bdl = new JLabel(new ImageIcon("Images/GeoImage/BD.jpeg"));
+    private JLabel spMsg = new JLabel(new ImageIcon("No hotels found"));
     private HashMap<String, LinkedList<Hotels>> hashHotel = new fileReader().hotelHashMap();
     private String[] citys = new arrayList().cityName;
 
@@ -93,12 +95,21 @@ public class MapMain extends JButton {
         buttonPop.setContentAreaFilled(false);
         buttonPop.setBorderPainted(false);
         buttonPop.setFocusable(false);
+
+        JScrollPane spHotel = new JScrollPane(spPanel);
+        spHotel.setBounds(10, 200, 310, 630);
+        spHotel.setBorder(new EmptyBorder(10, 10, 10, 10));
+        spHotel.setBackground(Color.YELLOW);
+
         
+        mapPanel.add(spHotel);
         mapPanel.add(pointPanel);
         mapPanel.add(tfSearch);
         mapPanel.add(buttonPop);
         mapPanel.add(buttonSearch);
         mapPanel.add(bdl);
+
+        // spMsg.setBounds(NEXT, ABORT, WIDTH, HEIGHT);
 
         for (String key : hashHotel.keySet()) {
             JMenuItem menuItem = new JMenuItem(key);
@@ -137,6 +148,12 @@ public class MapMain extends JButton {
         });
 
         return mapPanel;
+    }
+
+    private void allHotelPanel(){
+        for(int i=0; i<10; i++){
+
+        }
     }
 
     private void allHotels(String city){
