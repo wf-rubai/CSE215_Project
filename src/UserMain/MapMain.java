@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,6 +22,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import Common.HotelInfoButton;
+import Common.HotelInfoPanel;
 import Common.Hotels;
 import Common.arrayList;
 import Common.fileReader;
@@ -69,6 +71,7 @@ public class MapMain extends JButton {
     private JLabel spMsg = new JLabel(new ImageIcon("No hotels found"));
     private HashMap<String, LinkedList<Hotels>> hashHotel = new fileReader().hotelHashMap();
     private String[] citys = new arrayList().cityName;
+    private int i = 1;
 
     public JPanel panel(){
         mapPanel.setBounds(70, 0, 1180, 850);
@@ -96,12 +99,25 @@ public class MapMain extends JButton {
         buttonPop.setBorderPainted(false);
         buttonPop.setFocusable(false);
 
-        JScrollPane spHotel = new JScrollPane(spPanel);
-        spHotel.setBounds(10, 200, 310, 630);
-        spHotel.setBorder(new EmptyBorder(10, 10, 10, 10));
-        spHotel.setBackground(Color.YELLOW);
+        spPanel.setLayout(new BoxLayout(spPanel, BoxLayout.Y_AXIS));
+        spPanel.setOpaque(false);
+        spPanel.setBorder(null);
 
-        
+        JScrollPane spHotel = new JScrollPane(spPanel,
+                                            JScrollPane.VERTICAL_SCROLLBAR_NEVER,
+                                            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER){
+                                                @Override
+                                                protected void paintComponent(Graphics g) {
+                                                    super.paintComponent(g);
+                                                    Graphics2D g2 = (Graphics2D) g;
+                                                    g2.setColor(Color.white);
+                                                    g2.fillRoundRect(0, 0, 310, 650, 45, 45);
+                                                }
+                                            };
+        spHotel.setOpaque(false);
+        spHotel.setBounds(10, 190, 310, 650);
+        spHotel.setBorder(new EmptyBorder(5, 10, 5, 10));
+
         mapPanel.add(spHotel);
         mapPanel.add(pointPanel);
         mapPanel.add(tfSearch);
@@ -138,7 +154,9 @@ public class MapMain extends JButton {
                     if(citys[i].toLowerCase().equals(tfSearch.getText().toLowerCase())){
                         mapPanel.remove(bdl);
                         mi.change(i);
+                        spPanel.removeAll();
                         pointPanel.removeAll();
+                        allHotelPanel(citys[i]);
                         allHotels(citys[i]);
                         SwingUtilities.updateComponentTreeUI(mapPanel);
                         break;
@@ -150,9 +168,33 @@ public class MapMain extends JButton {
         return mapPanel;
     }
 
-    private void allHotelPanel(){
-        for(int i=0; i<10; i++){
+    private void allHotelPanel(String s){
+        LinkedList<Hotels> ll = hashHotel.get(s);
+        for(Hotels h: ll){
+            JButton b = new JButton();
+            b.setOpaque(false);
+            b.setContentAreaFilled(false);
+            b.setBorderPainted(false);
+            b.setFocusable(false);
+            HotelInfoPanel hip = new HotelInfoPanel(h);
+            b.setBounds(0, 0, 290, 190);
 
+            b.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    hip.resize();
+                    if(i%2 == 1){
+                        b.setBounds(0, 50, 290, 290);
+                    }else{
+                        b.setBounds(0, 00, 290, 190);
+                    }
+                    i++;
+                    SwingUtilities.updateComponentTreeUI(mapPanel);
+                }
+            });
+            
+            hip.panel().add(b);
+            spPanel.add(hip.panel());
         }
     }
 

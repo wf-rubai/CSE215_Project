@@ -147,12 +147,12 @@ public class DevUIGenerator extends JFrame{
             }
         });
 
-        UIPanel.add(logBtn);             // this is final
-        UIPanel.add(logPanel.panel());   // this is final
+        // UIPanel.add(logBtn);             // this is final
+        // UIPanel.add(logPanel.panel());   // this is final
 
-        // UIPanel.add(pSB);                   //this is temporary
-        // UIPanel.add(mapView.panel());       //this is temporary
-        // SetUp();                            //this is temporary
+        UIPanel.add(pSB);                   //this is temporary
+        UIPanel.add(mapView.panel());       //this is temporary
+        SetUp();                            //this is temporary
 
         setVisible(true);
     }

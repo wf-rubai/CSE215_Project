@@ -75,7 +75,7 @@ public class C {
             b.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    hip.resize(i);
+                    hip.resize();
                     if(i%2 == 1){
                         b.setBounds(0, 50, 290, 290);
                     }else{
@@ -85,7 +85,7 @@ public class C {
                     SwingUtilities.updateComponentTreeUI(sp);
                 }
             });
-            
+
             hip.panel().add(b);
             pp.add(hip.panel());
         }

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 public class HotelInfoPanel extends JPanel {
 
     private String cityName, hotName;
-    private int x, y;
+    // private int x, y;
     private int[] r = new int[5];
     private double p;
     private Color color = randomColor();
@@ -45,8 +45,8 @@ public class HotelInfoPanel extends JPanel {
     public HotelInfoPanel(Hotels h){
         cityName = h.cityName;
         hotName = h.hotName;
-        x = h.x;
-        y = h.y;
+        // x = h.x;
+        // y = h.y;
         r = h.ratings;
         p = h.price;
     }
@@ -163,7 +163,7 @@ public class HotelInfoPanel extends JPanel {
         return this;
     }
 
-    public void resize(int i){
+    public void resize(){
         if(track%2 == 0){
             hight = 290;
             yShift = 45;
