@@ -66,6 +66,8 @@ public class HotelInfoPanel extends JPanel {
         g2.fillRoundRect(80, -190+yShift, s, s, s, s);
         s = 400;
         g2.fillRoundRect(-260, -190+yShift, s, s, s, s);
+        s = 330;
+        g2.fillRoundRect(160, 160+yShift, s, s, s, s);
     }
 
     public JPanel panel(){

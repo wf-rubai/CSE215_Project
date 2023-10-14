@@ -266,6 +266,7 @@ public class DevUIGenerator extends JFrame{
         l3.setFont(new Font(null, Font.PLAIN, 20));
 
         pSB.setBounds(0, 0, 70, 850);
+        pSB.setOpaque(false);
         pSB.setLayout(null);
 
         pSB.add(option);

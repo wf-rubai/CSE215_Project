@@ -8,7 +8,7 @@ public class E {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("ScrollPane with Colored Panels Example");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 300);
+            frame.setSize(700, 700);
             frame.setLayout(null);
 
             // Create a JPanel to hold the colored panels vertically
@@ -16,16 +16,16 @@ public class E {
             contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
             // Create and add 10 colored subpanels
-            for (int i = 1; i <= 1000; i++) {
+            for (int i = 1; i <= 100; i++) {
                 JPanel coloredPanel = new JPanel();
-                coloredPanel.setPreferredSize(new Dimension(180, 10));
+                coloredPanel.setPreferredSize(new Dimension(180, 30));
                 coloredPanel.setBackground(getRandomColor());
                 contentPanel.add(coloredPanel);
             }
 
             // Create a JScrollPane and set the content panel as its viewport
             JScrollPane scrollPane = new JScrollPane(contentPanel);
-            scrollPane.setBounds(100, 0, 200, 200);
+            scrollPane.setBounds(0, 0, 700, 700);
 
             frame.add(scrollPane);
             frame.setVisible(true);
@@ -37,6 +37,6 @@ public class E {
         int r = (int) (Math.random() * 256);
         int g = (int) (Math.random() * 256);
         int b = (int) (Math.random() * 256);
-        return new Color(r, g, b);
+        return new Color(r, g, b, 100);
     }
 }

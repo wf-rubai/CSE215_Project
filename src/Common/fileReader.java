@@ -40,6 +40,9 @@ public class fileReader {
                     hotMap.put(cn, ll);
                 }else{
                     LinkedList<Hotels> llm = new LinkedList<>();
+                    for(Hotels ht: llm){
+                        System.out.println(ht);
+                    }
                     llm = hotMap.get(cn);
                     llm.add(h);
                     hotMap.replace(cn, llm);

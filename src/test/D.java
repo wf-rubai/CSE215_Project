@@ -1,33 +1,64 @@
 package test;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
-public class D {
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("ScrollPane Example");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 300);
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
-            // Create a JPanel to hold components
-            JPanel contentPanel = new JPanel();
-            contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+public class D extends B implements Runnable {
 
-            // Add some components (buttons in this case)
-            for (int i = 1; i <= 20; i++) {
-                JButton button = new JButton("Button " + i);
-                button.setAlignmentX(Component.CENTER_ALIGNMENT);
-                contentPanel.add(button);
+    private int x;
+    private JPanel p;
+    private int s;
+    private int ii;
+    private Color c = getRandomColor();
+    // private int iii = (int) -(Math.random()*700);
+
+    public D(){
+        int i = (int) (10+Math.random()*20);
+        ii = i;
+        p = new JPanel(){
+            protected void paintComponent(Graphics g){
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
+                g.setColor(c);
+                g2.fillRoundRect(0, 0, i, i, i, i);
+            }
+        };
+        this.x = (int)(100+(Math.random()*800));
+        this.s = (int)(5+(Math.random()*5));
+        p.setBounds(x, -i, i, i);
+        p.setOpaque(false);
+        // p.setBackground(Color.black);
+    }
+
+    public JPanel panel(){
+        return p;
+    }
+
+    @Override
+    public void run() {
+        int iii = (int) -(Math.random()*700);
+        // int iii = 0;
+        while(true){
+            p.setLocation(x, (iii%(700+ii))-ii);
+            SwingUtilities.updateComponentTreeUI(p);
+            iii++;
+            iii = (iii%(700+ii));
+            try {
+                Thread.sleep(s);
+            } catch (InterruptedException e) {
             }
 
-            // Create a JScrollPane and add the contentPanel to it
-            JScrollPane scrollPane = new JScrollPane(contentPanel);
+        }
+    }
 
-            frame.add(scrollPane);
-            frame.setVisible(true);
-        });
+    private static Color getRandomColor() {
+        int r = (int) (Math.random() * 256);
+        int g = (int) (Math.random() * 256);
+        int b = (int) (Math.random() * 256);
+        return new Color(r, g, b, 100);
     }
 }

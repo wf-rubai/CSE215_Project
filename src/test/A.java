@@ -13,8 +13,7 @@ public class A extends JPanel {
         // Load your images (adjust the file paths)
         images = new ImageIcon[]{
                 new ImageIcon("Images/GeoImage/Bogura 2.jpeg"),
-                new ImageIcon("Images/GeoImage/Bogura.jpeg"),
-                new ImageIcon("image3.jpg")
+                new ImageIcon("Images/GeoImage/Bogura.jpeg")
         };
 
         currentImageIndex = 0;
