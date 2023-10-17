@@ -6,12 +6,16 @@ public class Hotels {
     public int[] ratings = new int[5];
     public double price;
 
-    public Hotels(String cityName, String hotName, int x, int y, int[] ratings, double price) {
+    public Hotels(String cityName, String hotName, int x, int y, int s1, int s2, int s3, int s4, int s5, double price) {
         this.cityName = cityName;
         this.hotName = hotName;
         this.x = x;
         this.y = y;
-        this.ratings = ratings;
+        this.ratings[0] = s1;
+        this.ratings[1] = s2;
+        this.ratings[2] = s3;
+        this.ratings[3] = s4;
+        this.ratings[4] = s5;
         this.price = price;
     }
 

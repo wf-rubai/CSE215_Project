@@ -48,7 +48,7 @@ public class UserUIGenerator extends JFrame {
     private ImageIcon i4 = new ImageIcon("/Users/washioferdousrubai/Downloads/setting.png");
     private ImageIcon i5 = new ImageIcon("/Users/washioferdousrubai/Downloads/back.png");
     private ImageIcon i6 = new ImageIcon("/Users/washioferdousrubai/Downloads/logout.png");
-    private ImageIcon i7 = new ImageIcon("/Users/washioferdousrubai/Downloads/login.png");
+    // private ImageIcon i7 = new ImageIcon("/Users/washioferdousrubai/Downloads/login.png");
 
     private JLabel l1 = new JLabel("Home");
     private JLabel l2 = new JLabel("User and Devoloper");

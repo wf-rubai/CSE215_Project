@@ -40,7 +40,7 @@ public class DevUIGenerator extends JFrame{
     private JButton option = new JButton();
     private JButton home = new JButton();
     private JButton settings = new JButton();
-    private JButton travel = new JButton();
+    private JButton hotelInfo = new JButton();
     private JButton logOut = new JButton();
     private JPanel UIPanel = new JPanel();
 
@@ -91,7 +91,7 @@ public class DevUIGenerator extends JFrame{
             }
         });
 
-        travel.addActionListener(new ActionListener() {
+        hotelInfo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 swap(2);
@@ -121,7 +121,7 @@ public class DevUIGenerator extends JFrame{
                         option.setLocation(240, 30);
                         option.setIcon(i5);
                         home.setSize(280, 50);
-                        travel.setSize(280, 50);
+                        hotelInfo.setSize(280, 50);
                         settings.setSize(280, 50);
                         pSB.add(logOut);
                         pSB.add(l1);
@@ -133,7 +133,7 @@ public class DevUIGenerator extends JFrame{
                         option.setLocation(10, 30);
                         option.setIcon(i1);
                         home.setSize(50, 50);
-                        travel.setSize(50, 50);
+                        hotelInfo.setSize(50, 50);
                         settings.setSize(50, 50);
                         pSB.remove(logOut);
                         pSB.remove(l1);
@@ -169,7 +169,7 @@ public class DevUIGenerator extends JFrame{
             option.setLocation(10, 30);
             option.setIcon(i1);
             home.setSize(50, 50);
-            travel.setSize(50, 50);
+            hotelInfo.setSize(50, 50);
             settings.setSize(50, 50);
             pSB.remove(logOut);
             pSB.remove(l1);
@@ -186,13 +186,13 @@ public class DevUIGenerator extends JFrame{
             JPanel p2 = new JPanel();
             p2.setBounds(70, 0, 1180, 850);
             p2.setBackground(Color.BLUE);
-            UIPanel.add(p2);
+            UIPanel.add(new HotelTable().panel());
         }else if(i == 4){
             pSB.setBounds(0, 0,70, 850);
             option.setLocation(10, 30);
             option.setIcon(i1);
             home.setSize(50, 50);
-            travel.setSize(50, 50);
+            hotelInfo.setSize(50, 50);
             settings.setSize(50, 50);
             pSB.remove(logOut);
             pSB.remove(l1);
@@ -221,7 +221,7 @@ public class DevUIGenerator extends JFrame{
     private void SetUp(){
         option.setBounds(10, 30, 50, 50);
         home.setBounds(10, 320, 50, 50);
-        travel.setBounds(10, 400, 50, 50);
+        hotelInfo.setBounds(10, 400, 50, 50);
         settings.setBounds(10, 480, 50, 50);
         logOut.setBounds(75, 800, 150, 50);
         
@@ -243,10 +243,10 @@ public class DevUIGenerator extends JFrame{
         home.setBorderPainted(false);
         home.setFocusable(false);
         
-        travel.setOpaque(false);
-        travel.setContentAreaFilled(false);
-        travel.setBorderPainted(false);
-        travel.setFocusable(false);
+        hotelInfo.setOpaque(false);
+        hotelInfo.setContentAreaFilled(false);
+        hotelInfo.setBorderPainted(false);
+        hotelInfo.setFocusable(false);
         
         settings.setOpaque(false);
         settings.setContentAreaFilled(false);
@@ -274,7 +274,7 @@ public class DevUIGenerator extends JFrame{
         pSB.add(l5);
         pSB.add(l6);
         pSB.add(home);
-        pSB.add(travel);
+        pSB.add(hotelInfo);
         pSB.add(settings);
     }
 }

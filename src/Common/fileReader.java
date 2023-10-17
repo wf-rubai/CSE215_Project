@@ -33,16 +33,13 @@ public class fileReader {
                 s[3] = sc.nextInt();
                 s[4] = sc.nextInt();
                 p = sc.nextDouble();
-                Hotels h = new Hotels(cn, hn, x, y, s, p);
+                Hotels h = new Hotels(cn, hn, x, y, s[0], s[1], s[2], s[3], s[4], p);
                 if(!hotMap.containsKey(cn)){
                     LinkedList<Hotels> ll = new LinkedList<Hotels>();
                     ll.add(h);
                     hotMap.put(cn, ll);
                 }else{
-                    LinkedList<Hotels> llm = new LinkedList<>();
-                    for(Hotels ht: llm){
-                        System.out.println(ht);
-                    }
+                    LinkedList<Hotels> llm = new LinkedList<Hotels>();
                     llm = hotMap.get(cn);
                     llm.add(h);
                     hotMap.replace(cn, llm);
