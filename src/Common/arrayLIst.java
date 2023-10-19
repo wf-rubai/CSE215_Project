@@ -15,6 +15,19 @@ public class arrayList {
                                 "Tangail",
                                 "Teknaf"};
 
+    public String[] month = {"Jan",
+                            "Feb",
+                            "Mar",
+                            "Apr",
+                            "May",
+                            "Jun",
+                            "Jul",
+                            "Aug",
+                            "sep",
+                            "Oct",
+                            "Nov",
+                            "Dec"};
+
     public ImageIcon[] geoImages = new ImageIcon[]{new ImageIcon("Images/GeoImage/Bogura.jpeg"),
                                                    new ImageIcon("Images/GeoImage/Chandpur.jpeg"),
                                                    new ImageIcon("Images/GeoImage/Chattogram.jpeg"),

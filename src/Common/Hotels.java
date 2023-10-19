@@ -21,20 +21,4 @@ public class Hotels {
 
     public Hotels() {
     }
-
-    @Override
-    public String toString() {
-        return "{" +
-            cityName + "\t" +
-            hotName + "\t" +
-            x + "\t" +
-            y + "\t" +
-            ratings[0] + "\t" +
-            ratings[1] + "\t" +
-            ratings[2] + "\t" +
-            ratings[3] + "\t" +
-            ratings[4] + "\t" +
-            price +
-            "}\n";
-    }
 }

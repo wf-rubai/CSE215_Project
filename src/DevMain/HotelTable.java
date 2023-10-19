@@ -168,7 +168,12 @@ public class HotelTable {
         update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                updateSetUp();
+                updateSetUp((String)(table.getValueAt(table.getSelectedRow(), 1)), 
+                           (String)(table.getValueAt(table.getSelectedRow(), 2)), 
+                           (int)(table.getValueAt(table.getSelectedRow(), 3)), 
+                           (int)(table.getValueAt(table.getSelectedRow(), 4)), 
+                           (double)(table.getValueAt(table.getSelectedRow(), 10)), 
+                           (String)(table.getValueAt(table.getSelectedRow(), 11)));
             }
         });
 
@@ -177,19 +182,25 @@ public class HotelTable {
         return pHotTable;
     }
 
-    private void updateSetUp(){
+    private void updateSetUp(String name, String city, int x, int y, double price, String phone){
         tfName = new JTextField();
         tfPhone = new JTextField();
         tfPrice = new JTextField();
         tfX = new JTextField();
         tfY = new JTextField();
 
+        save.setBounds(980, 650, 100, 40);
         lName.setBounds(100, 550, 150, 40);
         lPhone.setBounds(100, 600, 150, 40);
         lPrice.setBounds(100, 650, 150, 40);
-        save.setBounds(980, 650, 100, 40);
         lX.setBounds(640, 550, 150, 40);
         lY.setBounds(640, 600, 150, 40);
+
+        tfName.setText(name);
+        tfPhone.setText(phone);
+        tfPrice.setText(price + "");
+        tfX.setText(x + "");
+        tfY.setText(y + "");
 
         lName.setFont(new Font(null, Font.PLAIN, 14));
         lPhone.setFont(new Font(null, Font.PLAIN, 14));
@@ -208,7 +219,6 @@ public class HotelTable {
             public void actionPerformed(ActionEvent e) {
                 int ans = JOptionPane.showConfirmDialog(pHotTable, "Are you sure you want to update this hotel info?", "Update request confirmation", JOptionPane.YES_NO_OPTION);
                 if(ans == 0){
-                    System.out.println("Zxcvbnm");
                     update((String)(table.getValueAt(table.getSelectedRow(), 1)), 
                            (String)(table.getValueAt(table.getSelectedRow(), 2)), 
                            (int)(table.getValueAt(table.getSelectedRow(), 3)), 

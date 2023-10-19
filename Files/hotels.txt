@@ -6,6 +6,8 @@ Chandpur	Paradise_Paradise_Resort	500	334	49	514	179	5	62	1699.99
 Chandpur	The_Regent_Inn	402	353	512	324	207	91	35	3144.99
 Chandpur	Pacific__Resort	391	324	262	219	296	141	68	4499.99
 Teknaf	The_White_Resort	488	435	332	275	117	37	12	5899.99
+Saint_Martin	City_	509	467	474	297	265	83	17	3799.99
+Saint_Martin	City_fgfg	509	467	121	98	218	82	78	3799.99
 Bogura	White_Royal_Resort	523	432	557	266	198	48	92	1349.99
 Bogura	Park_Paradise_Resort	424	394	291	30	266	155	28	1299.99
 Bogura	Royal_Park_Hotel	366	472	516	149	91	50	21	5999.99

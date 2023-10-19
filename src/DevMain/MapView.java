@@ -1,7 +1,5 @@
 package DevMain;
 
-import java.awt.Color;
-
 import javax.swing.JPanel;
 
 public class MapView {
@@ -12,7 +10,7 @@ public class MapView {
 
         pMain.setBounds(0, 0, 1250, 850);
         pMain.setLayout(null);
-        pMain.setBackground(new Color(0, 0, 0, 0));
+        pMain.setOpaque(false);
         
         pMain.add(new infoPanel().panel());
         
