@@ -10,9 +10,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class HotelInfoPanel extends JPanel {
+public class HotelInfoPanel extends JPanel implements CPanel {
 
-    private String cityName, hotName;
+    private String cityName, hotName, phn;
     // private int x, y;
     private int[] r = new int[5];
     private double p;
@@ -45,8 +45,7 @@ public class HotelInfoPanel extends JPanel {
     public HotelInfoPanel(Hotels h){
         cityName = h.cityName;
         hotName = h.hotName;
-        // x = h.x;
-        // y = h.y;
+        phn = h.phone;
         r = h.ratings;
         p = h.price;
     }
@@ -70,6 +69,7 @@ public class HotelInfoPanel extends JPanel {
         g2.fillRoundRect(160, 160+yShift, s, s, s, s);
     }
 
+    @Override
     public JPanel panel(){
         setPreferredSize(new Dimension(290, hight+10));
         setOpaque(false);
@@ -84,6 +84,7 @@ public class HotelInfoPanel extends JPanel {
         lHotel.setFont(new Font(null, Font.BOLD, 20));
         lHotel.setBounds(10, 10, 270, 40);
         lHotel.setText(hotName);
+
         lCity.setBounds(10, 50, 270, 20);
         lCity.setText(cityName + ", Bangladesh");
         
@@ -94,7 +95,7 @@ public class HotelInfoPanel extends JPanel {
         }
         avg = avg/ii;
 
-        phone.setText("Phone no :  01912653657");
+        phone.setText("Phone no :  " + phn);
         phone.setFont(new Font(null, Font.BOLD, 13));
         phone.setBounds(10, 260, 270, 30);
 

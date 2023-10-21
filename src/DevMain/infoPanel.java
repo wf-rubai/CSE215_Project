@@ -20,21 +20,23 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Common.CPanel;
 import Common.HotelInfoButton;
 import Common.Hotels;
 import Common.arrayList;
 import Common.fileReader;
 
-public class infoPanel {
+public class infoPanel implements CPanel {
+
     private JPanel pInfo = new JPanel();
-    private JTextField tf1;
+    private JTextField tf1 = new JTextField();
     private JLabel lx;
     private JLabel ly;
     private JLabel ltf;
     private JLabel lavg;
-    private JTextField tfx;
-    private JTextField tfy;
-    private JTextField tfp;
+    private JTextField tfx = new JTextField();
+    private JTextField tfy = new JTextField();
+    private JTextField tfp = new JTextField();
     private JButton random = new JButton("Ramdom");
     private JButton add = new JButton("Add");
     private JButton set = new JButton("Set Pointer");
@@ -43,11 +45,12 @@ public class infoPanel {
     private JTextField s3 = new JTextField();
     private JTextField s2 = new JTextField();
     private JTextField s1 = new JTextField();
+    private JTextField tfphn = new JTextField();
     private JPanel pPoint = new JPanel();
     private JLabel bdl = new JLabel(new ImageIcon("Images/GeoImage/BD.jpeg"));
     private JComboBox<String> cb = new JComboBox<String>();
     
-
+    @Override
     public JPanel panel(){
 
         pInfo.setBounds(70, 0, 1180, 850);
@@ -60,15 +63,13 @@ public class infoPanel {
         pPoint.setLayout(null);
         pPoint.setOpaque(false);
 
-        tf1 = new JTextField();
         tf1.setBounds(30, 120, 270, 30);
         tf1.setFont(new Font(null, Font.PLAIN, 13));
-        tfx = new JTextField();
-        tfy = new JTextField();
-        tfp = new JTextField();
+
         tfx.setBounds(30, 180, 120, 30);
         tfy.setBounds(180, 180, 120, 30);
-        tfp.setBounds(30, 410, 100, 30);
+        tfp.setBounds(100, 410, 200, 30);
+        tfphn.setBounds(100, 440, 200, 30);
         
         lx = new JLabel("X");
         ly = new JLabel("Y");
@@ -78,17 +79,18 @@ public class infoPanel {
         ly.setBounds(185, 150, 120, 30);
         ltf.setBounds(35, 90, 120, 30);
         
-        s5.setBounds(30, 220, 100, 30);
-        s4.setBounds(30, 250, 100, 30);
-        s3.setBounds(30, 280, 100, 30);
-        s2.setBounds(30, 310, 100, 30);
-        s1.setBounds(30, 340, 100, 30);
+        s5.setBounds(30, 220, 200, 30);
+        s4.setBounds(30, 250, 200, 30);
+        s3.setBounds(30, 280, 200, 30);
+        s2.setBounds(30, 310, 200, 30);
+        s1.setBounds(30, 340, 200, 30);
         lavg.setBounds(30, 370, 100, 30);
         bdl.setBounds(330, 0, 850, 850);
 
         pInfo.add(random);
         pPoint.add(cb);
         pInfo.add(pPoint);
+        pInfo.add(tfphn);
         pInfo.add(lavg);
         pInfo.add(tfp);
         pInfo.add(set);
@@ -141,7 +143,8 @@ public class infoPanel {
                             s3.getText() + "\t" + 
                             s2.getText() + "\t" + 
                             s1.getText() + "\t" + 
-                            tfp.getText()
+                            tfp.getText() + "\t" + 
+                            tfphn.getText()
                             );
                     fw.close();
                 }catch(Exception ex){
@@ -223,7 +226,7 @@ public class infoPanel {
                         "Palae",
                         "White",
                         "River",
-                        "","","",""};
+                        "", ""};
         String[] name2 = {"Hotel",
                         "Hotel",
                         "Hotel",
@@ -241,17 +244,25 @@ public class infoPanel {
 
         tfp.setText((10+ran.nextInt(50)) + "99.99");
 
-        double i5 = (double)ran.nextInt(600);
-        int i4 = ran.nextInt(550);
-        int i3 = ran.nextInt(300);
+        double i5 = (double)300 + ran.nextInt(700);
+        int i4 = 250 + ran.nextInt(450);
+        int i3 = 200 + ran.nextInt(300);
         int i2 = ran.nextInt(200);
-        int i1 = ran.nextInt(100);
+        int i1 = ran.nextInt(150);
 
         s5.setText((int)(i5) + "");
         s4.setText(i4 + "");
         s3.setText(i3 + "");
         s2.setText(i2 + "");
         s1.setText(i1 + "");
+
+        String p = "01";
+        for(int i = 0; i<9; i++){
+            int s = (int) (Math.random()*10);
+            p += s;
+        }
+
+        tfphn.setText(p);
 
         double d = ((5*i5)+ (4*i4)+ (3*i3)+ (2*i2)+ (1*i1))/(i5+i4+i3+i2+i1);
         lavg.setText(Double.toString(d));

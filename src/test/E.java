@@ -1,10 +1,12 @@
 package test;
 
 import javax.swing.*;
+
 import java.awt.*;
 
 public class E {
     public static void main(String[] args) {
+        
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("ScrollPane with Colored Panels Example");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -6,15 +6,16 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Common.CPanel;
 import Common.arrayList;
 
-public class MapPanel extends JPanel {
+public class MapPanel extends JPanel implements CPanel {
 
     private ImageIcon[] images;
     private int currentImageIndex;
 
     public MapPanel(){
-        images = new arrayList().geoImages;
+        images = new arrayList().darkGeoImages;
 
         currentImageIndex = 0;
     }
@@ -32,6 +33,7 @@ public class MapPanel extends JPanel {
         repaint();
     }
 
+    @Override
     public JPanel panel(){
         
         setBounds(330, 0, 850, 850);

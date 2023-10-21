@@ -6,7 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class displayImg extends JPanel {
+public class displayImg extends JPanel implements CPanel {
 
     private ImageIcon[] images;
     private int currentImageIndex;
@@ -33,6 +33,7 @@ public class displayImg extends JPanel {
         g.drawImage(image, 0, 0, 330, 850, this);
     }
 
+    @Override
     public JPanel panel(){
         setBounds(70, 0, 330, 850);
         return this;

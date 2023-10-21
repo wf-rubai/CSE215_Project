@@ -29,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
+import Common.CPanel;
 import Common.CustomExeption;
 import Common.HotelInfoButton;
 import Common.HotelInfoPanel;
@@ -36,7 +37,7 @@ import Common.Hotels;
 import Common.arrayList;
 import Common.fileReader;
 
-public class MapMain extends JButton {
+public class MapMain implements CPanel {
 
     private JTextField tfSearch = new JTextField(){
         protected void paintComponent(Graphics g){
@@ -185,6 +186,7 @@ public class MapMain extends JButton {
     private double bookPrice = 0;
     private int i = 1;
 
+    @Override
     public JPanel panel(){
 
         setup();
@@ -374,6 +376,7 @@ public class MapMain extends JButton {
         cancel3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                mapPanel.remove(pConfirm);
                 mapPanel.add(spHotel);
                 mapPanel.add(lLable);
                 mapPanel.add(lHotel);
@@ -498,7 +501,7 @@ public class MapMain extends JButton {
 
     private void setup(){
 
-        pConfirm.setBounds(340, 150, 550, 550);
+        pConfirm.setBounds(315, 150, 550, 550);
         pConfirm.setOpaque(false);
         pConfirm.setLayout(null);
 

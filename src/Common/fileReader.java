@@ -11,10 +11,11 @@ import javax.swing.JOptionPane;
 public class fileReader {
     
     private HashMap<String, LinkedList<Hotels>> hotMap = new HashMap<>();
+    private HashMap<String, LinkedList<String[]>> travelInfo = new HashMap<>();
 
     public HashMap<String, LinkedList<Hotels>> hotelHashMap(){
         hotMap.clear();
-        String cn, hn;
+        String cn, hn, phn;
         int x, y;
         int[] s = new int[5];
         double p;
@@ -33,13 +34,14 @@ public class fileReader {
                 s[3] = sc.nextInt();
                 s[4] = sc.nextInt();
                 p = sc.nextDouble();
-                Hotels h = new Hotels(cn, hn, x, y, s[0], s[1], s[2], s[3], s[4], p);
+                phn = sc.next();
+                Hotels h = new Hotels(cn, hn, phn, x, y, s[0], s[1], s[2], s[3], s[4], p);
                 if(!hotMap.containsKey(cn)){
-                    LinkedList<Hotels> ll = new LinkedList<Hotels>();
+                    LinkedList<Hotels> ll = new LinkedList<>();
                     ll.add(h);
                     hotMap.put(cn, ll);
                 }else{
-                    LinkedList<Hotels> llm = new LinkedList<Hotels>();
+                    LinkedList<Hotels> llm = new LinkedList<>();
                     llm = hotMap.get(cn);
                     llm.add(h);
                     hotMap.replace(cn, llm);
@@ -52,5 +54,39 @@ public class fileReader {
             JOptionPane.showMessageDialog(null, "File ends with an empty line");
         }
         return hotMap;
+    }
+
+    public HashMap<String, LinkedList<String[]>> travelHashMap(){
+        String key;
+        String[] arr;
+        try{
+            File file = new File("Files/travelInfo.txt");
+            Scanner sc = new Scanner(file);
+            sc.nextLine();
+            while(sc.hasNextLine()){
+                arr = sc.nextLine().split("\\s");
+                for(int i=0; i<arr.length; i++){
+                    arr[i] = arr[i].replace("_", " ");
+                }
+                key = arr[0].substring(7);
+                if(!travelInfo.containsKey(key)){
+                    LinkedList<String[]> ll = new LinkedList<>();
+                    ll.add(arr);
+                    travelInfo.put(key, ll);
+                }else{
+                    LinkedList<String[]> llm = new LinkedList<>();
+                    llm = travelInfo.get(key);
+                    llm.add(arr);
+                    travelInfo.replace(key, llm);
+                }
+            }
+            sc.close();
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "File ends with an empty line");
+        }
+
+        return travelInfo;
     }
 }

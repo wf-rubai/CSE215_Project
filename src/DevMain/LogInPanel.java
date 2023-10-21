@@ -12,8 +12,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Common.CPanel;
 
-public class LogInPanel {
+public class LogInPanel implements CPanel {
     
     private JPanel pLog = new JPanel();
     private JTextField tf = new JTextField(){
@@ -43,6 +44,7 @@ public class LogInPanel {
     private JLabel lname = new JLabel("ID or name");
     private JLabel lpass = new JLabel("Password");
     
+    @Override
     public JPanel panel(){
         pLog.setBounds(0, 0, 1250, 850);
         pLog.setLayout(null);

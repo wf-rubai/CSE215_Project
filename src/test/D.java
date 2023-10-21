@@ -19,7 +19,7 @@ public class D implements Runnable {
 
         p.setBounds(0, 0, 1250, 850);
         p.setLayout(null);
-        Thread t = new Thread(new D());
+        // Thread t = new Thread(new D());
         // t.start();
         p.add(new HotelTable().panel());
         f.add(p);

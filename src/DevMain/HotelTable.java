@@ -29,10 +29,11 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import Common.CPanel;
 import Common.Hotels;
 import Common.fileReader;
 
-public class HotelTable {
+public class HotelTable implements CPanel {
 
     private JPanel pHotTable = new JPanel(){
         protected void paintComponent(Graphics g){
@@ -80,6 +81,7 @@ public class HotelTable {
     private JLabel lPrice = new JLabel("Price :");
     private JButton save = new JButton("Update");
 
+    @Override
     public JPanel panel(){
         pHotTable.setBounds(70, 0, 1180, 850);
         pHotTable.setLayout(null);
@@ -110,7 +112,7 @@ public class HotelTable {
         for(LinkedList<Hotels> ll: hotelsList.values()){
             for(Hotels h: ll){
                 int[] r = h.ratings;
-                Object[] o = {i, h.hotName, h.cityName, h.x, h.y, r[0], r[1], r[2], r[3], r[4], h.price, "option"};
+                Object[] o = {i, h.hotName, h.cityName, h.x, h.y, r[0], r[1], r[2], r[3], r[4], h.price, h.phone};
                 i++;
                 model.addRow(o);
             }
@@ -239,7 +241,6 @@ public class HotelTable {
                 pHotTable.remove(tfPrice); 
                 pHotTable.remove(tfX);
                 pHotTable.remove(tfY);
-                SwingUtilities.updateComponentTreeUI(pHotTable);
                 
             }
         });
@@ -259,7 +260,6 @@ public class HotelTable {
     }
 
     private void remove(String hotelName, String cityName){
-        // System.out.println(hotelName + cityName);
         LinkedList<Hotels> ll = hotelsList.get(cityName);
         int ans = JOptionPane.showConfirmDialog(pHotTable, "Are you sure you want to remove this hotel from site?", "Remove request confirmation", JOptionPane.YES_NO_OPTION);
         if(ans == 0){
@@ -277,15 +277,18 @@ public class HotelTable {
     private void update(String name, String city, int x, int y, double price, String phone){
         LinkedList<Hotels> ll = hotelsList.get(city);
         for(Hotels h: ll){
-            ll.remove(h);
-            h.hotName = tfName.getText();
-            h.x = Integer.parseInt(tfX.getText());
-            h.y = Integer.parseInt(tfY.getText());
-            h.price = Double.parseDouble(tfPrice.getText());
-            // h.phone = tfPhone.getText();
-            ll.add(h);
-            break;
+            if(h.hotName.equals(name)){
+                ll.remove(h);
+                h.hotName = tfName.getText();
+                h.x = Integer.parseInt(tfX.getText());
+                h.y = Integer.parseInt(tfY.getText());
+                h.price = Double.parseDouble(tfPrice.getText());
+                h.phone = tfPhone.getText();
+                ll.add(h);
+                break;
+            }
         }
+        SwingUtilities.updateComponentTreeUI(pHotTable);
         setTable();
     }
 
@@ -296,7 +299,7 @@ public class HotelTable {
             for(LinkedList<Hotels> ll: hotelsList.values()){
                 for(Hotels h: ll){
                     int[] r = h.ratings;
-                    Object[] o = {i, h.hotName, h.cityName, h.x, h.y, r[0], r[1], r[2], r[3], r[4], h.price, "option"};
+                    Object[] o = {i, h.hotName, h.cityName, h.x, h.y, r[0], r[1], r[2], r[3], r[4], h.price, h.phone};
                     i++;
                     model.addRow(o);
                 }
@@ -305,7 +308,7 @@ public class HotelTable {
             LinkedList<Hotels> ll = hotelsList.get(cityName.getSelectedItem() + "");
             for(Hotels h: ll){
                 int[] r = h.ratings;
-                Object[] o = {i, h.hotName, h.cityName, h.x, h.y, r[0], r[1], r[2], r[3], r[4], h.price, "option"};
+                Object[] o = {i, h.hotName, h.cityName, h.x, h.y, r[0], r[1], r[2], r[3], r[4], h.price, h.phone};
                 i++;
                 model.addRow(o);
             }
@@ -329,7 +332,8 @@ public class HotelTable {
                             h.ratings[2] + "\t" + 
                             h.ratings[3] + "\t" + 
                             h.ratings[4] + "\t" + 
-                            h.price
+                            h.price + "\t" +
+                            h.phone
                             );
                     fw.close();
                 }catch(Exception ex){

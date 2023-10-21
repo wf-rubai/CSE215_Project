@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import Common.HotelInfoPanel;
 import Common.Hotels;
+import Common.TravelPanel;
 import Common.fileReader;
 
 public class C {
@@ -34,7 +35,8 @@ public class C {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setBackground(Color.gray);
 
-        LinkedList<Hotels> ll = hm.get("Bogura");
+        // LinkedList<Hotels> ll = hm.get("Bogura");
+        LinkedList<String[]> ss = new fileReader().travelHashMap().get("Washio Ferdous Rubai");
 
         pp.setLayout(new BoxLayout(pp, BoxLayout.Y_AXIS));
         pp.setOpaque(false);
@@ -48,39 +50,49 @@ public class C {
                                                 super.paintComponent(g);
                                                 Graphics2D g2 = (Graphics2D) g;
                                                 g2.setColor(Color.white);
-                                                g2.fillRoundRect(0, 0, 310, 650, 45, 45);
+                                                // g2.fillRoundRect(0, 0, 310, 650, 45, 45);
                                             }
                                         };
+        // sp.setOpaque(false);
+        // sp.setBounds(80, 190, 310, 650);
+        // sp.setBorder(new EmptyBorder(5, 10, 5, 10));
         sp.setOpaque(false);
-        sp.setBounds(80, 190, 310, 650);
-        sp.setBorder(new EmptyBorder(5, 10, 5, 10));
+        sp.setBounds(70, 0, 1180, 850);
+        sp.setBorder(new EmptyBorder(50, 140, 50, 140));
 
-        for(Hotels h: ll){
-            JButton b = new JButton();
-            b.setOpaque(false);
-            b.setContentAreaFilled(false);
-            b.setBorderPainted(false);
-            b.setFocusable(false);
-            HotelInfoPanel hip = new HotelInfoPanel(h);
-            b.setBounds(0, 0, 290, 190);
-
-            b.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    hip.resize();
-                    if(i%2 == 1){
-                        b.setBounds(0, 50, 290, 290);
-                    }else{
-                        b.setBounds(0, 00, 290, 190);
-                    }
-                    i++;
-                    SwingUtilities.updateComponentTreeUI(sp);
-                }
-            });
-
-            hip.panel().add(b);
-            pp.add(hip.panel());
+        int i= 1;
+        for(String[] s: ss){
+            // if(i != 2)
+            pp.add(new TravelPanel(s).panel());
+            i++;
         }
+
+        // for(Hotels h: ll){
+        //     JButton b = new JButton();
+        //     b.setOpaque(false);
+        //     b.setContentAreaFilled(false);
+        //     b.setBorderPainted(false);
+        //     b.setFocusable(false);
+        //     HotelInfoPanel hip = new HotelInfoPanel(h);
+        //     b.setBounds(0, 0, 290, 190);
+
+        //     b.addActionListener(new ActionListener() {
+        //         @Override
+        //         public void actionPerformed(ActionEvent e) {
+        //             hip.resize();
+        //             if(i%2 == 1){
+        //                 b.setBounds(0, 50, 290, 290);
+        //             }else{
+        //                 b.setBounds(0, 00, 290, 190);
+        //             }
+        //             i++;
+        //             SwingUtilities.updateComponentTreeUI(sp);
+        //         }
+        //     });
+
+        //     hip.panel().add(b);
+        //     pp.add(hip.panel());
+        // }
         f.add(sp);
 
         f.setVisible(true);

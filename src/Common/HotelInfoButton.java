@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class HotelInfoButton extends JButton {
+public class HotelInfoButton extends JButton implements CPanel {
 
     private JPanel popPanel = new JPanel(){
         protected void paintComponent(Graphics g){
@@ -42,6 +42,7 @@ public class HotelInfoButton extends JButton {
         this.y = y;
     }
 
+    @Override
     public JPanel panel(){
         btnPanel.setBounds(x-110, y-100, 220, 100);
         btnPanel.setLayout(null);
