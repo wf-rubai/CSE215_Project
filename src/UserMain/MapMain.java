@@ -245,7 +245,7 @@ public class MapMain extends JButton {
                         throw new CustomExeption("You must select the date when will you go");
                     }else if(tDay.getSelectedIndex()==0 || tMonth.getSelectedIndex()==0 || tYear.getSelectedIndex()==0){
                         throw new CustomExeption("You must select the date when will you check out");
-                    }else if(tfAdult.getText().equals("")){
+                    }else if(tfAdult.getText().equals("") || tfAdult.getText().equals("0")){
                         throw new CustomExeption("You must mention your guest number");
                     }else{
                         fHotel.setText("Hotel : " + bookHotel);
@@ -272,6 +272,8 @@ public class MapMain extends JButton {
                     }
                 }catch(CustomExeption ce){
                     JOptionPane.showMessageDialog(pBookTime, ce.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(pBookTime, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 SwingUtilities.updateComponentTreeUI(mapPanel);
             }
@@ -326,7 +328,7 @@ public class MapMain extends JButton {
                             );
                     fw.close();
                 }catch(Exception ex){
-
+                    JOptionPane.showMessageDialog(mapPanel, ex.getMessage(), "File saving error", JOptionPane.ERROR_MESSAGE);
                 }
                 SwingUtilities.updateComponentTreeUI(mapPanel);
             }
