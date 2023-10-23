@@ -165,13 +165,13 @@ public class MapMain implements CPanel {
     private JTextField tfNid = new JTextField();
     private JTextField tfAdult = new JTextField("0");
     private JTextField tfChild = new JTextField("0");
-    private JButton bBook = new JButton("COnfirm Booking");
+    private JButton bBook = new JButton("Confirm Booking");
     private JButton bCont = new JButton("Continue");
     private JButton bconf = new JButton("Confirm");
     private JButton bLogIN = new JButton("---------Log In---------");
-    private JButton cancel1 = new JButton(new ImageIcon("/Users/washioferdousrubai/Downloads/cross.png"));
-    private JButton cancel2 = new JButton(new ImageIcon("/Users/washioferdousrubai/Downloads/cross.png"));
-    private JButton cancel3 = new JButton(new ImageIcon("/Users/washioferdousrubai/Downloads/cross.png"));
+    private JButton cancel1 = new JButton(new ImageIcon("Images/Icons/cross.png"));
+    private JButton cancel2 = new JButton(new ImageIcon("Images/Icons/cross.png"));
+    private JButton cancel3 = new JButton(new ImageIcon("Images/Icons/cross.png"));
     private JComboBox<String> fDay = new JComboBox<>();
     private JComboBox<String> fMonth = new JComboBox<>();
     private JComboBox<String> fYear = new JComboBox<>();

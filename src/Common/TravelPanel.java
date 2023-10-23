@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -50,25 +49,33 @@ public class TravelPanel implements CPanel {
 
     @Override
     public JPanel panel() {
-        // pTravel.setLayout(new BoxLayout(pTravel, BoxLayout.Y_AXIS));
         pTravel.setPreferredSize(new Dimension(900, 250));
         pTravel.setBorder(new EmptyBorder(30, 0, 30, 0));
 
-        bi3.setFont(new Font(null, Font.PLAIN, 17));
+        bi3.setFont(new Font(null, Font.BOLD, 17));
         bi1.setFont(new Font(null, Font.PLAIN, 14));
         bi2.setFont(new Font(null, Font.PLAIN, 14));
         bi4.setFont(new Font(null, Font.PLAIN, 14));
         bi5.setFont(new Font(null, Font.PLAIN, 14));
         bi6.setFont(new Font(null, Font.PLAIN, 14));
 
-        bi1.setBorder( new EmptyBorder(0, 300, 0, 0));
-        bi2.setBorder( new EmptyBorder(0, 300, 0, 0));
-        bi4.setBorder( new EmptyBorder(0, 300, 0, 0));
-        bi5.setBorder( new EmptyBorder(0, 300, 0, 0));
-        bi6.setBorder( new EmptyBorder(0, 300, 0, 0));
+        bi1.setBorder( new EmptyBorder(0, 500, 0, 0));
+        bi2.setBorder( new EmptyBorder(0, 500, 0, 0));
+        bi4.setBorder( new EmptyBorder(0, 500, 0, 0));
+        bi5.setBorder( new EmptyBorder(0, 500, 0, 0));
+        bi6.setBorder( new EmptyBorder(0, 500, 0, 0));
 
         bi3.setOpaque(false);
+        bi3.setContentAreaFilled(false);
+        bi3.setBorderPainted(false);
+        bi3.setFocusable(false);
+
+        bi1.setPreferredSize(new Dimension(900, 25));
+        bi2.setPreferredSize(new Dimension(900, 25));
         bi3.setPreferredSize(new Dimension(900, 50));
+        bi4.setPreferredSize(new Dimension(900, 25));
+        bi5.setPreferredSize(new Dimension(900, 25));
+        bi6.setPreferredSize(new Dimension(900, 25));
 
         pTravel.add(bi3);
         pTravel.add(bi1);

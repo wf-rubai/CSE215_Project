@@ -44,12 +44,12 @@ public class DevUIGenerator extends JFrame{
     private JButton logOut = new JButton();
     private JPanel UIPanel = new JPanel();
 
-    private ImageIcon i1 = new ImageIcon("/Users/washioferdousrubai/Downloads/option.png");
-    private ImageIcon i2 = new ImageIcon("/Users/washioferdousrubai/Downloads/home.png");
-    private ImageIcon i3 = new ImageIcon("/Users/washioferdousrubai/Downloads/user.png");
-    private ImageIcon i4 = new ImageIcon("/Users/washioferdousrubai/Downloads/hotel.png");
-    private ImageIcon i5 = new ImageIcon("/Users/washioferdousrubai/Downloads/back.png");
-    private ImageIcon i6 = new ImageIcon("/Users/washioferdousrubai/Downloads/logout.png");
+    private ImageIcon i1 = new ImageIcon("Images/Icons/option.png");
+    private ImageIcon i2 = new ImageIcon("Images/Icons/home.png");
+    private ImageIcon i3 = new ImageIcon("Images/Icons/user.png");
+    private ImageIcon i4 = new ImageIcon("Images/Icons/hotel.png");
+    private ImageIcon i5 = new ImageIcon("Images/Icons/back.png");
+    private ImageIcon i6 = new ImageIcon("Images/Icons/logout.png");
 
     private JLabel l1 = new JLabel("Home");
     private JLabel l2 = new JLabel("User and Devoloper");

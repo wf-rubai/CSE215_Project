@@ -40,7 +40,7 @@ public class HotelInfoPanel extends JPanel implements CPanel {
     private int btnh = 0;
     private int track = 0;
     private double avg = 0;
-    private ImageIcon icon = new ImageIcon("/Users/washioferdousrubai/Downloads/star.png");
+    private ImageIcon icon = new ImageIcon("Images/Icons/star.png");
 
     public HotelInfoPanel(Hotels h){
         cityName = h.cityName;

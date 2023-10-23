@@ -57,7 +57,7 @@ public class C {
         // sp.setBounds(80, 190, 310, 650);
         // sp.setBorder(new EmptyBorder(5, 10, 5, 10));
         sp.setOpaque(false);
-        sp.setBounds(70, 0, 1180, 850);
+        sp.setBounds(70, 0, 1180, 550);
         sp.setBorder(new EmptyBorder(50, 140, 50, 140));
 
         int i= 1;
