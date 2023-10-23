@@ -48,7 +48,7 @@ public class MapMain implements CPanel {
             g2.drawRoundRect(7, 7, 675, 35, 35, 35);
         }
     };
-    private JButton buttonPop = new JButton(new ImageIcon("/Users/washioferdousrubai/Downloads/dots.png")){
+    private JButton buttonPop = new JButton(new ImageIcon("Images/Icons/dots.png")){
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D) g;
@@ -57,7 +57,7 @@ public class MapMain implements CPanel {
             g2.drawRoundRect(7, 7, 35, 35, 35, 35);
         }
     };
-    private JButton buttonSearch = new JButton(new ImageIcon("/Users/washioferdousrubai/Downloads/search.png")){
+    private JButton buttonSearch = new JButton(new ImageIcon("Images/Icons/search.png")){
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D) g;
@@ -115,7 +115,7 @@ public class MapMain implements CPanel {
     private JPanel pConfirm = new JPanel(){
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
-            ImageIcon imageIcon = new ImageIcon("/Users/washioferdousrubai/Downloads/like.png");
+            ImageIcon imageIcon = new ImageIcon("Images/Icons/like.png");
             Image image = imageIcon.getImage();
             g.drawImage(image, 220, 20, 96, 96, this);
             Graphics2D g2 = (Graphics2D) g;

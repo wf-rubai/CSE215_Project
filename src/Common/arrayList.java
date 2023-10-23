@@ -40,7 +40,7 @@ public class arrayList {
                                                    new ImageIcon("Images/GeoImage/Tangail.jpeg"),
                                                    new ImageIcon("Images/GeoImage/Teknaf.jpeg")};
 
-    public ImageIcon[] darkGeoImages = new ImageIcon[]{new ImageIcon("Images/GeoImage/Bogura 2 2.jpeg"),
+    public ImageIcon[] darkGeoImages = new ImageIcon[]{new ImageIcon("Images/GeoImage/Bogura 2.jpeg"),
                                                        new ImageIcon("Images/GeoImage/Chandpur 2.jpeg"),
                                                        new ImageIcon("Images/GeoImage/Chattogram 2.jpeg"),
                                                        new ImageIcon("Images/GeoImage/Cox's Bazar 2.jpeg"),
