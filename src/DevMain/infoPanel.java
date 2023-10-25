@@ -23,7 +23,7 @@ import javax.swing.SwingUtilities;
 import Common.CPanel;
 import Common.HotelInfoButton;
 import Common.Hotels;
-import Common.arrayList;
+import Common.ArrayList;
 import Common.fileReader;
 
 public class infoPanel implements CPanel {
@@ -153,7 +153,7 @@ public class infoPanel implements CPanel {
             }
         });
 
-        String[] citys = new arrayList().cityName;
+        String[] citys = new ArrayList().cityName;
         for(String s: citys){
             cb.addItem(s);
         }

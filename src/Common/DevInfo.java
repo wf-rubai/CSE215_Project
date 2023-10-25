@@ -17,18 +17,4 @@ public class DevInfo {
 
     public DevInfo() {
     }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " name='" + name + "'" +
-            ", pass='" + pass + "'" +
-            ", id='" + id + "'" +
-            ", mail='" + mail + "'" +
-            ", phone='" + phone + "'" +
-            ", nid='" + nid + "'" +
-            ", position='" + position + "'" +
-            ", imgIndex='" + imgIndex + "'" +
-            "}";
-    }
 }

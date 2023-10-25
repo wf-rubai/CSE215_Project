@@ -16,6 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Common.DevInfo;
+import Common.ProfilePanel;
+
 public class DevUIGenerator extends JFrame{
     
     private int tracOpt = 1;
@@ -43,6 +46,8 @@ public class DevUIGenerator extends JFrame{
     private JButton hotelInfo = new JButton();
     private JButton logOut = new JButton();
     private JPanel UIPanel = new JPanel();
+    private ProfilePanel profile;
+    private DevInfo dev;
 
     private ImageIcon i1 = new ImageIcon("Images/Icons/option.png");
     private ImageIcon i2 = new ImageIcon("Images/Icons/home.png");
@@ -80,6 +85,8 @@ public class DevUIGenerator extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 if(logPanel.isLoged()){
                     rmv(1);
+                    dev = DevLogInPanel.logerInfo;
+                    profile = new ProfilePanel(dev.name, dev.imgIndex);
                 }
             }
         });
@@ -127,6 +134,7 @@ public class DevUIGenerator extends JFrame{
                         pSB.add(l1);
                         pSB.add(l2);
                         pSB.add(l3);
+                        pSB.add(profile.panel());
                         tracOpt = 0;
                     }else{
                         pSB.setSize(70, 850);
@@ -139,6 +147,7 @@ public class DevUIGenerator extends JFrame{
                         pSB.remove(l1);
                         pSB.remove(l2);
                         pSB.remove(l3);
+                        pSB.remove(profile.panel());
                         tracOpt = 1;
                     }
                 }catch(Exception ex){
@@ -147,12 +156,12 @@ public class DevUIGenerator extends JFrame{
             }
         });
 
-        // UIPanel.add(logBtn);             // this is final
-        // UIPanel.add(logPanel.panel());   // this is final
+        UIPanel.add(logBtn);             // this is final
+        UIPanel.add(logPanel.panel());   // this is final
 
-        UIPanel.add(pSB);                   //this is temporary
-        UIPanel.add(mapView.panel());       //this is temporary
-        SetUp();                            //this is temporary
+        // UIPanel.add(pSB);                   //this is temporary
+        // UIPanel.add(mapView.panel());       //this is temporary
+        // SetUp();                            //this is temporary
 
         setVisible(true);
     }

@@ -35,7 +35,7 @@ import Common.CustomExeption;
 import Common.HotelInfoButton;
 import Common.HotelInfoPanel;
 import Common.Hotels;
-import Common.arrayList;
+import Common.ArrayList;
 import Common.fileReader;
 
 public class MapMain implements CPanel {
@@ -181,7 +181,7 @@ public class MapMain implements CPanel {
     private JComboBox<String> tYear = new JComboBox<>();
     private JPopupMenu popSearch = new JPopupMenu();
     private HashMap<String, LinkedList<Hotels>> hashHotel = new fileReader().hotelHashMap();
-    private String[] citys = new arrayList().cityName;
+    private String[] citys = new ArrayList().cityName;
     private String bookHotel;
     private String bookCity;
     private double bookPrice = 0;
@@ -623,7 +623,7 @@ public class MapMain implements CPanel {
         for(int i=1; i<=31; i++){
             fDay.addItem(i + "");
         }
-        String[] month = new arrayList().month;
+        String[] month = new ArrayList().month;
         fMonth.addItem("Month");
         for(String m: month){
             fMonth.addItem(m);

@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import Common.CPanel;
-import Common.arrayList;
+import Common.ArrayList;
 
 public class MapImage extends JPanel implements CPanel {
     
@@ -15,7 +15,7 @@ public class MapImage extends JPanel implements CPanel {
     private int currentImageIndex;
 
     public MapImage(){
-        images = new arrayList().geoImages;
+        images = new ArrayList().geoImages;
 
         currentImageIndex = 0;
     }

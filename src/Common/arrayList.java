@@ -2,7 +2,7 @@ package Common;
 
 import javax.swing.ImageIcon;
 
-public class arrayList {
+public class ArrayList {
     public String[] cityName = {"Bogura",
                                 "Chandpur",
                                 "Chattogram",
@@ -51,4 +51,33 @@ public class arrayList {
                                                        new ImageIcon("Images/GeoImage/Sylhet 2.jpeg"),
                                                        new ImageIcon("Images/GeoImage/Tangail 2.jpeg"),
                                                        new ImageIcon("Images/GeoImage/Teknaf 2.jpeg")};
+
+    public ImageIcon[] profile = new ImageIcon[]{new ImageIcon("Images/Avatar/DP0.png"),
+                                                 new ImageIcon("Images/Avatar/DP1.png"),
+                                                 new ImageIcon("Images/Avatar/DP2.png"),
+                                                 new ImageIcon("Images/Avatar/UP0.png"),
+                                                 new ImageIcon("Images/Avatar/UP1.png"),
+                                                 new ImageIcon("Images/Avatar/UP2.png"),
+                                                 new ImageIcon("Images/Avatar/UP3.png"),
+                                                 new ImageIcon("Images/Avatar/UP4.png"),
+                                                 new ImageIcon("Images/Avatar/UP5.png"),
+                                                 new ImageIcon("Images/Avatar/UP6.png"),
+                                                 new ImageIcon("Images/Avatar/UP7.png"),
+                                                 new ImageIcon("Images/Avatar/UP8.png"),
+                                                 new ImageIcon("Images/Avatar/UP9.png")}; 
+
+    public ImageIcon[] mapPin = new ImageIcon[]{new ImageIcon("Images/MapPointer/pin0.png"),
+                                                new ImageIcon("Images/MapPointer/pin1.png"),
+                                                new ImageIcon("Images/MapPointer/pin2.png"),
+                                                new ImageIcon("Images/MapPointer/pin3.png"),
+                                                new ImageIcon("Images/MapPointer/pin4.png"),
+                                                new ImageIcon("Images/MapPointer/pin5.png"),
+                                                new ImageIcon("Images/MapPointer/pin6.png"),
+                                                new ImageIcon("Images/MapPointer/pin7.png"),
+                                                new ImageIcon("Images/MapPointer/pin8.png"),
+                                                new ImageIcon("Images/MapPointer/pin9.png"),
+                                                new ImageIcon("Images/MapPointer/pin10.png"),
+                                                new ImageIcon("Images/MapPointer/pin11.png"),
+                                                new ImageIcon("Images/MapPointer/pin12.png"),
+                                                new ImageIcon("Images/MapPointer/pin13.png"),};
 }
