@@ -85,6 +85,7 @@ public class HotelTable implements CPanel {
     public JPanel panel(){
         pHotTable.setBounds(70, 0, 1180, 850);
         pHotTable.setLayout(null);
+        pHotTable.setBackground(Color.black);
 
         table.setRowHeight(30);
         table.setFont(new Font(null, Font.PLAIN, 13));

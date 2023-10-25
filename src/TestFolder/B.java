@@ -1,5 +1,7 @@
 package TestFolder;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -11,11 +13,12 @@ public class B {
     public static void main(String[] args) {
 
 
-        p.setSize(1030, 700);
+        p.setSize(1050, 700);
         p.setLayout(null);
-        p.setOpaque(false);
+        p.setBackground(Color.darkGray);
+        // p.setOpaque(false);
 
-        for(int i = 0; i<300; i++){
+        for(int i = 0; i<100; i++){
             B2 d = new B2();
             Thread t = new Thread(d);
             t.start();
@@ -25,9 +28,9 @@ public class B {
         JTextField tf = new JTextField();
         tf.setBounds(200, 500, 500, 40);
 
-        f.add(tf);
+        // f.add(tf);
         f.add(p);
-        f.setSize(1030, 700);
+        f.setSize(1050, 700);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLayout(null);
         f.setVisible(true);

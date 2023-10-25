@@ -12,14 +12,12 @@ import javax.swing.JPanel;
 public class ProfilePanel extends JPanel implements CPanel {
 
     private ImageIcon[] image;
-    private String name;
     private int index;
     private JPanel profilePanel = new JPanel();
     private JButton bName;
 
     public ProfilePanel(String name, int i){
         image = new ArrayList().profile;
-        this.name = name;
         this.index = i;
         bName = new JButton(name);
     }
@@ -29,17 +27,17 @@ public class ProfilePanel extends JPanel implements CPanel {
         super.paintComponent(g);
         ImageIcon imageIcon = image[index];
         Image image = imageIcon.getImage();
-        g.drawImage(image, 75, 0, 150, 150, this);
+        g.drawImage(image, 100, 0, 100, 100, this);
     }
 
     @Override
     public JPanel panel() {
-        profilePanel.setBounds(0, 70, 300, 200);
+        profilePanel.setBounds(0, 100, 300, 150);
         profilePanel.setOpaque(false);
         profilePanel.setLayout(null);
         // profilePanel.setBackground(Color.pink);
 
-        bName.setBounds(0, 150, 300, 50);
+        bName.setBounds(0, 100, 300, 50);
         bName.setForeground(Color.black);
         bName.setFont(new Font(null, Font.BOLD, 20));
         bName.setOpaque(false);
@@ -47,7 +45,7 @@ public class ProfilePanel extends JPanel implements CPanel {
         bName.setBorderPainted(false);
         bName.setFocusable(false);
 
-        setBounds( 0, 0, 300, 150);
+        setBounds( 0, 0, 300, 100);
         setOpaque(false);
         // setBackground(Color.orange);
 

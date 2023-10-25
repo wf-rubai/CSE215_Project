@@ -2,7 +2,7 @@ package TestFolder;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
+// import java.awt.geom.AffineTransform;
 
 public class F {
 
@@ -14,11 +14,11 @@ public class F {
     }
 
     public int getA() {
-        return this.a;
+        return F.a;
     }
 
     public void setA(int a) {
-        this.a = a;
+        // this.a = a;
     }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
@@ -34,9 +34,9 @@ public class F {
             frame.add(button2);
 
             // Apply scaling to the frame's content pane
-            double scale = .5; // Scaling factor (50% of the original size)
+            // double scale = .5; // Scaling factor (50% of the original size)
             Container contentPane = frame.getContentPane();
-            AffineTransform scaleTransform = AffineTransform.getScaleInstance(scale, scale);
+            // AffineTransform scaleTransform = AffineTransform.getScaleInstance(scale, scale);
             contentPane.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
             contentPane.setIgnoreRepaint(true);
             contentPane.setLocale(null);

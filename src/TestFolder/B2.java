@@ -16,7 +16,7 @@ public class B2 extends B implements Runnable {
     // private int iii = (int) -(Math.random()*700);
 
     public B2(){
-        int i = (int) (20+Math.random()*20);
+        int i = (int) (20+Math.random()*30);
         ii = i;
         p = new JPanel(){
             protected void paintComponent(Graphics g){
@@ -26,8 +26,8 @@ public class B2 extends B implements Runnable {
                 g2.fillRoundRect(0, 0, i, i, i, i);
             }
         };
-        this.x = (int)(100+(Math.random()*800));
-        this.s = (int)(3+(Math.random()*7));
+        this.x = (int)((Math.random()*1000));
+        this.s = (int)(2+(Math.random()*8));
         p.setBounds(x, -i, i, i);
         p.setOpaque(false);
         // p.setBackground(Color.black);

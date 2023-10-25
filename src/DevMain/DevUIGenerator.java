@@ -42,12 +42,12 @@ public class DevUIGenerator extends JFrame{
     private MapView mapView = new MapView();
     private JButton option = new JButton();
     private JButton home = new JButton();
-    private JButton settings = new JButton();
+    private JButton userDev = new JButton();
     private JButton hotelInfo = new JButton();
     private JButton logOut = new JButton();
     private JPanel UIPanel = new JPanel();
-    private ProfilePanel profile;
-    private DevInfo dev;
+    private DevInfo dev = DevLogInPanel.logerInfo;
+    private ProfilePanel profile = new ProfilePanel(dev.name, dev.imgIndex);
 
     private ImageIcon i1 = new ImageIcon("Images/Icons/option.png");
     private ImageIcon i2 = new ImageIcon("Images/Icons/home.png");
@@ -86,6 +86,11 @@ public class DevUIGenerator extends JFrame{
                 if(logPanel.isLoged()){
                     rmv(1);
                     dev = DevLogInPanel.logerInfo;
+                    pSB.removeAll();
+                    pSB.add(option);
+                    pSB.add(l4);
+                    pSB.add(l5);
+                    pSB.add(l6);
                     profile = new ProfilePanel(dev.name, dev.imgIndex);
                 }
             }
@@ -105,7 +110,7 @@ public class DevUIGenerator extends JFrame{
             }
         });
 
-        settings.addActionListener(new ActionListener() {
+        userDev.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 swap(3);
@@ -129,7 +134,7 @@ public class DevUIGenerator extends JFrame{
                         option.setIcon(i5);
                         home.setSize(280, 50);
                         hotelInfo.setSize(280, 50);
-                        settings.setSize(280, 50);
+                        userDev.setSize(280, 50);
                         pSB.add(logOut);
                         pSB.add(l1);
                         pSB.add(l2);
@@ -142,7 +147,7 @@ public class DevUIGenerator extends JFrame{
                         option.setIcon(i1);
                         home.setSize(50, 50);
                         hotelInfo.setSize(50, 50);
-                        settings.setSize(50, 50);
+                        userDev.setSize(50, 50);
                         pSB.remove(logOut);
                         pSB.remove(l1);
                         pSB.remove(l2);
@@ -156,12 +161,14 @@ public class DevUIGenerator extends JFrame{
             }
         });
 
-        UIPanel.add(logBtn);             // this is final
-        UIPanel.add(logPanel.panel());   // this is final
+        // UIPanel.add(logBtn);                             // this is final
+        // UIPanel.add(logPanel.panel());                   // this is final
 
-        // UIPanel.add(pSB);                   //this is temporary
-        // UIPanel.add(mapView.panel());       //this is temporary
-        // SetUp();                            //this is temporary
+        UIPanel.add(pSB);                                   //this is temporary
+        UIPanel.add(mapView.panel());                       //this is temporary
+        SetUp();                                            //this is temporary
+        dev = DevLogInPanel.logerInfo;                      //this is temporary
+        // profile = new ProfilePanel(dev.name, dev.imgIndex); //this is temporary
 
         setVisible(true);
     }
@@ -179,7 +186,7 @@ public class DevUIGenerator extends JFrame{
             option.setIcon(i1);
             home.setSize(50, 50);
             hotelInfo.setSize(50, 50);
-            settings.setSize(50, 50);
+            userDev.setSize(50, 50);
             pSB.remove(logOut);
             pSB.remove(l1);
             pSB.remove(l2);
@@ -191,16 +198,6 @@ public class DevUIGenerator extends JFrame{
         }else if(i == 3){
             UIPanel.add(new HotelTable().panel());
         }else if(i == 4){
-            pSB.setBounds(0, 0,70, 850);
-            option.setLocation(10, 30);
-            option.setIcon(i1);
-            home.setSize(50, 50);
-            hotelInfo.setSize(50, 50);
-            settings.setSize(50, 50);
-            pSB.remove(logOut);
-            pSB.remove(l1);
-            pSB.remove(l2);
-            pSB.remove(l3);
             tracOpt = 1;
             UIPanel.remove(pSB);
             UIPanel.add(logBtn);
@@ -225,7 +222,7 @@ public class DevUIGenerator extends JFrame{
         option.setBounds(10, 30, 50, 50);
         home.setBounds(10, 320, 50, 50);
         hotelInfo.setBounds(10, 400, 50, 50);
-        settings.setBounds(10, 480, 50, 50);
+        userDev.setBounds(10, 480, 50, 50);
         logOut.setBounds(75, 800, 150, 50);
         
         l1.setBounds(60, 320, 200, 50);
@@ -251,10 +248,10 @@ public class DevUIGenerator extends JFrame{
         hotelInfo.setBorderPainted(false);
         hotelInfo.setFocusable(false);
         
-        settings.setOpaque(false);
-        settings.setContentAreaFilled(false);
-        settings.setBorderPainted(false);
-        settings.setFocusable(false);
+        userDev.setOpaque(false);
+        userDev.setContentAreaFilled(false);
+        userDev.setBorderPainted(false);
+        userDev.setFocusable(false);
 
         logOut.setOpaque(false);
         logOut.setContentAreaFilled(false);
@@ -278,6 +275,6 @@ public class DevUIGenerator extends JFrame{
         pSB.add(l6);
         pSB.add(home);
         pSB.add(hotelInfo);
-        pSB.add(settings);
+        pSB.add(userDev);
     }
 }
