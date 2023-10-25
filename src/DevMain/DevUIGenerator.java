@@ -35,7 +35,7 @@ public class DevUIGenerator extends JFrame{
         }
     };
     private JButton logBtn = new JButton("Log in");
-    private LogInPanel logPanel = new LogInPanel();
+    private DevLogInPanel logPanel = new DevLogInPanel();
     private MapView mapView = new MapView();
     private JButton option = new JButton();
     private JButton home = new JButton();
@@ -61,7 +61,7 @@ public class DevUIGenerator extends JFrame{
     public DevUIGenerator(String s){
 
         super(s);
-        setSize(1250, 850);
+        setSize(1250, 877);
         setLayout(null);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -178,14 +178,8 @@ public class DevUIGenerator extends JFrame{
             tracOpt = 1;
             UIPanel.add(mapView.panel());
         }else if(i == 2){
-            JPanel p1 = new JPanel();
-            p1.setBounds(70, 0, 1180, 850);
-            p1.setBackground(Color.GREEN);
-            UIPanel.add(p1);
+            UIPanel.add(new UserTable().panel());
         }else if(i == 3){
-            JPanel p2 = new JPanel();
-            p2.setBounds(70, 0, 1180, 850);
-            p2.setBackground(Color.BLUE);
             UIPanel.add(new HotelTable().panel());
         }else if(i == 4){
             pSB.setBounds(0, 0,70, 850);
@@ -201,7 +195,7 @@ public class DevUIGenerator extends JFrame{
             tracOpt = 1;
             UIPanel.remove(pSB);
             UIPanel.add(logBtn);
-            logPanel = new LogInPanel();
+            logPanel = new DevLogInPanel();
             UIPanel.add(logPanel.panel());
         }
         SwingUtilities.updateComponentTreeUI(UIPanel);

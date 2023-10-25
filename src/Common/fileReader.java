@@ -12,6 +12,7 @@ public class fileReader {
     
     private HashMap<String, LinkedList<Hotels>> hotMap = new HashMap<>();
     private HashMap<String, LinkedList<String[]>> travelInfo = new HashMap<>();
+    private HashMap<String, DevInfo> devMap = new HashMap<>();
 
     public HashMap<String, LinkedList<Hotels>> hotelHashMap(){
         hotMap.clear();
@@ -88,5 +89,34 @@ public class fileReader {
         }
 
         return travelInfo;
+    }
+
+    public HashMap<String, DevInfo> devoloperHashMap(){
+        String name, pass, id, mail, phone, nid, position;
+        int imgIndex = 0;
+        try{
+            File file = new File("Files/devInfo.txt");
+            Scanner sc = new Scanner(file);
+            sc.nextLine();
+            while(sc.hasNextLine()){
+                name = sc.next().replace("_", " ");
+                pass = sc.next().replace("_", " ");
+                id = sc.next().replace("_", " ");
+                mail = sc.next().replace("_", " ");
+                phone = sc.next().replace("_", " ");
+                nid = sc.next().replace("_", " ");
+                position = sc.next().replace("_", " ");
+                imgIndex = sc.nextInt();
+                DevInfo d = new DevInfo(name, pass, id, mail, phone, nid, position, imgIndex);
+                devMap.put(pass, d);
+            }
+            sc.close();
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "File ends with an empty line");
+        }
+
+        return devMap;
     }
 }

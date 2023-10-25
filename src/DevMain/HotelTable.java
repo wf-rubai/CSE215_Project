@@ -217,9 +217,17 @@ public class HotelTable implements CPanel {
         tfY.setBounds(790, 600, 290, 40);
 
         save.addActionListener(new ActionListener() {
+            private int i = 0;
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                int ans = JOptionPane.showConfirmDialog(pHotTable, "Are you sure you want to update this hotel info?", "Update request confirmation", JOptionPane.YES_NO_OPTION);
+
+                int ans = 1;
+                if(i == 0){
+                    ans = JOptionPane.showConfirmDialog(pHotTable, "Are you sure you want to update this hotel info?", "Update request confirmation", JOptionPane.YES_NO_OPTION);
+                    i++;
+                }
+
                 if(ans == 0){
                     update((String)(table.getValueAt(table.getSelectedRow(), 1)), 
                            (String)(table.getValueAt(table.getSelectedRow(), 2)), 

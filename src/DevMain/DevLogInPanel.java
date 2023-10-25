@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -13,8 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Common.CPanel;
+import Common.DevInfo;
+import Common.fileReader;
 
-public class LogInPanel implements CPanel {
+public class DevLogInPanel implements CPanel {
     
     private JPanel pLog = new JPanel();
     private JTextField tf = new JTextField(){
@@ -39,10 +42,11 @@ public class LogInPanel implements CPanel {
             g2.drawRoundRect(5, 5, 240, 30, 30, 30);
         }
     };
-    private ImageIcon ii = new ImageIcon("/Users/washioferdousrubai/Downloads/beige-leafy-watercolor-backgroun.jpg");
+    private ImageIcon ii = new ImageIcon("Images/HotelImage/BGI3.jpg");
     private JLabel l = new JLabel(ii);
     private JLabel lname = new JLabel("ID or name");
     private JLabel lpass = new JLabel("Password");
+    public static DevInfo logerInfo = new DevInfo("Washio Ferdous Rubai", "akkas1234", "2231107", "rubai4483302@gmail.com", "01912653657", "10287384891743", "CEO", 0);
     
     @Override
     public JPanel panel(){
@@ -73,8 +77,24 @@ public class LogInPanel implements CPanel {
     }
 
     public boolean isLoged(){
-        String s = new String(pf.getPassword());
-        if(tf.getText().equals("lll") && s.equals("1234")){
+        HashMap<String, DevInfo> hashDev = new fileReader().devoloperHashMap();
+
+        if(hashDev.containsKey(new String(pf.getPassword()))){
+            DevInfo d = hashDev.get(new String(pf.getPassword()));
+            if(tf.getText().equals(d.id)){
+                logerInfo = d;
+                return true;
+            }else if(tf.getText().equals(d.name)){
+                logerInfo = d;
+                return true;
+            }else if(tf.getText().equals(d.mail)){
+                logerInfo = d;
+                return true;
+            }
+        }
+        
+        if(tf.getText().equals("admin") && new String(pf.getPassword()).equals("12345")){
+            logerInfo = new DevInfo("admin", "12345", "null", "null", "null", "null", "Editor", 2);
             return true;
         }
         
