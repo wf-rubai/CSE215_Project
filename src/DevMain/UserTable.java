@@ -1,6 +1,8 @@
 package DevMain;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -24,6 +26,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import Common.DevInfo;
 import Common.fileReader;
@@ -85,22 +88,49 @@ public class UserTable {
 	private JLabel lPhone = new JLabel("Phone :");
 	private JLabel lId = new JLabel("ID no. :");
 	private JLabel lNid = new JLabel("NID no. :");
+	private JTableHeader DTH = devTable.getTableHeader();
+	private JTableHeader UTH = userTable.getTableHeader();
 	private DevInfo devInfo = DevLogInPanel.logerInfo;
 	
 	public JPanel panel() {
 
 		setUp();
 		
+		userTable.setRowHeight(30);
+        userTable.setFont(new Font(null, Font.PLAIN, 13));
+        UTH.setPreferredSize(new Dimension(100, 30));
+        UTH.setFont(new Font(null, Font.BOLD, 13));
+
+		userTable.getColumnModel().getColumn(0).setPreferredWidth(40);
+		userTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+		userTable.getColumnModel().getColumn(2).setPreferredWidth(230);
+		userTable.getColumnModel().getColumn(3).setPreferredWidth(150);
+		userTable.getColumnModel().getColumn(4).setPreferredWidth(170);
+		userTable.getColumnModel().getColumn(5).setPreferredWidth(80);
+		
 		JScrollPane spUser = new JScrollPane(userTable,
 											 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 											 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		spUser.setBounds(100, 200, 980, 300);
-		setDevTable();
-		
+
+		devTable.setRowHeight(30);
+        devTable.setFont(new Font(null, Font.PLAIN, 13));
+        DTH.setPreferredSize(new Dimension(100, 30));
+        DTH.setFont(new Font(null, Font.BOLD, 13));
+
+		devTable.getColumnModel().getColumn(0).setPreferredWidth(40);
+		devTable.getColumnModel().getColumn(1).setPreferredWidth(150);
+		devTable.getColumnModel().getColumn(2).setPreferredWidth(170);
+		devTable.getColumnModel().getColumn(3).setPreferredWidth(200);
+		devTable.getColumnModel().getColumn(4).setPreferredWidth(150);
+		devTable.getColumnModel().getColumn(5).setPreferredWidth(200);
+		devTable.getColumnModel().getColumn(6).setPreferredWidth(80);
+
 		JScrollPane spDev = new JScrollPane(devTable,
 											JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 											JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		spDev.setBounds(100, 200, 980, 300);
+		setDevTable();
 		
 		mode.addActionListener(new ActionListener() {
 			@Override
@@ -162,7 +192,27 @@ public class UserTable {
 					pTableDev.remove(lPosition);
 					pTableDev.remove(position);
 					pTableMain.add(pTableDev);
+					pTableDev.add(reset);
+					pTableDev.add(cancel);
+					pTableDev.add(dSave);
 					dSave.setText("Update");
+				}
+				SwingUtilities.updateComponentTreeUI(pTableMain);
+			}
+		});
+
+		remove.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(mode.getSelectedItem().equals("Developer")){
+					for(DevInfo d: dhm.values()){
+						if(d.name.equals((String)devTable.getValueAt(devTable.getSelectedRow(), 2))){
+							dhm.remove(d.pass);
+							break;
+						}
+					}
+					fileSaver(1);
+					setDevTable();
 				}
 				SwingUtilities.updateComponentTreeUI(pTableMain);
 			}
@@ -194,21 +244,27 @@ public class UserTable {
 				di.id = tfId.getText();
 				di.phone = tfPhone.getText();
 				di.nid = tfNid.getText();
-				di.position = (String) position.getSelectedItem();
-				if(position.getSelectedItem().equals("Editor")){
-					di.imgIndex = 1;
-				}else{
-					di.imgIndex = 2;
-				}
 				if(dSave.getText().equals("Add")){
 					di.pass = "new" + dhm.size();
+					di.position = (String) position.getSelectedItem();
+					if(di.position.equals("Editor")){
+						di.imgIndex = 1;
+					}else{
+						di.imgIndex = 2;
+					}
 					dhm.put(di.pass, di);
 				}else{
 					for(DevInfo d: dhm.values()){
 						if(d.name.equals((String)devTable.getValueAt(devTable.getSelectedRow(), 2))){
+							di.position = d.position;
 							di.pass = d.pass;
 							break;
 						}
+					}
+					if(di.position.equals("Editor")){
+						di.imgIndex = 1;
+					}else{
+						di.imgIndex = 2;
 					}
 					dhm.replace(di.pass, di);
 				}

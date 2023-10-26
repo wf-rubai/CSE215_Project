@@ -64,7 +64,9 @@ public class ArrayList {
                                                  new ImageIcon("Images/Avatar/UP6.png"),
                                                  new ImageIcon("Images/Avatar/UP7.png"),
                                                  new ImageIcon("Images/Avatar/UP8.png"),
-                                                 new ImageIcon("Images/Avatar/UP9.png")}; 
+                                                 new ImageIcon("Images/Avatar/UP9.png"),
+                                                 new ImageIcon("Images/Avatar/UP.png"),
+                                                 new ImageIcon("Images/Avatar/UP.png")}; 
 
     public ImageIcon[] mapPin = new ImageIcon[]{new ImageIcon("Images/MapPointer/pin0.png"),
                                                 new ImageIcon("Images/MapPointer/pin1.png"),

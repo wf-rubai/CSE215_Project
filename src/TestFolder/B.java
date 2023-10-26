@@ -15,10 +15,10 @@ public class B {
 
         p.setSize(1050, 700);
         p.setLayout(null);
-        p.setBackground(Color.darkGray);
+        // p.setBackground(Color.darkGray);
         // p.setOpaque(false);
 
-        for(int i = 0; i<100; i++){
+        for(int i = 0; i<30; i++){
             B2 d = new B2();
             Thread t = new Thread(d);
             t.start();

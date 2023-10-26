@@ -43,6 +43,8 @@ public class A extends JPanel {
                 JFrame frame = new JFrame("Image Switching Example");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setSize(400, 300);
+                ImageIcon ii = new ImageIcon("Images/HotelImage/Presentation1.000.png");
+                frame.setIconImage(ii.getImage());
 
                 A panel = new A();
                 frame.add(panel);

@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -15,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import Common.CPanel;
 import Common.DevInfo;
+import Common.MovingCircle;
 import Common.fileReader;
 
 public class DevLogInPanel implements CPanel {
@@ -42,10 +44,9 @@ public class DevLogInPanel implements CPanel {
             g2.drawRoundRect(5, 5, 240, 30, 30, 30);
         }
     };
-    private ImageIcon ii = new ImageIcon("Images/HotelImage/BGI3.jpg");
-    private JLabel l = new JLabel(ii);
     private JLabel lname = new JLabel("ID or name");
     private JLabel lpass = new JLabel("Password");
+    private JButton bLog = new JButton("Log in");
     public static DevInfo logerInfo = new DevInfo("Washio Ferdous Rubai", "akkas1234", "2231107", "rubai4483302@gmail.com", "01912653657", "10287384891743", "CEO", 0);
     
     @Override
@@ -53,8 +54,6 @@ public class DevLogInPanel implements CPanel {
         pLog.setBounds(0, 0, 1250, 850);
         pLog.setLayout(null);
         
-        l.setBounds(0, 0, 1250, 850);
-
         tf.setBounds(500, 500, 250, 40);
         tf.setBackground(new Color(0, 0, 0, 0));
         tf.setBorder(new EmptyBorder(0, 15, 0, 15));
@@ -66,12 +65,20 @@ public class DevLogInPanel implements CPanel {
 
         lname.setBounds(500, 480, 150, 20);
         lpass.setBounds(500, 540, 150, 20);
+        bLog.setBounds(500, 620, 250, 40);
         
         pLog.add(tf);
         pLog.add(pf);
         pLog.add(lname);
         pLog.add(lpass);
-        pLog.add(l);
+        pLog.add(bLog);
+
+        for(int i = 0; i<30; i++){
+            MovingCircle d = new MovingCircle();
+            Thread t = new Thread(d);
+            t.start();
+            pLog.add(d.panel());
+        }
 
         return pLog;
     }

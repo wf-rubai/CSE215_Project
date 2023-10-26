@@ -5,10 +5,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LinearGradientPaint;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
+import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +16,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
+import Common.ObjecSaver;
+import Common.ProfilePanel;
+import Common.UserInfo;
+import Common.fileReader;
 
 public class UserUIGenerator extends JFrame {
 
@@ -40,6 +45,7 @@ public class UserUIGenerator extends JFrame {
     private JButton home = new JButton();
     private JButton settings = new JButton();
     private JButton travel = new JButton();
+    private JButton logBack = new JButton(new ImageIcon("Images/Icons/back.png"));
     private JButton log = new JButton();
     private MapMain mapView = new MapMain();
 
@@ -49,7 +55,7 @@ public class UserUIGenerator extends JFrame {
     private ImageIcon i4 = new ImageIcon("Images/Icons/setting.png");
     private ImageIcon i5 = new ImageIcon("Images/Icons/back.png");
     private ImageIcon i6 = new ImageIcon("Images/Icons/logout.png");
-    // private ImageIcon i7 = new ImageIcon("Images/Icons/login.png");
+    private ImageIcon i7 = new ImageIcon("Images/Icons/login.png");
 
     private JLabel l1 = new JLabel("Home");
     private JLabel l2 = new JLabel("User and Devoloper");
@@ -57,6 +63,7 @@ public class UserUIGenerator extends JFrame {
     private JLabel l4 = new JLabel(i2);
     private JLabel l5 = new JLabel(i3);
     private JLabel l6 = new JLabel(i4);
+    private ProfilePanel profile;
 
     public UserUIGenerator(String s){
         super(s);
@@ -80,6 +87,13 @@ public class UserUIGenerator extends JFrame {
             }
         });
 
+        logBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                swap(1);
+            }
+        });
+
         travel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,7 +111,15 @@ public class UserUIGenerator extends JFrame {
         log.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                swap(4);
+                if(!UserLogPanel.isLoged){
+                    log.setIcon(i6);
+                    log.setText("Log out");
+                    swap(4);
+                }else{
+                    log.setIcon(i7);
+                    log.setText("Log in/Sign in");
+                    swap(5);
+                }
             }
         });
 
@@ -106,6 +128,7 @@ public class UserUIGenerator extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try{
                     if(tracOpt == 1){
+                        profile = new ProfilePanel(UserLogPanel.logerID.name, UserLogPanel.logerID.imgIndex);
                         pSB.setSize(300, 850);
                         option.setLocation(240, 30);
                         option.setIcon(i5);
@@ -116,6 +139,9 @@ public class UserUIGenerator extends JFrame {
                         pSB.add(l1);
                         pSB.add(l2);
                         pSB.add(l3);
+                        if(UserLogPanel.isLoged){
+                            pSB.add(profile.panel());
+                        }
                         tracOpt = 0;
                     }else{
                         pSB.setSize(70, 850);
@@ -128,6 +154,7 @@ public class UserUIGenerator extends JFrame {
                         pSB.remove(l1);
                         pSB.remove(l2);
                         pSB.remove(l3);
+                        pSB.remove(profile.panel());
                         tracOpt = 1;
                     }
                 }catch(Exception ex){
@@ -172,21 +199,34 @@ public class UserUIGenerator extends JFrame {
             p2.setBackground(Color.BLUE);
             mainPanel.add(p2);
         }else if(i == 4){
-            // pSB.setBounds(0, 0,70, 850);
-            // option.setLocation(10, 30);
-            // option.setIcon(i1);
-            // home.setSize(50, 50);
-            // travel.setSize(50, 50);
-            // settings.setSize(50, 50);
-            // pSB.remove(log);
-            // pSB.remove(l1);
-            // pSB.remove(l2);
-            // pSB.remove(l3);
-            // tracOpt = 1;
-            // mainPanel.remove(pSB);
-            // mainPanel.add(logBtn);
-            // logPanel = new LogInPanel();
-            // mainPanel.add(logPanel.panel());
+            pSB.setBounds(0, 0,70, 850);
+            option.setLocation(10, 30);
+            option.setIcon(i1);
+            home.setSize(50, 50);
+            travel.setSize(50, 50);
+            settings.setSize(50, 50);
+            pSB.remove(log);
+            pSB.remove(l1);
+            pSB.remove(l2);
+            pSB.remove(l3);
+            tracOpt = 1;
+            mainPanel.add(logBack);
+            mainPanel.add(new UserLogPanel().panel());
+        }else if(i == 5){
+            swap(1);LinkedList<Object> o = new fileReader().objectList();
+            o.set(0, false);
+            o.set(1, new UserInfo("", "", "", "", "", "", 13));
+            new ObjecSaver(o);
+            pSB.removeAll();
+            pSB.add(option);
+            pSB.add(l4);
+            pSB.add(l5);
+            pSB.add(l6);
+            pSB.add(home);
+            pSB.add(travel);
+            pSB.add(settings);
+            profile = new ProfilePanel("", 13);
+            UserLogPanel.isLoged = false;
         }
         SwingUtilities.updateComponentTreeUI(mainPanel);
     }
@@ -230,9 +270,14 @@ public class UserUIGenerator extends JFrame {
         log.setContentAreaFilled(false);
         log.setBorderPainted(false);
         log.setFocusable(false);
-        log.setText("Log out");
         log.setFont(new Font(null, Font.PLAIN, 12));
-        log.setIcon(i6);
+        if(UserLogPanel.isLoged){
+            log.setIcon(i6);
+            log.setText("Log out");
+        }else{
+            log.setIcon(i7);
+            log.setText("Log in/Sign in");
+        }
 
         l1.setFont(new Font(null, Font.PLAIN, 20));
         l2.setFont(new Font(null, Font.PLAIN, 20));
@@ -241,6 +286,12 @@ public class UserUIGenerator extends JFrame {
         pSB.setBounds(0, 0, 70, 850);
         pSB.setOpaque(false);
         pSB.setLayout(null);
+
+        logBack.setBounds(100, 30, 32, 32);
+        logBack.setOpaque(false);
+        logBack.setContentAreaFilled(false);
+        logBack.setBorderPainted(false);
+        logBack.setFocusable(false);
 
         pSB.add(option);
         pSB.add(l4);

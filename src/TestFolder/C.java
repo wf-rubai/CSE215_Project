@@ -3,31 +3,31 @@ package TestFolder;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
+// import java.awt.event.ActionEvent;
+// import java.awt.event.ActionListener;
+// import java.util.HashMap;
 import java.util.LinkedList;
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
+// import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
+// import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
-import Common.HotelInfoPanel;
-import Common.Hotels;
+// import Common.HotelInfoPanel;
+// import Common.Hotels;
 import Common.TravelPanel;
 import Common.fileReader;
 
 public class C {
     private static JFrame f = new JFrame("test");
     private static JPanel pp = new JPanel();
-    private static int i = 1;
+    // private static int i = 1;
 
     static int ii = 1;
-    private static HashMap<String, LinkedList<Hotels>> hm = new fileReader().hotelHashMap();
+    // private static HashMap<String, LinkedList<Hotels>> hm = new fileReader().hotelHashMap();
     public static void main(String[] args) {
         f.setLayout(null);
         f.setSize(1250, 850);
@@ -60,11 +60,11 @@ public class C {
         sp.setBounds(70, 0, 1180, 550);
         sp.setBorder(new EmptyBorder(50, 140, 50, 140));
 
-        int i= 1;
+        // int i= 1;
         for(String[] s: ss){
             // if(i != 2)
             pp.add(new TravelPanel(s).panel());
-            i++;
+            // i++;
         }
 
         // for(Hotels h: ll){

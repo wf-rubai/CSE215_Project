@@ -63,7 +63,7 @@ public class HotelInfoButton extends JButton implements CPanel {
         popPanel.add(hpl);
 
 
-        ImageIcon ii = new ImageIcon("Images/Icons/pin.png");
+        ImageIcon ii = new ImageIcon("Images/MapPointer/pin0.png");
         setBounds(94, 68, 32, 32);
         setIcon(ii);
         setOpaque(false);

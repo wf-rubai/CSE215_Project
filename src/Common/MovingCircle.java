@@ -1,4 +1,4 @@
-package TestFolder;
+package Common;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-public class B2 extends B implements Runnable {
+public class MovingCircle implements Runnable {
 
     private int x;
     private JPanel p;
@@ -17,7 +17,7 @@ public class B2 extends B implements Runnable {
     private int a = (int)(Math.random()*2);
     // private int iii = (int) -(Math.random()*700);
 
-    public B2(){
+    public MovingCircle(){
         int i = (int) (30+Math.random()*300);
         ii = i;
         p = new JPanel(){
@@ -46,13 +46,13 @@ public class B2 extends B implements Runnable {
 
     @Override
     public void run() {
-        int iii = (int) (ii + 700+ Math.random()*670);
+        int iii = (int) (ii + 700+ Math.random()*1100);
         // int iii = 0;
         while(true){
             p.setLocation(x, iii-ii);
             iii--;
             if(iii<0)
-                iii = 700+ii;
+                iii = 850+ii;
             try {
                 Thread.sleep(s);
             } catch (InterruptedException e) {

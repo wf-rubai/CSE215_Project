@@ -59,11 +59,11 @@ public class TravelPanel implements CPanel {
         bi5.setFont(new Font(null, Font.PLAIN, 14));
         bi6.setFont(new Font(null, Font.PLAIN, 14));
 
-        bi1.setBorder( new EmptyBorder(0, 500, 0, 0));
-        bi2.setBorder( new EmptyBorder(0, 500, 0, 0));
-        bi4.setBorder( new EmptyBorder(0, 500, 0, 0));
-        bi5.setBorder( new EmptyBorder(0, 500, 0, 0));
-        bi6.setBorder( new EmptyBorder(0, 500, 0, 0));
+        bi1.setBorder( new EmptyBorder(0, 50, 0, 0));
+        bi2.setBorder( new EmptyBorder(0, 50, 0, 0));
+        bi4.setBorder( new EmptyBorder(0, 50, 0, 0));
+        bi5.setBorder( new EmptyBorder(0, 50, 0, 0));
+        bi6.setBorder( new EmptyBorder(0, 50, 0, 0));
 
         bi3.setOpaque(false);
         bi3.setContentAreaFilled(false);

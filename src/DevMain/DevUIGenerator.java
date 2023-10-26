@@ -37,7 +37,7 @@ public class DevUIGenerator extends JFrame{
             g2.fillRoundRect(-50, 0, 350, 850, 40, 40);
         }
     };
-    private JButton logBtn = new JButton("Log in");
+    private JButton logBtn = new JButton();
     private DevLogInPanel logPanel = new DevLogInPanel();
     private MapView mapView = new MapView();
     private JButton option = new JButton();
@@ -91,6 +91,9 @@ public class DevUIGenerator extends JFrame{
                     pSB.add(l4);
                     pSB.add(l5);
                     pSB.add(l6);
+                    pSB.add(home);
+                    pSB.add(hotelInfo);
+                    pSB.add(userDev);
                     profile = new ProfilePanel(dev.name, dev.imgIndex);
                 }
             }
@@ -191,6 +194,7 @@ public class DevUIGenerator extends JFrame{
             pSB.remove(l1);
             pSB.remove(l2);
             pSB.remove(l3);
+            pSB.remove(profile.panel());
             tracOpt = 1;
             UIPanel.add(mapView.panel());
         }else if(i == 2){

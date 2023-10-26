@@ -18,7 +18,7 @@ public class F {
     }
 
     public void setA(int a) {
-        // this.a = a;
+        F.a = a;
     }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

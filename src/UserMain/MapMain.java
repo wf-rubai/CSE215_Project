@@ -339,7 +339,9 @@ public class MapMain implements CPanel {
         bCont.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tfName.getText().equals("")){
+                if(!UserLogPanel.isLoged){
+                    JOptionPane.showMessageDialog(pBook, "Please login to to continue", "Login Request", JOptionPane.WARNING_MESSAGE);
+                }else if(tfName.getText().equals("")){
                     JOptionPane.showMessageDialog(pBook, "You must provide your name", "Error", JOptionPane.ERROR_MESSAGE);
                 }else if(tfMail.getText().equals("")){
                     JOptionPane.showMessageDialog(pBook, "You must provide your Email address", "Error", JOptionPane.ERROR_MESSAGE);
@@ -351,6 +353,24 @@ public class MapMain implements CPanel {
                     mapPanel.add(pBookTime);
                 }
                 SwingUtilities.updateComponentTreeUI(mapPanel);
+            }
+        });
+
+        bLogIN.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!UserLogPanel.isLoged){
+                    mapPanel.remove(spHotel);
+                    mapPanel.remove(lLable);
+                    mapPanel.remove(lHotel);
+                    mapPanel.remove(pBook);
+                    UserLogPanel ulp = new UserLogPanel();
+                    mapPanel.setBounds(0, 0, 1250, 850);;
+                    mapPanel.add(ulp.panel());
+                    SwingUtilities.updateComponentTreeUI(mapPanel);
+                }else{
+                    JOptionPane.showMessageDialog(mapPanel, "Your are already logged");
+                }
             }
         });
 
@@ -368,7 +388,8 @@ public class MapMain implements CPanel {
         cancel2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mapPanel.remove(pBookTime);
+                mapPanel.remove(pBook);
+                mapPanel.remove(spHotel);
                 SwingUtilities.updateComponentTreeUI(mapPanel);
             }
         });
@@ -647,7 +668,6 @@ public class MapMain implements CPanel {
         
         pBookTime.setBounds(760, 200, 400, 500);
         pBookTime.setLayout(null);
-        // pBookTime.setBackground(Color.MAGENTA);
         pBookTime.setOpaque(false);
 
         bookingtime.setFont(new Font("Arial", Font.BOLD, 20));

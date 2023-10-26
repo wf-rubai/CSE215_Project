@@ -14,6 +14,7 @@ public class fileReader {
     private HashMap<String, LinkedList<String[]>> travelInfo = new HashMap<>();
     private HashMap<String, DevInfo> devMap = new HashMap<>();
     private HashMap<String,UserInfo> userMap = new HashMap<>();
+    private LinkedList<Object> objects = new LinkedList<>();
 
     public HashMap<String, LinkedList<Hotels>> hotelHashMap(){
         hotMap.clear();
@@ -122,7 +123,8 @@ public class fileReader {
 
     public HashMap<String,UserInfo> userHashMap(){
         userMap.clear();
-        String n , m, p ,nid, pass;
+        String n , m, p ,nid, pass, state;
+        int i;
         try {
             File file = new File("Files/userInfo.txt");
             Scanner sc = new Scanner(file);
@@ -133,7 +135,9 @@ public class fileReader {
                 p      = sc.next().replace("_", " ");
                 nid    = sc.next().replace("_", " ");
                 pass   = sc.next().replace("_", " ");
-                UserInfo u = new UserInfo(n,m,p,nid,pass);
+                state  = sc.next().replace("_", " ");
+                i      = sc.nextInt();
+                UserInfo u = new UserInfo(n, m, p, nid, pass, state, i);
                 userMap.put(pass,u);
             }
             sc.close();
@@ -144,5 +148,44 @@ public class fileReader {
         }
 
         return userMap ;
+    }
+
+    public LinkedList<Object> objectList(){
+        String n , m, p ,nid, pass, state;
+        int i;
+        String b;
+        try{
+            File file = new File("Files/object.txt");
+            Scanner sc = new Scanner(file);
+            sc.nextLine();
+
+            b = sc.next();
+            if(b.equals("true")){
+                objects.add(true);
+            }else{
+                objects.add(false);
+            }
+            if(b.equals("true")){
+                n      = sc.next().replace("_", " ");
+                m      = sc.next().replace("_", " ");
+                p      = sc.next().replace("_", " ");
+                nid    = sc.next().replace("_", " ");
+                pass   = sc.next().replace("_", " ");
+                state  = sc.next().replace("_", " ");
+                i      = sc.nextInt();
+                UserInfo u = new UserInfo(n, m, p, nid, pass, state, i);
+                objects.add(u);
+            }else{
+                objects.add(new UserInfo("", "", "", "", "", "", 14));
+                sc.next();
+            }
+
+            sc.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "File reading error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e){
+            // JOptionPane.showMessageDialog(null, e.getMessage(), "File reading error", JOptionPane.ERROR_MESSAGE);
+        }
+        return objects;
     }
 }
