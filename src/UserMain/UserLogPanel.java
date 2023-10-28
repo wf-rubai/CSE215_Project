@@ -92,13 +92,13 @@ public class UserLogPanel implements CPanel {
     private JLabel lError = new JLabel("⛒ User name or password is wrong");
     private JLabel lLogIn = new JLabel("Login");
     private JLabel lCreate = new JLabel("Create Account");
-    private JLabel loginname = new JLabel("Name / Email ");
+    private JLabel loginname = new JLabel("Name or email ");
     private JLabel password = new JLabel("Password");
     private JLabel account = new JLabel("Don't have a Account ?");
     private JLabel createname = new JLabel("Name");
     private JLabel createmail = new JLabel("Email");
     private JLabel createphone = new JLabel("Phone Number");
-    private JLabel createnid = new JLabel("NID Number");
+    private JLabel createnid = new JLabel("NID no.");
     private JLabel createPass = new JLabel("Password");
     private JLabel createNewPass = new JLabel("Confirm Password");
     private JLabel logBack = new JLabel(new ImageIcon("Images/Icons/back.png"));
@@ -173,7 +173,7 @@ public class UserLogPanel implements CPanel {
                                 phone.getText() + "\t" +
                                 nid.getText() + "\t" +
                                 new String(pw.getPassword()) + "\t" +
-                                "Active\t0"
+                                "Active\t3"
                                 );
                         fw.close();
                     }catch(Exception ex){
@@ -187,6 +187,7 @@ public class UserLogPanel implements CPanel {
                     JOptionPane.showMessageDialog(createPanel,"password doesn't match","Error",JOptionPane.ERROR_MESSAGE);
 
                 }
+                log(name.getText(), new String(pw.getPassword()));
             }
         });
 
@@ -283,6 +284,8 @@ public class UserLogPanel implements CPanel {
                 o.set(0, true);
                 o.set(1, u);
                 new ObjecSaver(o);
+            }else{
+                isLoged = false;
             }
         }
     }

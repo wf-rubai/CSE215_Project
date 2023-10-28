@@ -34,6 +34,7 @@ import Common.CustomExeption;
 import Common.HotelInfoButton;
 import Common.HotelInfoPanel;
 import Common.Hotels;
+import Common.UserInfo;
 import Common.ArrayList;
 import Common.fileReader;
 
@@ -468,6 +469,17 @@ public class MapMain implements CPanel {
                     bookHotel = h.hotName;
                     mapPanel.remove(pMap);
                     mapPanel.add(pBook);
+                    tfName.setText("");
+                    tfMail.setText("");
+                    tfPhone.setText("");
+                    tfNid.setText("");
+                    if(UserLogPanel.isLoged){
+                        UserInfo u = UserLogPanel.logerID;
+                        tfName.setText(u.name);
+                        tfMail.setText(u.mail);
+                        tfPhone.setText(u.phone);
+                        tfNid.setText(u.nid);
+                    }
                     SwingUtilities.updateComponentTreeUI(mapPanel);
                 }
             });

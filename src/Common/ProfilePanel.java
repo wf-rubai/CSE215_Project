@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,8 +40,8 @@ public class ProfilePanel extends JPanel implements CPanel {
         // profilePanel.setBackground(Color.pink);
 
         bName.setBounds(0, 100, 300, 50);
-        bName.setForeground(Color.black);
-        bName.setFont(new Font(null, Font.BOLD, 20));
+        bName.setForeground(Color.white);
+        bName.setFont(new Font(Font.SERIF, Font.BOLD, 20));
         bName.setOpaque(false);
         bName.setContentAreaFilled(false);
         bName.setBorderPainted(false);
@@ -48,6 +50,17 @@ public class ProfilePanel extends JPanel implements CPanel {
         setBounds( 0, 0, 300, 100);
         setOpaque(false);
         // setBackground(Color.orange);
+
+        bName.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(index>=0 && index<=2){
+                    new DevFrame();
+                }else{
+                    new UserFranme();
+                }
+            }
+        });
 
         profilePanel.add(this);
         profilePanel.add(bName);

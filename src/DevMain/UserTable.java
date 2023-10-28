@@ -29,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import Common.DevInfo;
+import Common.UserInfo;
 import Common.fileReader;
 
 public class UserTable {
@@ -60,7 +61,7 @@ public class UserTable {
 							       "Phone",
 							       "NID No.",
 							       "Position"
-								    };
+								   };
 	private DefaultTableModel modelUser = new DefaultTableModel(userCollumn,0);
 	private DefaultTableModel modelDev = new DefaultTableModel(devCollumn,0);
 	private JTable userTable = new JTable(modelUser);
@@ -69,11 +70,14 @@ public class UserTable {
 	private JButton reset = new JButton("Reset");
 	private JButton cancel = new JButton("Cancel");
 	private JButton dSave = new JButton("Save");
+	private JButton uSave = new JButton("Update");
 	private JComboBox<String> mode = new JComboBox<>();
 	private JComboBox<String> dev = new JComboBox<>();
 	private JComboBox<String> position = new JComboBox<>();
+	private JComboBox<String> state = new JComboBox<>();
 	private HashMap<String, LinkedList<DevInfo>> devMap = new HashMap<>();
 	private HashMap<String, DevInfo> dhm = new fileReader().devoloperHashMap();
+	private HashMap<String,UserInfo> uInfo = new fileReader().userHashMap();
     private JPopupMenu option = new JPopupMenu();
     private JMenuItem remove = new JMenuItem("Remove");
     private JMenuItem update = new JMenuItem("Update");
@@ -82,10 +86,17 @@ public class UserTable {
 	private JTextField tfPhone = new JTextField();
 	private JTextField tfId = new JTextField();
 	private JTextField tfNid = new JTextField();
+	private JTextField tfUPass = new JTextField();
+	private JTextField tfUMail = new JTextField();
+	private JTextField tfUphone = new JTextField();
 	private JLabel lName = new JLabel("Name :");
 	private JLabel lPosition = new JLabel("Position :");
 	private JLabel lMail = new JLabel("Email :");
 	private JLabel lPhone = new JLabel("Phone :");
+	private JLabel lUMail = new JLabel("Email :");
+	private JLabel lUPhone = new JLabel("Phone :");
+	private JLabel lUPass = new JLabel("Password :");
+	private JLabel lUState = new JLabel("State :");
 	private JLabel lId = new JLabel("ID no. :");
 	private JLabel lNid = new JLabel("NID no. :");
 	private JTableHeader DTH = devTable.getTableHeader();
@@ -139,9 +150,14 @@ public class UserTable {
 					pTableMain.remove(spDev);
 					pTableMain.remove(bAdd);
 					pTableMain.remove(dev);
+					pTableMain.remove(pTableUser);
+					pTableMain.remove(pTableDev);
 					pTableMain.add(spUser);
+					setUserTable();
 				}else {
 					pTableMain.remove(spUser);
+					pTableMain.remove(pTableUser);
+					pTableMain.remove(pTableDev);
 					pTableMain.add(spDev);
 					pTableMain.add(dev);
 					if(devInfo.position.equals("CEO")){
@@ -189,13 +205,25 @@ public class UserTable {
 			public void actionPerformed(ActionEvent e) {
 				resetAll();
 				if(mode.getSelectedItem().equals("Developer")){
-					pTableDev.remove(lPosition);
-					pTableDev.remove(position);
-					pTableMain.add(pTableDev);
+					position.removeAllItems();
+					if(devInfo.position.equals("CEO")){
+						position.addItem("Admin");
+						position.addItem("Editor");
+					}else{
+						position.addItem("Editor");
+					}
+					pTableDev.add(lPosition);
+					pTableDev.add(position);
 					pTableDev.add(reset);
 					pTableDev.add(cancel);
 					pTableDev.add(dSave);
+					pTableMain.add(pTableDev);
 					dSave.setText("Update");
+				}else{
+					pTableUser.add(reset);
+					pTableUser.add(cancel);
+					pTableUser.add(uSave);
+					pTableMain.add(pTableUser);
 				}
 				SwingUtilities.updateComponentTreeUI(pTableMain);
 			}
@@ -213,6 +241,15 @@ public class UserTable {
 					}
 					fileSaver(1);
 					setDevTable();
+				}else{
+					for(UserInfo u: uInfo.values()){
+						if(u.name.equals((String)userTable.getValueAt(userTable.getSelectedRow(), 1))){
+							uInfo.remove(u.pass);
+							break;
+						}
+					}
+					fileSaver(0);
+					setUserTable();
 				}
 				SwingUtilities.updateComponentTreeUI(pTableMain);
 			}
@@ -271,6 +308,28 @@ public class UserTable {
 				fileSaver(1);
 				pTableMain.remove(pTableDev);
 				setDevTable();
+				SwingUtilities.updateComponentTreeUI(pTableMain);
+			}
+		});
+
+		uSave.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String n = (String)userTable.getValueAt(userTable.getSelectedRow(), 1);
+				for(UserInfo u: uInfo.values()){
+					if(u.name.equals(n)){
+						uInfo.remove(u.pass);
+						u.pass = tfUPass.getText();
+						u.mail = tfUMail.getText();
+						u.phone = tfUphone.getText();
+						u.status = (String) state.getSelectedItem();
+						uInfo.put(u.pass, u);
+						break;
+					}
+				}
+				pTableMain.remove(pTableUser);
+				fileSaver(0);
+				setUserTable();
 				SwingUtilities.updateComponentTreeUI(pTableMain);
 			}
 		});
@@ -366,17 +425,56 @@ public class UserTable {
 					JOptionPane.showMessageDialog(pTableMain, "Something Went Wrong Adding Hotel Information", "ADDING ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
+		}else{
+			File file = new File("Files/userInfo.txt");
+			file.delete();
+			try{
+				FileWriter fw = new FileWriter(file);
+				for(UserInfo u: uInfo.values()){
+					fw.write("\n" +
+							u.name.replace(" ", "_") + "\t" +
+							u.mail.replace(" ", "_") + "\t" +
+							u.phone.replace(" ", "_") + "\t" +
+							u.nid.replace(" ", "_") + "\t" +
+							u.pass.replace(" ", "_") + "\t" +
+							u.status.replace(" ", "_") + "\t" +
+							u.imgIndex
+							);	
+				}
+				fw.close();
+			}catch(Exception e){
+				JOptionPane.showMessageDialog(pTableMain, "Something Went Wrong Adding User Information", "ADDING ERROR", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 
 	private void resetAll(){
-		tfId.setText("");
-		tfName.setText("");
-		tfMail.setText("");
-		tfNid.setText("");
-		tfPhone.setText("");
-		position.addItem("null");
-		position.setSelectedIndex(0);
+		String s = (String) mode.getSelectedItem();
+		if(s.equals("Developer")){
+			tfName.setText((String)devTable.getValueAt(devTable.getSelectedRow(), 2));
+			tfId.setText((String)devTable.getValueAt(devTable.getSelectedRow(), 1));
+			tfMail.setText((String)devTable.getValueAt(devTable.getSelectedRow(), 3));
+			tfPhone.setText((String)devTable.getValueAt(devTable.getSelectedRow(), 4));
+			tfNid.setText((String)devTable.getValueAt(devTable.getSelectedRow(), 5));
+		}else {
+			tfUMail.setText((String)userTable.getValueAt(userTable.getSelectedRow(), 2));
+			tfUphone.setText((String)userTable.getValueAt(userTable.getSelectedRow(), 3));
+			for(UserInfo u: uInfo.values()){
+				if(u.name.equals((String)userTable.getValueAt(userTable.getSelectedRow(), 1))){
+					tfUPass.setText(u.pass);
+				}
+			}
+		}
+	}
+
+	private void setUserTable(){
+		modelUser.setRowCount(0);
+		int i = 1;
+		for(UserInfo u: uInfo.values()){
+			Object[] o = {i, u.name, u.mail, u.phone, u.nid, u.status};
+			i++;
+			modelUser.addRow(o);
+		}
 	}
 
 	private void setDevTable(){
@@ -440,6 +538,7 @@ public class UserTable {
 		reset.setBounds(640, 150, 90, 40);
 		cancel.setBounds(745, 150, 90, 40);
 		dSave.setBounds(850, 150, 90, 40);
+		uSave.setBounds(850, 150, 90, 40);
 
 		pTableDev.add(lId);
 		pTableDev.add(lName);
@@ -455,6 +554,31 @@ public class UserTable {
         option.add(remove);
         option.add(update);
         option.add(new JMenuItem("Close"));
+
+		pTableUser.setBounds(100, 550, 980, 300);
+		pTableUser.setOpaque(false);
+		pTableUser.setLayout(null);
+
+		lUMail.setBounds(50, 0, 100, 40);
+		lUPhone.setBounds(50, 50, 100, 40);
+		lUPass.setBounds(50, 100, 100, 40);
+		lUState.setBounds(540, 0, 100, 40);
+
+		tfUMail.setBounds(150, 0, 300, 40);
+		tfUphone.setBounds(150, 50, 300, 40);
+		tfUPass.setBounds(150, 100, 300, 40);
+		state.setBounds(640, 0, 300, 40);
+		state.addItem("Active");
+		state.addItem("Banned");
+
+		pTableUser.add(lUMail);
+		pTableUser.add(lUPass);
+		pTableUser.add(lUPhone);
+		pTableUser.add(lUState);
+		pTableUser.add(tfUMail);
+		pTableUser.add(tfUphone);
+		pTableUser.add(tfUPass);
+		pTableUser.add(state);
 
 		bAdd.setBounds(930, 150, 150, 40);
 	}

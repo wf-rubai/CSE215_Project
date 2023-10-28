@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 public class HotelInfoPanel extends JPanel implements CPanel {
 
     private String cityName, hotName, phn;
-    // private int x, y;
     private int[] r = new int[5];
     private double p;
     private Color color = randomColor();

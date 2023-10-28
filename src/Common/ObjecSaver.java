@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 public class ObjecSaver {
+    
     public ObjecSaver(LinkedList<Object> o){
         try{
             File file = new File("Files/object.txt");
@@ -15,12 +16,12 @@ public class ObjecSaver {
             fw.write("\n" + o.get(0) + "\n");
             if((boolean)o.get(0)){
                 UserInfo u = (UserInfo) o.get(1);
-                fw.write(u.name.replace(" ", "_") +
-                        u.mail.replace(" ", "_") +
-                        u.phone.replace(" ", "_") +
-                        u.nid.replace(" ", "_") +
-                        u.pass.replace(" ", "_") +
-                        u.status.replace(" ", "_") +
+                fw.write(u.name.replace(" ", "_") + "\t" +
+                        u.mail.replace(" ", "_") + "\t" +
+                        u.phone.replace(" ", "_") + "\t" +
+                        u.nid.replace(" ", "_") + "\t" +
+                        u.pass.replace(" ", "_") + "\t" +
+                        u.status.replace(" ", "_") + "\t" +
                         u.imgIndex);
             }else{
                 fw.write("null");

@@ -3,3 +3,4 @@ Name_:_Washio_Ferdous_Rubai	E-mail_:_rubai4483302@gmail.com	Phone_:_01912653657	
 Name_:_Washio_Ferdous_Rubai	E-mail_:_rubai4483302@gmail.com	Phone_:_01912653657	NID_no._:_1234567890123456	Hotel_:_Marin_Grand_Hotel	City_:_Cox's_Bazar	Date_:_From_1_May,_2023_to_5_May,_2023	Day(s)_:_4	Room(s)_:_6	Total_bill_:_59999.76
 Name_:_Washio_Ferdous_Rubai	E-mail_:_rubai4483302@gmail.com	Phone_:_01912653657	NID_no._:_1234567890123456	Hotel_:_Royal_Park_Hotel	City_:_Bogura	Date_:_From_1_Feb,_2023_to_6_Feb,_2023	Day(s)_:_5	Room(s)_:_2	Total_bill_:_59999.9
 Name_:_jhgjh	E-mail_:_kjhjhg	Phone_:_jhghg	NID_no._:_yryt	Hotel_:_The_Paradise_Inn	City_:_Chandpur	Date_:_From_1_Jan,_2023_to_4_Jan,_2023	Day(s)_:_3	Room(s)_:_4	Total_bill_:_21599.88
+Name_:_Washio_Ferdous_Rubai	E-mail_:_rubai4483302@gmail.com	Phone_:_01912653657	NID_no._:_81408309841329423	Hotel_:_The_White_Resort	City_:_Teknaf	Date_:_From_4_Mar,_2023_to_14_Mar,_2023	Day(s)_:_10	Room(s)_:_3	Total_bill_:_176999.7

@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -29,7 +28,7 @@ public class TravelPanel implements CPanel {
         }
     };
 
-    private JButton bi3 = new JButton();
+    private JLabel bi3 = new JLabel();
     private JLabel bi1 = new JLabel();
     private JLabel bi2 = new JLabel();
     private JLabel bi4 = new JLabel();
@@ -49,7 +48,8 @@ public class TravelPanel implements CPanel {
 
     @Override
     public JPanel panel() {
-        pTravel.setPreferredSize(new Dimension(900, 250));
+        pTravel.setPreferredSize(new Dimension(980, 250));
+        pTravel.setOpaque(false);
         pTravel.setBorder(new EmptyBorder(30, 0, 30, 0));
 
         bi3.setFont(new Font(null, Font.BOLD, 17));
@@ -59,23 +59,21 @@ public class TravelPanel implements CPanel {
         bi5.setFont(new Font(null, Font.PLAIN, 14));
         bi6.setFont(new Font(null, Font.PLAIN, 14));
 
+        bi3.setForeground(Color.darkGray);
+
         bi1.setBorder( new EmptyBorder(0, 50, 0, 0));
         bi2.setBorder( new EmptyBorder(0, 50, 0, 0));
+        bi3.setBorder( new EmptyBorder(0, 50, 0, 0));
         bi4.setBorder( new EmptyBorder(0, 50, 0, 0));
         bi5.setBorder( new EmptyBorder(0, 50, 0, 0));
         bi6.setBorder( new EmptyBorder(0, 50, 0, 0));
 
-        bi3.setOpaque(false);
-        bi3.setContentAreaFilled(false);
-        bi3.setBorderPainted(false);
-        bi3.setFocusable(false);
-
-        bi1.setPreferredSize(new Dimension(900, 25));
-        bi2.setPreferredSize(new Dimension(900, 25));
-        bi3.setPreferredSize(new Dimension(900, 50));
-        bi4.setPreferredSize(new Dimension(900, 25));
-        bi5.setPreferredSize(new Dimension(900, 25));
-        bi6.setPreferredSize(new Dimension(900, 25));
+        bi1.setPreferredSize(new Dimension(490, 25));
+        bi2.setPreferredSize(new Dimension(490, 25));
+        bi3.setPreferredSize(new Dimension(490, 40));
+        bi4.setPreferredSize(new Dimension(490, 25));
+        bi5.setPreferredSize(new Dimension(490, 25));
+        bi6.setPreferredSize(new Dimension(490, 25));
 
         pTravel.add(bi3);
         pTravel.add(bi1);

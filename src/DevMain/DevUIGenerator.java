@@ -1,5 +1,6 @@
 package DevMain;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -37,6 +38,19 @@ public class DevUIGenerator extends JFrame{
             g2.fillRoundRect(-50, 0, 350, 850, 40, 40);
         }
     };
+    private JPanel pExit = new JPanel(){
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            Graphics2D g2 = (Graphics2D) g;
+            int i = 100;
+            g2.setColor(new Color(0, 2, 120, 100));
+            g2.fillRoundRect(2, 2, i, i, i, i);
+            g2.setStroke(new BasicStroke(2));
+            g2.setColor(new Color(0, 2, 120));
+            g2.drawRoundRect(2, 2, i, i, i, i);
+        }
+    };
+    private JButton bExit = new JButton("Exit");
     private JButton logBtn = new JButton();
     private DevLogInPanel logPanel = new DevLogInPanel();
     private MapView mapView = new MapView();
@@ -66,17 +80,21 @@ public class DevUIGenerator extends JFrame{
     public DevUIGenerator(String s){
 
         super(s);
-        setSize(1250, 877);
+        setSize(1250, 850);
         setLayout(null);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(Color.gray);
+        setUndecorated(true);
+        // setOpacity(.85f);
 
         UIPanel.setBounds(0, 0, 1250, 850);
         UIPanel.setLayout(null);
         UIPanel.setOpaque(false);
         UIPanel.setBorder(null);
 
+        pExit.add(bExit);
+        add(pExit);
         add(UIPanel);
 
         logBtn.setBounds(500, 620, 250, 40);
@@ -96,6 +114,13 @@ public class DevUIGenerator extends JFrame{
                     pSB.add(userDev);
                     profile = new ProfilePanel(dev.name, dev.imgIndex);
                 }
+            }
+        });
+
+        bExit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
             }
         });
 
@@ -223,6 +248,19 @@ public class DevUIGenerator extends JFrame{
     }
 
     private void SetUp(){
+
+        pExit.setBounds(1165, 785, 120, 100);
+        pExit.setOpaque(false);
+        pExit.setLayout(null);
+
+        bExit.setBounds(0, 0, 95, 85);
+        bExit.setFont(new Font(Font.SERIF, Font.PLAIN, 16));
+        bExit.setForeground(Color.white);
+        bExit.setOpaque(false);
+        bExit.setContentAreaFilled(false);
+        bExit.setBorderPainted(false);
+        bExit.setFocusable(false);
+
         option.setBounds(10, 30, 50, 50);
         home.setBounds(10, 320, 50, 50);
         hotelInfo.setBounds(10, 400, 50, 50);

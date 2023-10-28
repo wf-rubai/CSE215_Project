@@ -1,5 +1,6 @@
 package UserMain;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -40,7 +41,31 @@ public class UserUIGenerator extends JFrame {
             g2.fillRoundRect(-50, 0, 350, 850, 40, 40);
         }
     };
-    private JPanel mainPanel = new JPanel();
+    private JPanel mainPanel = new JPanel(){
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            Graphics2D g2 = (Graphics2D) g;
+            for(int i = 0; i<20; i++){
+                int a = (int)(30+Math.random()*300);
+                g2.setColor(randomColor());
+                g2.fillRoundRect((int)(Math.random()*1000), (int)(Math.random()*700), a, a, a, a);
+                g2.drawRoundRect((int)(Math.random()*1000), (int)(Math.random()*700), a, a, a, a);
+            }
+        }
+    };
+    private JPanel pExit = new JPanel(){
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            Graphics2D g2 = (Graphics2D) g;
+            int i = 100;
+            g2.setColor(new Color(0, 2, 120, 100));
+            g2.fillRoundRect(2, 2, i, i, i, i);
+            g2.setStroke(new BasicStroke(2));
+            g2.setColor(new Color(0, 2, 120));
+            g2.drawRoundRect(2, 2, i, i, i, i);
+        }
+    };
+    private JButton bExit = new JButton("Exit");
     private JButton option = new JButton();
     private JButton home = new JButton();
     private JButton settings = new JButton();
@@ -58,20 +83,21 @@ public class UserUIGenerator extends JFrame {
     private ImageIcon i7 = new ImageIcon("Images/Icons/login.png");
 
     private JLabel l1 = new JLabel("Home");
-    private JLabel l2 = new JLabel("User and Devoloper");
-    private JLabel l3 = new JLabel("Hotels");
+    private JLabel l2 = new JLabel("Travel History");
+    private JLabel l3 = new JLabel("Settings");
     private JLabel l4 = new JLabel(i2);
     private JLabel l5 = new JLabel(i3);
     private JLabel l6 = new JLabel(i4);
-    private ProfilePanel profile;
+    private ProfilePanel profile = new ProfilePanel(UserLogPanel.logerID.name, UserLogPanel.logerID.imgIndex);
 
     public UserUIGenerator(String s){
         super(s);
-        setSize(1250, 877);
+        setSize(1250, 850);
         setLayout(null);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(Color.gray);
+        setUndecorated(true);
 
         mainPanel.setBounds(0, 0, 1250, 850);
         mainPanel.setLayout(null);
@@ -79,6 +105,13 @@ public class UserUIGenerator extends JFrame {
         mainPanel.setBorder(null);
 
         SetUp();
+
+        bExit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+            }
+        });
 
         home.addActionListener(new ActionListener() {
             @Override
@@ -166,6 +199,8 @@ public class UserUIGenerator extends JFrame {
         mainPanel.add(pSB);
         mainPanel.add(mapView.panel());
 
+        pExit.add(bExit);
+        add(pExit);
         add(mainPanel);
         
         setVisible(true);
@@ -185,14 +220,14 @@ public class UserUIGenerator extends JFrame {
             pSB.remove(l1);
             pSB.remove(l2);
             pSB.remove(l3);
+            pSB.remove(profile.panel());
             tracOpt = 1;
             mapView = new MapMain();
             mainPanel.add(mapView.panel());
         }else if(i == 2){
-            JPanel p1 = new JPanel();
-            p1.setBounds(70, 0, 1180, 850);
-            p1.setBackground(Color.GREEN);
-            mainPanel.add(p1);
+            if(UserLogPanel.isLoged){
+                mainPanel.add(new TravelHistory().panel());
+            }
         }else if(i == 3){
             JPanel p2 = new JPanel();
             p2.setBounds(70, 0, 1180, 850);
@@ -209,6 +244,7 @@ public class UserUIGenerator extends JFrame {
             pSB.remove(l1);
             pSB.remove(l2);
             pSB.remove(l3);
+            pSB.remove(profile.panel());
             tracOpt = 1;
             mainPanel.add(logBack);
             mainPanel.add(new UserLogPanel().panel());
@@ -232,6 +268,19 @@ public class UserUIGenerator extends JFrame {
     }
 
     private void SetUp(){
+
+        pExit.setBounds(1165, 785, 120, 100);
+        pExit.setOpaque(false);
+        pExit.setLayout(null);
+
+        bExit.setBounds(0, 0, 95, 85);
+        bExit.setFont(new Font(Font.SERIF, Font.PLAIN, 16));
+        bExit.setForeground(Color.white);
+        bExit.setOpaque(false);
+        bExit.setContentAreaFilled(false);
+        bExit.setBorderPainted(false);
+        bExit.setFocusable(false);
+
         option.setBounds(10, 30, 50, 50);
         home.setBounds(10, 320, 50, 50);
         travel.setBounds(10, 400, 50, 50);
@@ -300,5 +349,12 @@ public class UserUIGenerator extends JFrame {
         pSB.add(home);
         pSB.add(travel);
         pSB.add(settings);
+    }
+
+    private static Color randomColor() {
+        int r = (int) (Math.random() * 256);
+        int g = (int) (Math.random() * 256);
+        int b = (int) (Math.random() * 256);
+        return new Color(r, g, b, 100);
     }
 }
