@@ -131,6 +131,7 @@ public class MapMain implements CPanel {
     private JPanel pMap = new JPanel();
     private JPanel pointPanel = new JPanel();
     private JPanel spPanel = new JPanel();
+    private JLabel lError = new JLabel();
     private JLabel bdl = new JLabel(new ImageIcon("Images/GeoImage/BD.jpeg"));
     private JLabel userInfo = new JLabel("Your information please");
     private JLabel bookingtime = new JLabel("Booking time table");
@@ -433,6 +434,7 @@ public class MapMain implements CPanel {
             public void actionPerformed(ActionEvent e) {
                 for(int i = 0; i<citys.length; i++){
                     if(citys[i].toLowerCase().equals(tfSearch.getText().toLowerCase())){
+                        backPanel.remove(lError);
                         pMap.remove(bdl);
                         mi.change(i);
                         spPanel.removeAll();
@@ -440,7 +442,12 @@ public class MapMain implements CPanel {
                         allHotelPanel(citys[i]);
                         allHotels(citys[i]);
                         SwingUtilities.updateComponentTreeUI(pMap);
+                        SwingUtilities.updateComponentTreeUI(backPanel);
                         break;
+                    }else{
+                        lError.setText("⛒ No city found called " + tfSearch.getText());
+                        backPanel.add(lError);
+                        SwingUtilities.updateComponentTreeUI(backPanel);
                     }
                 }
             }
@@ -571,6 +578,7 @@ public class MapMain implements CPanel {
         
         mapPanel.setLayout(null);
         mapPanel.setBounds(70, 0, 1180, 850);
+        mapPanel.setOpaque(false);
 
         pointPanel.setBounds(330, 0, 850, 850);
         pointPanel.setLayout(null);
@@ -581,6 +589,9 @@ public class MapMain implements CPanel {
         tfSearch.setBounds(360, 30, 690, 50);
         tfSearch.setOpaque(false);
         tfSearch.setBorder(new EmptyBorder(0, 15, 0, 15));
+
+        lError.setBounds(10, 50, 300, 30);
+        lError.setForeground(Color.red);
 
         buttonSearch.setBounds(1050, 30, 50, 50);
         buttonSearch.setOpaque(false);
@@ -594,8 +605,9 @@ public class MapMain implements CPanel {
         buttonPop.setBorderPainted(false);
         buttonPop.setFocusable(false);
 
-        backPanel.setBounds(360, 30, 1180, 50);
+        backPanel.setBounds(360, 30, 1180, 100);
         backPanel.setOpaque(false);
+        backPanel.setLayout(null);
 
         spPanel.setLayout(new BoxLayout(spPanel, BoxLayout.Y_AXIS));
         spPanel.setOpaque(false);

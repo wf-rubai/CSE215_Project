@@ -13,9 +13,9 @@ import javax.swing.border.EmptyBorder;
 
 public class TravelPanel implements CPanel {
 
-    int r;
-    int g;
-    int b;
+    int r = 255;
+    int g = 255;
+    int b = 255;
     private JPanel pTravel = new JPanel(){
         protected void paintComponent(Graphics gg){
             super.paintComponent(gg);
@@ -36,7 +36,7 @@ public class TravelPanel implements CPanel {
     private JLabel bi6 = new JLabel();
 
     public TravelPanel(String[] s){
-        randomColor();
+        // randomColor();
         s[6] = s[6].substring(7);
         bi1.setText(s[4]);
         bi2.setText(s[5]);
@@ -59,7 +59,7 @@ public class TravelPanel implements CPanel {
         bi5.setFont(new Font(null, Font.PLAIN, 14));
         bi6.setFont(new Font(null, Font.PLAIN, 14));
 
-        bi3.setForeground(Color.darkGray);
+        bi3.setForeground(Color.WHITE);
 
         bi1.setBorder( new EmptyBorder(0, 50, 0, 0));
         bi2.setBorder( new EmptyBorder(0, 50, 0, 0));

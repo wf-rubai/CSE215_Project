@@ -1,10 +1,13 @@
 package DevMain;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.HashMap;
@@ -15,8 +18,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -28,18 +33,27 @@ import Common.fileReader;
 
 public class infoPanel implements CPanel {
 
+    private int xLoc, yLoc;
     private JPanel pInfo = new JPanel();
-    private JTextField tf1 = new JTextField();
     private JLabel lx;
     private JLabel ly;
     private JLabel ltf;
     private JLabel lavg;
-    private JTextField tfx = new JTextField();
-    private JTextField tfy = new JTextField();
-    private JTextField tfp = new JTextField();
+    private JLabel l1 = new JLabel("1 stat ratting :");
+    private JLabel l2 = new JLabel("2 stat ratting :");
+    private JLabel l3 = new JLabel("3 stat ratting :");
+    private JLabel l4 = new JLabel("4 stat ratting :");
+    private JLabel l5 = new JLabel("5 stat ratting :");
+    private JLabel l6 = new JLabel("Avarage ratting :");
+    private JLabel l7 = new JLabel("Price :");
+    private JLabel l8 = new JLabel("Phone :");
     private JButton random = new JButton("Ramdom");
     private JButton add = new JButton("Add");
     private JButton set = new JButton("Set Pointer");
+    private JTextField tf1 = new JTextField();
+    private JTextField tfx = new JTextField();
+    private JTextField tfy = new JTextField();
+    private JTextField tfp = new JTextField();
     private JTextField s5 = new JTextField();
     private JTextField s4 = new JTextField();
     private JTextField s3 = new JTextField();
@@ -49,14 +63,15 @@ public class infoPanel implements CPanel {
     private JPanel pPoint = new JPanel();
     private JLabel bdl = new JLabel(new ImageIcon("Images/GeoImage/BD.jpeg"));
     private JComboBox<String> cb = new JComboBox<String>();
+    private JPopupMenu option = new JPopupMenu();
+    private JMenuItem popRand = new JMenuItem("Add random");
+    private JMenuItem popLoc = new JMenuItem("Set location");
     
     @Override
     public JPanel panel(){
 
         pInfo.setBounds(70, 0, 1180, 850);
-        // pInfo.setOpaque(false);
-        // pInfo.setBackground(new Color(0, 0, 0, 100));
-        // pInfo.setBorder(null);
+        pInfo.setOpaque(false);
         pInfo.setLayout(null);
 
         pPoint.setBounds(330, 0, 850, 850);
@@ -68,8 +83,6 @@ public class infoPanel implements CPanel {
 
         tfx.setBounds(30, 180, 120, 30);
         tfy.setBounds(180, 180, 120, 30);
-        tfp.setBounds(100, 410, 200, 30);
-        tfphn.setBounds(100, 440, 200, 30);
         
         lx = new JLabel("X");
         ly = new JLabel("Y");
@@ -78,15 +91,46 @@ public class infoPanel implements CPanel {
         lx.setBounds(35, 150, 120, 30);
         ly.setBounds(185, 150, 120, 30);
         ltf.setBounds(35, 90, 120, 30);
+        lx.setForeground(Color.white);
+        ly.setForeground(Color.white);
+        ltf.setForeground(Color.white);
         
-        s5.setBounds(30, 220, 200, 30);
-        s4.setBounds(30, 250, 200, 30);
-        s3.setBounds(30, 280, 200, 30);
-        s2.setBounds(30, 310, 200, 30);
-        s1.setBounds(30, 340, 200, 30);
-        lavg.setBounds(30, 370, 100, 30);
+        s5.setBounds(150, 220, 150, 30);
+        s4.setBounds(150, 250, 150, 30);
+        s3.setBounds(150, 280, 150, 30);
+        s2.setBounds(150, 310, 150, 30);
+        s1.setBounds(150, 340, 150, 30);
+        lavg.setBounds(150, 370, 40, 30);
+        tfp.setBounds(150, 410, 150, 30);
+        tfphn.setBounds(150, 440, 150, 30);
         bdl.setBounds(330, 0, 850, 850);
 
+        l1.setBounds(30, 220, 200, 30);
+        l2.setBounds(30, 250, 200, 30);
+        l3.setBounds(30, 280, 200, 30);
+        l4.setBounds(30, 310, 200, 30);
+        l5.setBounds(30, 340, 200, 30);
+        l6.setBounds(30, 370, 200, 30);
+        l7.setBounds(30, 400, 200, 30);
+        l8.setBounds(30, 430, 200, 30);
+
+        l1.setForeground(Color.white);
+        l2.setForeground(Color.white);
+        l3.setForeground(Color.white);
+        l4.setForeground(Color.white);
+        l5.setForeground(Color.white);
+        l6.setForeground(Color.white);
+        l7.setForeground(Color.white);
+        l8.setForeground(Color.white);
+
+        pInfo.add(l1);
+        pInfo.add(l2);
+        pInfo.add(l3);
+        pInfo.add(l4);
+        pInfo.add(l5);
+        pInfo.add(l6);
+        pInfo.add(l7);
+        pInfo.add(l8);
         pInfo.add(random);
         pPoint.add(cb);
         pInfo.add(pPoint);
@@ -109,6 +153,10 @@ public class infoPanel implements CPanel {
         pInfo.add(lx);
         pInfo.add(ly);
 
+        option.add(popLoc);
+        option.add(popRand);
+        option.add(new JMenuItem("Close"));
+
         set.setBounds(30, 700, 270, 40);
         set.addActionListener(new ActionListener() {
             @Override
@@ -122,6 +170,26 @@ public class infoPanel implements CPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setRand();
+                Random ran = new Random();
+                tfx.setText((int)(425+(Math.pow(-1,ran.nextInt(2))*ran.nextInt(125))) + "");
+                tfy.setText((int)(425+(Math.pow(-1,ran.nextInt(2))*ran.nextInt(125))) + "");
+            }
+        });
+
+        popRand.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRand();
+                tfx.setText(xLoc + "");
+                tfy.setText(yLoc + "");
+            }
+        });
+
+        popLoc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tfx.setText(xLoc + "");
+                tfy.setText(yLoc + "");
             }
         });
 
@@ -170,8 +238,41 @@ public class infoPanel implements CPanel {
                 pPoint.add(cb);
                 allHotels(cb.getSelectedItem().toString());
                 SwingUtilities.updateComponentTreeUI(pPoint);
+                SwingUtilities.updateComponentTreeUI(pInfo);
             }
         });
+
+        pPoint.addMouseListener(new MouseListener() {
+
+            public void doPopup(MouseEvent e) {          
+                xLoc = e.getX();
+                yLoc = e.getY();
+                option.show(e.getComponent(), xLoc, yLoc);            
+            } 
+
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				doPopup(e);
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+        });
+        
         pInfo.add(bdl);
 
         return pInfo;
@@ -238,9 +339,6 @@ public class infoPanel implements CPanel {
         tf1.setText(name1[ran.nextInt(name1.length)] + " " +
                     name1[ran.nextInt(name1.length)] + " " +
                     name2[ran.nextInt(name2.length)]);
-
-        tfx.setText((int)(425+(Math.pow(-1,ran.nextInt(2))*ran.nextInt(125))) + "");
-        tfy.setText((int)(425+(Math.pow(-1,ran.nextInt(2))*ran.nextInt(125))) + "");
 
         tfp.setText((10+ran.nextInt(50)) + "99.99");
 

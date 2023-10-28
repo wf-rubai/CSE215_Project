@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.LinearGradientPaint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,6 +51,31 @@ public class DevUIGenerator extends JFrame{
             g2.drawRoundRect(2, 2, i, i, i, i);
         }
     };
+    private JPanel UIPanel = new JPanel(){
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            ImageIcon imageIcon = new ImageIcon("Images/HotelImage/info2.png");
+            Image image = imageIcon.getImage();
+            g.drawImage(image, 70, 0, 330, 850, this);
+        }
+    };
+    private JPanel pExit2 = new JPanel(){
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            Point2D p1 = new Point2D.Float(0, 0);
+            Point2D p2 = new Point2D.Float(200, 150);
+            Color c1 = new Color(181, 51, 0);
+            Color c2 = new Color(252, 159, 45);
+            LinearGradientPaint gradientPaint = new LinearGradientPaint(p1, p2,
+                                                new float[]{0.3f, 1.0f},
+                                                new Color[]{c1, c2});
+            Graphics2D g2 = (Graphics2D) g;
+            g2.setPaint(gradientPaint);
+            g2.fillRoundRect(-50, 0, 350, 850, 40, 40);
+        }
+    };
+    private JButton lExit = new JButton("Sayonara");
+    private JFrame fExit = new JFrame("Exited");
     private JButton bExit = new JButton("Exit");
     private JButton logBtn = new JButton();
     private DevLogInPanel logPanel = new DevLogInPanel();
@@ -59,7 +85,6 @@ public class DevUIGenerator extends JFrame{
     private JButton userDev = new JButton();
     private JButton hotelInfo = new JButton();
     private JButton logOut = new JButton();
-    private JPanel UIPanel = new JPanel();
     private DevInfo dev = DevLogInPanel.logerInfo;
     private ProfilePanel profile = new ProfilePanel(dev.name, dev.imgIndex);
 
@@ -120,7 +145,8 @@ public class DevUIGenerator extends JFrame{
         bExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                StaticDev.exit();
+                fExit.setVisible(true);
             }
         });
 
@@ -197,8 +223,6 @@ public class DevUIGenerator extends JFrame{
         SetUp();                                            //this is temporary
         dev = DevLogInPanel.logerInfo;                      //this is temporary
         // profile = new ProfilePanel(dev.name, dev.imgIndex); //this is temporary
-
-        setVisible(true);
     }
 
     public DevUIGenerator(){
@@ -248,6 +272,23 @@ public class DevUIGenerator extends JFrame{
     }
 
     private void SetUp(){
+
+        fExit.setSize(200, 150);
+        fExit.setLayout(null);
+        fExit.setLocationRelativeTo(null);
+        fExit.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        pExit2.setBounds(0, -20, 200, 150);
+        lExit.setBounds(0, -20, 200, 150);
+        lExit.setFont(new Font(Font.SERIF, Font.PLAIN, 23));
+        lExit.setForeground(Color.white);
+        lExit.setOpaque(false);
+        lExit.setContentAreaFilled(false);
+        lExit.setBorderPainted(false);
+        lExit.setFocusable(false);
+
+        fExit.add(lExit);
+        fExit.add(pExit2);
 
         pExit.setBounds(1165, 785, 120, 100);
         pExit.setOpaque(false);

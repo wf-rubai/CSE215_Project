@@ -2,11 +2,12 @@ package UserMain;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.Image;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -21,25 +22,17 @@ public class TravelHistory implements CPanel {
     private JPanel travelMain = new JPanel(){
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
-            Graphics2D g2 = (Graphics2D) g;
-            for(int i = 0; i<20; i++){
-                int a = (int)(30+Math.random()*300);
-                g2.setColor(randomColor());
-                g2.fillRoundRect((int)(Math.random()*1000), (int)(Math.random()*700), a, a, a, a);
-                g2.drawRoundRect((int)(Math.random()*1000), (int)(Math.random()*700), a, a, a, a);
-            }
+            ImageIcon imageIcon = new ImageIcon("Images/HotelImage/open2.png");
+            Image image = imageIcon.getImage();
+            g.drawImage(image, -20, 0, 1200, 850, this);
         }
     };
     private JPanel spPanel = new JPanel(){
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
-            Graphics2D g2 = (Graphics2D) g;
-            for(int i = 0; i<20; i++){
-                int a = (int)(30+Math.random()*300);
-                g2.setColor(randomColor());
-                g2.fillRoundRect((int)(Math.random()*1000)-300, (int)(Math.random()*700)-100, a, a, a, a);
-                g2.drawRoundRect((int)(Math.random()*1000)-300, (int)(Math.random()*700)-100, a, a, a, a);
-            }
+            ImageIcon imageIcon = new ImageIcon("Images/HotelImage/open1.png");
+            Image image = imageIcon.getImage();
+            g.drawImage(image, -160, -50, 1200, 850, this);
         }
     };
     private UserInfo uInfo = UserLogPanel.logerID;
@@ -72,12 +65,5 @@ public class TravelHistory implements CPanel {
         travelMain.add(jsPane);
 
         return travelMain;
-    }
-
-    private static Color randomColor() {
-        int r = (int) (Math.random() * 256);
-        int g = (int) (Math.random() * 256);
-        int b = (int) (Math.random() * 256);
-        return new Color(r, g, b, 100);
     }
 }

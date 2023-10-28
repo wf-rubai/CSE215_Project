@@ -22,6 +22,7 @@ import Common.ObjecSaver;
 import Common.ProfilePanel;
 import Common.UserInfo;
 import Common.fileReader;
+import TestFolder.f2;
 
 public class UserUIGenerator extends JFrame {
 
@@ -65,6 +66,23 @@ public class UserUIGenerator extends JFrame {
             g2.drawRoundRect(2, 2, i, i, i, i);
         }
     };
+    private JPanel pExit2 = new JPanel(){
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            Point2D p1 = new Point2D.Float(0, 0);
+            Point2D p2 = new Point2D.Float(200, 150);
+            Color c1 = new Color(102, 0, 255);
+            Color c2 = new Color(166, 0, 255);
+            LinearGradientPaint gradientPaint = new LinearGradientPaint(p1, p2,
+                                                new float[]{0.3f, 1.0f},
+                                                new Color[]{c1, c2});
+            Graphics2D g2 = (Graphics2D) g;
+            g2.setPaint(gradientPaint);
+            g2.fillRoundRect(-50, 0, 350, 850, 40, 40);
+        }
+    };
+    private JFrame fExit = new JFrame("Exited");
+    private JButton lExit = new JButton("Sayonara");
     private JButton bExit = new JButton("Exit");
     private JButton option = new JButton();
     private JButton home = new JButton();
@@ -109,7 +127,8 @@ public class UserUIGenerator extends JFrame {
         bExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                StaticUser.exit();
+                fExit.setVisible(true);
             }
         });
 
@@ -202,8 +221,6 @@ public class UserUIGenerator extends JFrame {
         pExit.add(bExit);
         add(pExit);
         add(mainPanel);
-        
-        setVisible(true);
     }
 
     private void swap(int i){
@@ -268,6 +285,23 @@ public class UserUIGenerator extends JFrame {
     }
 
     private void SetUp(){
+
+        fExit.setSize(200, 150);
+        fExit.setLayout(null);
+        fExit.setLocationRelativeTo(null);
+        fExit.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        pExit2.setBounds(0, -20, 200, 150);
+        lExit.setBounds(0, -20, 200, 150);
+        lExit.setFont(new Font(Font.SERIF, Font.PLAIN, 23));
+        lExit.setForeground(Color.white);
+        lExit.setOpaque(false);
+        lExit.setContentAreaFilled(false);
+        lExit.setBorderPainted(false);
+        lExit.setFocusable(false);
+
+        fExit.add(lExit);
+        fExit.add(pExit2);
 
         pExit.setBounds(1165, 785, 120, 100);
         pExit.setOpaque(false);
@@ -341,6 +375,8 @@ public class UserUIGenerator extends JFrame {
         logBack.setContentAreaFilled(false);
         logBack.setBorderPainted(false);
         logBack.setFocusable(false);
+
+        new f2(this);
 
         pSB.add(option);
         pSB.add(l4);

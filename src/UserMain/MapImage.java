@@ -37,6 +37,7 @@ public class MapImage extends JPanel implements CPanel {
     public JPanel panel(){
         
         setBounds(330, 0, 850, 850);
+        // setOpaque(false);
 
         return this;
     }
