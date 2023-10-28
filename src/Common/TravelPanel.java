@@ -84,9 +84,9 @@ public class TravelPanel implements CPanel {
         return pTravel;
     }
 
-    private void randomColor() {
-        r = (int) (Math.random() * 256);
-        g = (int) (Math.random() * 256);
-        b = (int) (Math.random() * 256);
-    }
+    // private void randomColor() {
+    //     r = (int) (Math.random() * 256);
+    //     g = (int) (Math.random() * 256);
+    //     b = (int) (Math.random() * 256);
+    // }
 }

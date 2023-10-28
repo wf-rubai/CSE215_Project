@@ -8,8 +8,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -26,7 +24,7 @@ import javax.swing.border.EmptyBorder;
 
 import UserMain.UserLogPanel;
 
-public class UserFranme extends JFrame {
+public class UserFrame extends JFrame {
 
     private JButton bUpdate = new JButton("Update Information"){
         protected void paintComponent(Graphics g){
@@ -131,7 +129,7 @@ public class UserFranme extends JFrame {
     private HashMap<String,UserInfo> uInfo = new fileReader().userHashMap();
     private LinkedList<Object> o = new fileReader().objectList();
 
-    public UserFranme(){
+    public UserFrame(){
 
         if(UserLogPanel.isLoged){
             setUp();
@@ -233,25 +231,7 @@ public class UserFranme extends JFrame {
 
     private void saveInfo(){
         
-        File file = new File("Files/userInfo.txt");
-        file.delete();
-        try{
-            FileWriter fw = new FileWriter(file);
-            for(UserInfo u: uInfo.values()){
-                fw.write("\n" +
-                        u.name.replace(" ", "_") + "\t" +
-                        u.mail.replace(" ", "_") + "\t" +
-                        u.phone.replace(" ", "_") + "\t" +
-                        u.nid.replace(" ", "_") + "\t" +
-                        u.pass.replace(" ", "_") + "\t" +
-                        u.status.replace(" ", "_") + "\t" +
-                        u.imgIndex
-                        );	
-            }
-            fw.close();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage(), "ADDING ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+        new ResaveUser(uInfo);
         o.set(1, user);
         new ObjecSaver(o);
     }
@@ -436,6 +416,6 @@ public class UserFranme extends JFrame {
     }
 
     public static void main(String[] args) {
-        new UserFranme();
+        new UserFrame();
     }
 }

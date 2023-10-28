@@ -29,6 +29,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import Common.DevInfo;
+import Common.ResaveDev;
+import Common.ResaveUser;
 import Common.UserInfo;
 import Common.fileReader;
 
@@ -239,7 +241,7 @@ public class UserTable {
 							break;
 						}
 					}
-					fileSaver(1);
+        			new ResaveDev(dhm);
 					setDevTable();
 				}else{
 					for(UserInfo u: uInfo.values()){
@@ -248,7 +250,7 @@ public class UserTable {
 							break;
 						}
 					}
-					fileSaver(0);
+					new ResaveUser(uInfo);
 					setUserTable();
 				}
 				SwingUtilities.updateComponentTreeUI(pTableMain);
@@ -305,8 +307,8 @@ public class UserTable {
 					}
 					dhm.replace(di.pass, di);
 				}
-				fileSaver(1);
 				pTableMain.remove(pTableDev);
+        		new ResaveDev(dhm);
 				setDevTable();
 				SwingUtilities.updateComponentTreeUI(pTableMain);
 			}
@@ -328,7 +330,7 @@ public class UserTable {
 					}
 				}
 				pTableMain.remove(pTableUser);
-				fileSaver(0);
+				new ResaveUser(uInfo);
 				setUserTable();
 				SwingUtilities.updateComponentTreeUI(pTableMain);
 			}
@@ -401,51 +403,6 @@ public class UserTable {
 		}
 		
 		return pTableMain;
-	}
-
-	private void fileSaver(int i){
-		if(i == 1){
-			File file = new File("Files/devInfo.txt");
-			file.delete();
-			for(DevInfo d: dhm.values()){
-				try{
-					FileWriter fw = new FileWriter(file, true);
-					fw.write("\n" + 
-							d.name.replace(" ", "_") + "\t" +
-							d.pass.replace(" ", "_") + "\t" +
-							d.id.replace(" ", "_") + "\t" +
-							d.mail.replace(" ", "_") + "\t" +
-							d.phone.replace(" ", "_") + "\t" +
-							d.nid.replace(" ", "_") + "\t" +
-							d.position.replace(" ", "_") + "\t" +
-							d.imgIndex + "\t"
-							);
-					fw.close();
-				}catch(Exception e){
-					JOptionPane.showMessageDialog(pTableMain, "Something Went Wrong Adding Hotel Information", "ADDING ERROR", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		}else{
-			File file = new File("Files/userInfo.txt");
-			file.delete();
-			try{
-				FileWriter fw = new FileWriter(file);
-				for(UserInfo u: uInfo.values()){
-					fw.write("\n" +
-							u.name.replace(" ", "_") + "\t" +
-							u.mail.replace(" ", "_") + "\t" +
-							u.phone.replace(" ", "_") + "\t" +
-							u.nid.replace(" ", "_") + "\t" +
-							u.pass.replace(" ", "_") + "\t" +
-							u.status.replace(" ", "_") + "\t" +
-							u.imgIndex
-							);	
-				}
-				fw.close();
-			}catch(Exception e){
-				JOptionPane.showMessageDialog(pTableMain, "Something Went Wrong Adding User Information", "ADDING ERROR", JOptionPane.ERROR_MESSAGE);
-			}
-		}
 	}
 
 	private void resetAll(){

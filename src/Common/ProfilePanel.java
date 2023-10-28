@@ -37,7 +37,6 @@ public class ProfilePanel extends JPanel implements CPanel {
         profilePanel.setBounds(0, 100, 300, 150);
         profilePanel.setOpaque(false);
         profilePanel.setLayout(null);
-        // profilePanel.setBackground(Color.pink);
 
         bName.setBounds(0, 100, 300, 50);
         bName.setForeground(Color.white);
@@ -49,7 +48,6 @@ public class ProfilePanel extends JPanel implements CPanel {
 
         setBounds( 0, 0, 300, 100);
         setOpaque(false);
-        // setBackground(Color.orange);
 
         bName.addActionListener(new ActionListener() {
             @Override
@@ -57,7 +55,7 @@ public class ProfilePanel extends JPanel implements CPanel {
                 if(index>=0 && index<=2){
                     new DevFrame();
                 }else{
-                    new UserFranme();
+                    new UserFrame();
                 }
             }
         });

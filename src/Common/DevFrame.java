@@ -115,7 +115,7 @@ public class DevFrame {
                     user.pass = new String(tfPass.getPassword());
                     uInfo.put(user.pass, user);
                 }
-                saveInfo();
+                new ResaveDev(uInfo);
 
                 f.remove(bBack);
                 f.remove(pPass);
@@ -123,30 +123,6 @@ public class DevFrame {
                 SwingUtilities.updateComponentTreeUI(f);
             }
         });
-    }
-
-    private void saveInfo(){
-        
-        File file = new File("Files/devInfo.txt");
-        file.delete();
-        for(DevInfo d: uInfo.values()){
-            try{
-                FileWriter fw = new FileWriter(file, true);
-                fw.write("\n" + 
-                        d.name.replace(" ", "_") + "\t" +
-                        d.pass.replace(" ", "_") + "\t" +
-                        d.id.replace(" ", "_") + "\t" +
-                        d.mail.replace(" ", "_") + "\t" +
-                        d.phone.replace(" ", "_") + "\t" +
-                        d.nid.replace(" ", "_") + "\t" +
-                        d.position.replace(" ", "_") + "\t" +
-                        d.imgIndex + "\t"
-                        );
-                fw.close();
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Something Went Wrong Adding Hotel Information", "ADDING ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        }
     }
 
     private void setUp(){

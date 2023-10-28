@@ -1,7 +1,5 @@
 package TestFolder;
 
-import javax.swing.JLabel;
-
 public class f1 {
     public static void main(String[] args) {
         new f2().out();
