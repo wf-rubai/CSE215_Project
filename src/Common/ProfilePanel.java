@@ -53,9 +53,9 @@ public class ProfilePanel extends JPanel implements CPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(index>=0 && index<=2){
-                    new DevFrame();
+                    new FrameDev();
                 }else{
-                    new UserFrame();
+                    new FrameUser();
                 }
             }
         });

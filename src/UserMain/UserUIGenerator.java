@@ -22,7 +22,6 @@ import Common.ObjecSaver;
 import Common.ProfilePanel;
 import Common.UserInfo;
 import Common.fileReader;
-import TestFolder.f2;
 
 public class UserUIGenerator extends JFrame {
 
@@ -375,8 +374,6 @@ public class UserUIGenerator extends JFrame {
         logBack.setContentAreaFilled(false);
         logBack.setBorderPainted(false);
         logBack.setFocusable(false);
-
-        new f2(this);
 
         pSB.add(option);
         pSB.add(l4);

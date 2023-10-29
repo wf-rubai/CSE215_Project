@@ -1,6 +1,7 @@
 package DevMain;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class StaticDev {
     private static JFrame frame;
@@ -18,5 +19,9 @@ public class StaticDev {
         frame.setVisible(false);
         frame = new DevUIGenerator("Devoloper Window");
         frame.setVisible(true);
+    }
+
+    public static void update(){
+        SwingUtilities.updateComponentTreeUI(frame);
     }
 }

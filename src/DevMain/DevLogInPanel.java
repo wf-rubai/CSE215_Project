@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import Common.CPanel;
 import Common.DevInfo;
-import Common.MovingCircle;
+import Common.ThreadLogin;
 import Common.fileReader;
 
 public class DevLogInPanel implements CPanel {
@@ -73,7 +73,7 @@ public class DevLogInPanel implements CPanel {
         pLog.add(bLog);
 
         for(int i = 0; i<30; i++){
-            MovingCircle d = new MovingCircle();
+            ThreadLogin d = new ThreadLogin();
             Thread t = new Thread(d);
             t.start();
             pLog.add(d.panel());

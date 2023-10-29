@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-public class MovingCircle implements Runnable {
+public class ThreadLogin implements Runnable, CPanel {
 
     private int x;
     private JPanel p;
@@ -17,7 +17,7 @@ public class MovingCircle implements Runnable {
     private int a = (int)(Math.random()*2);
     // private int iii = (int) -(Math.random()*700);
 
-    public MovingCircle(){
+    public ThreadLogin(){
         int i = (int) (30+Math.random()*300);
         ii = i;
         p = new JPanel(){
@@ -40,6 +40,7 @@ public class MovingCircle implements Runnable {
         // p.setBackground(Color.black);
     }
 
+    @Override
     public JPanel panel(){
         return p;
     }

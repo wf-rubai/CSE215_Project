@@ -109,7 +109,6 @@ public class DevUIGenerator extends JFrame{
         setLayout(null);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBackground(Color.gray);
         setUndecorated(true);
         // setOpacity(.85f);
 

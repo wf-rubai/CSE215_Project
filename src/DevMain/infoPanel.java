@@ -2,6 +2,8 @@ package DevMain;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -33,6 +35,14 @@ import Common.fileReader;
 
 public class infoPanel implements CPanel {
 
+    private JPanel logo = new JPanel() {
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            ImageIcon imageIcon = new ImageIcon("Images/HotelImage/cover.png");
+            Image image = imageIcon.getImage();
+            g.drawImage(image, 0, 0, 270, 111, this);
+        }
+    };
     private int xLoc, yLoc;
     private JPanel pInfo = new JPanel();
     private JLabel lx;
@@ -74,45 +84,48 @@ public class infoPanel implements CPanel {
         pInfo.setOpaque(false);
         pInfo.setLayout(null);
 
+        logo.setBounds(-5, 20, 270, 111);
+        logo.setOpaque(false);
+
         pPoint.setBounds(330, 0, 850, 850);
         pPoint.setLayout(null);
         pPoint.setOpaque(false);
 
-        tf1.setBounds(30, 120, 270, 30);
+        tf1.setBounds(30, 170, 270, 30);
         tf1.setFont(new Font(null, Font.PLAIN, 13));
 
-        tfx.setBounds(30, 180, 120, 30);
-        tfy.setBounds(180, 180, 120, 30);
+        tfx.setBounds(30, 230, 120, 30);
+        tfy.setBounds(180, 230, 120, 30);
         
         lx = new JLabel("X");
         ly = new JLabel("Y");
         ltf = new JLabel("Hotel Name");
         lavg = new JLabel();
-        lx.setBounds(35, 150, 120, 30);
-        ly.setBounds(185, 150, 120, 30);
-        ltf.setBounds(35, 90, 120, 30);
+        lx.setBounds(35, 200, 120, 30);
+        ly.setBounds(185, 200, 120, 30);
+        ltf.setBounds(35, 140, 120, 30);
         lx.setForeground(Color.white);
         ly.setForeground(Color.white);
         ltf.setForeground(Color.white);
         
-        s5.setBounds(150, 220, 150, 30);
-        s4.setBounds(150, 250, 150, 30);
-        s3.setBounds(150, 280, 150, 30);
-        s2.setBounds(150, 310, 150, 30);
-        s1.setBounds(150, 340, 150, 30);
-        lavg.setBounds(150, 370, 40, 30);
-        tfp.setBounds(150, 410, 150, 30);
-        tfphn.setBounds(150, 440, 150, 30);
+        s5.setBounds(150, 270, 150, 30);
+        s4.setBounds(150, 300, 150, 30);
+        s3.setBounds(150, 330, 150, 30);
+        s2.setBounds(150, 360, 150, 30);
+        s1.setBounds(150, 390, 150, 30);
+        lavg.setBounds(150, 420, 40, 30);
+        tfp.setBounds(150, 450, 150, 30);
+        tfphn.setBounds(150, 480, 150, 30);
         bdl.setBounds(330, 0, 850, 850);
 
-        l1.setBounds(30, 220, 200, 30);
-        l2.setBounds(30, 250, 200, 30);
-        l3.setBounds(30, 280, 200, 30);
-        l4.setBounds(30, 310, 200, 30);
-        l5.setBounds(30, 340, 200, 30);
-        l6.setBounds(30, 370, 200, 30);
-        l7.setBounds(30, 400, 200, 30);
-        l8.setBounds(30, 430, 200, 30);
+        l1.setBounds(30, 270, 200, 30);
+        l2.setBounds(30, 300, 200, 30);
+        l3.setBounds(30, 330, 200, 30);
+        l4.setBounds(30, 360, 200, 30);
+        l5.setBounds(30, 390, 200, 30);
+        l6.setBounds(30, 420, 200, 30);
+        l7.setBounds(30, 450, 200, 30);
+        l8.setBounds(30, 480, 200, 30);
 
         l1.setForeground(Color.white);
         l2.setForeground(Color.white);
@@ -123,6 +136,7 @@ public class infoPanel implements CPanel {
         l7.setForeground(Color.white);
         l8.setForeground(Color.white);
 
+        pInfo.add(logo);
         pInfo.add(l1);
         pInfo.add(l2);
         pInfo.add(l3);
@@ -157,15 +171,15 @@ public class infoPanel implements CPanel {
         option.add(popRand);
         option.add(new JMenuItem("Close"));
 
-        set.setBounds(30, 700, 270, 40);
+        set.setBounds(30, 790, 120, 40);
         set.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addPoint(Integer.parseInt(tfx.getText()), Integer.parseInt(tfy.getText()));
             }
         });
-
-        random.setBounds(30, 750, 120, 40);
+        
+        random.setBounds(30, 740, 270, 40);
         random.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -193,7 +207,7 @@ public class infoPanel implements CPanel {
             }
         });
 
-        add.setBounds(180, 750, 120, 40);
+        add.setBounds(180, 790, 120, 40);
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -6,15 +6,15 @@ import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 
-public class CachedCompositeIcon
+public class IconAdder
 {
     private static final byte ICON_PADDING = 2;
-    private static final HashMap<CachedCompositeIcon, ImageIcon> CACHED_ICONS =
-            new HashMap<CachedCompositeIcon, ImageIcon>( 4 );
+    private static final HashMap<IconAdder, ImageIcon> CACHED_ICONS =
+            new HashMap<IconAdder, ImageIcon>( 4 );
 
     private final ImageIcon[] m_icons;
 
-    public CachedCompositeIcon(final ImageIcon... icons) {
+    public IconAdder(final ImageIcon... icons) {
         m_icons = icons;
     }
 
@@ -79,11 +79,11 @@ public class CachedCompositeIcon
      */
     @Override
     public boolean equals(final Object obj) {
-        if ( !(obj instanceof CachedCompositeIcon) ) {
+        if ( !(obj instanceof IconAdder) ) {
             return false;
         }
 
-        final CachedCompositeIcon other = (CachedCompositeIcon) obj;
+        final IconAdder other = (IconAdder) obj;
         if ( m_icons.length != other.m_icons.length ) {
             return false;
         }

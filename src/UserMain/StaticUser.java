@@ -1,6 +1,7 @@
 package UserMain;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class StaticUser {
     private static JFrame frame;
@@ -18,5 +19,9 @@ public class StaticUser {
         frame.setVisible(false);
         frame = new UserUIGenerator("User Window");
         frame.setVisible(true);
+    }
+
+    public static void update(){
+        SwingUtilities.updateComponentTreeUI(frame);
     }
 }

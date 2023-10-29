@@ -5,20 +5,21 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.LinearGradientPaint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.FileWriter;
+import java.awt.geom.Point2D;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
@@ -39,12 +40,29 @@ public class UserTable {
 	private JPanel pTableMain = new JPanel(){
         protected void paintComponent(Graphics g){
             super.paintComponent(g);
+            Point2D p1 = new Point2D.Float(0, 0);
+            Point2D p2 = new Point2D.Float(1100, 850);
+            Color c1 = new Color(115, 115, 115, 100);
+            Color c2 = new Color(59, 59, 59);
+            LinearGradientPaint gradientPaint = new LinearGradientPaint(p1, p2,
+                                                new float[]{0f, 0.7f},
+                                                new Color[]{c1, c2});
             Graphics2D g2 = (Graphics2D) g;
+            g2.setPaint(gradientPaint);
+            g2.fillRect(0, 0, 1180, 850);
             for(int i = 0; i<20; i++){
                 g2.setColor(randomColor());
                 g2.fillRoundRect((int)(Math.random()*1000), (int)(Math.random()*700), (int)(30+Math.random()*300), (int)(30+Math.random()*300), 15, 15);
                 g2.drawRoundRect((int)(Math.random()*1000), (int)(Math.random()*700), (int)(30+Math.random()*300), (int)(30+Math.random()*300), 15, 15);
             }
+        }
+    };
+    private JPanel logo = new JPanel() {
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            ImageIcon imageIcon = new ImageIcon("Images/HotelImage/cover.png");
+            Image image = imageIcon.getImage();
+            g.drawImage(image, 0, 0, 270, 111, this);
         }
     };
 	private JPanel pTableUser = new JPanel();
@@ -393,6 +411,7 @@ public class UserTable {
 			}
         });
 		
+		pTableMain.add(logo);
 		pTableMain.add(mode);
 		pTableMain.add(spDev);
 		pTableMain.add(dev);
@@ -463,7 +482,9 @@ public class UserTable {
 
 		pTableMain.setBounds(70, 0, 1180, 850);
 		pTableMain.setLayout(null);
-		pTableMain.setBackground(Color.darkGray);
+
+        logo.setBounds(65, 20, 270, 111);
+        logo.setOpaque(false);
 		
 		mode.setBounds(100, 150, 150, 40);
 		mode.addItem("Developer");

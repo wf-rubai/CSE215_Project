@@ -127,7 +127,14 @@ public class MapMain implements CPanel {
             g2.drawRoundRect(2, 2, 546, 546, 20, 20);
         }
     };
-
+    private JPanel logo = new JPanel() {
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            ImageIcon imageIcon = new ImageIcon("Images/HotelImage/cover.png");
+            Image image = imageIcon.getImage();
+            g.drawImage(image, 0, 0, 310, 128, this);
+        }
+    };
     private JPanel pMap = new JPanel();
     private JPanel pointPanel = new JPanel();
     private JPanel spPanel = new JPanel();
@@ -236,6 +243,7 @@ public class MapMain implements CPanel {
         pMap.add(backPanel);
         pMap.add(bdl);
 
+        mapPanel.add(logo);
         mapPanel.add(spHotel);
         mapPanel.add(lLable);
         mapPanel.add(lHotel);
@@ -540,6 +548,9 @@ public class MapMain implements CPanel {
     }
 
     private void setup(){
+
+        logo.setBounds(-35, 20, 310, 128);
+        logo.setOpaque(false);
 
         pConfirm.setBounds(315, 150, 550, 550);
         pConfirm.setOpaque(false);

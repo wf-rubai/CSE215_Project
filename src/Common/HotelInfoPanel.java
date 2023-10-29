@@ -128,11 +128,11 @@ public class HotelInfoPanel extends JPanel implements CPanel {
         p4.setBackground(Color.black);
         p5.setBackground(Color.black);
 
-        s5.setIcon(new CachedCompositeIcon( icon, icon, icon, icon, icon).getIcon());
-        s4.setIcon(new CachedCompositeIcon( icon, icon, icon, icon).getIcon());
-        s3.setIcon(new CachedCompositeIcon( icon, icon, icon).getIcon());
-        s2.setIcon(new CachedCompositeIcon( icon, icon).getIcon());
-        s1.setIcon(new CachedCompositeIcon( icon).getIcon());
+        s5.setIcon(new IconAdder( icon, icon, icon, icon, icon).getIcon());
+        s4.setIcon(new IconAdder( icon, icon, icon, icon).getIcon());
+        s3.setIcon(new IconAdder( icon, icon, icon).getIcon());
+        s2.setIcon(new IconAdder( icon, icon).getIcon());
+        s1.setIcon(new IconAdder( icon).getIcon());
 
         starPanel.setBounds(10, 90, 290, 120);
         starPanel.setLayout(null);

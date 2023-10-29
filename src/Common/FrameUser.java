@@ -24,7 +24,7 @@ import javax.swing.border.EmptyBorder;
 
 import UserMain.UserLogPanel;
 
-public class UserFrame extends JFrame {
+public class FrameUser extends JFrame {
 
     private JButton bUpdate = new JButton("Update Information"){
         protected void paintComponent(Graphics g){
@@ -129,7 +129,7 @@ public class UserFrame extends JFrame {
     private HashMap<String,UserInfo> uInfo = new fileReader().userHashMap();
     private LinkedList<Object> o = new fileReader().objectList();
 
-    public UserFrame(){
+    public FrameUser(){
 
         if(UserLogPanel.isLoged){
             setUp();
@@ -416,6 +416,6 @@ public class UserFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        new UserFrame();
+        new FrameUser();
     }
 }

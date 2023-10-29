@@ -173,7 +173,7 @@ public class UserLogPanel implements CPanel {
                                 phone.getText() + "\t" +
                                 nid.getText() + "\t" +
                                 new String(pw.getPassword()) + "\t" +
-                                "Active\t3"
+                                "Active\t11"
                                 );
                         fw.close();
                     }catch(Exception ex){
