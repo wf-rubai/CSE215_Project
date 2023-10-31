@@ -126,8 +126,8 @@ public class FrameUser extends JFrame {
     private JTextField tfNID = new JTextField(user.nid);
     private JPasswordField tfPass = new JPasswordField();
     private JPasswordField tfCPass = new JPasswordField();
-    private HashMap<String,UserInfo> uInfo = new fileReader().userHashMap();
-    private LinkedList<Object> o = new fileReader().objectList();
+    private HashMap<String,UserInfo> uInfo = new FileReader().userHashMap();
+    private LinkedList<Object> o = new FileReader().objectList();
 
     public FrameUser(){
 
@@ -243,7 +243,7 @@ public class FrameUser extends JFrame {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setUndecorated(true);
         f.setLayout(null);
-        f.setOpacity(0.85f);
+        // f.setOpacity(0.85f);
 
         bExit.setBounds(350, 18, 32, 32);
         bExit.setOpaque(false);

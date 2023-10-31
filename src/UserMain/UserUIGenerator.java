@@ -21,7 +21,7 @@ import javax.swing.SwingUtilities;
 import Common.ObjecSaver;
 import Common.ProfilePanel;
 import Common.UserInfo;
-import Common.fileReader;
+import Common.FileReader;
 
 public class UserUIGenerator extends JFrame {
 
@@ -263,7 +263,7 @@ public class UserUIGenerator extends JFrame {
             mainPanel.add(logBack);
             mainPanel.add(new UserLogPanel().panel());
         }else if(i == 5){
-            swap(1);LinkedList<Object> o = new fileReader().objectList();
+            swap(1);LinkedList<Object> o = new FileReader().objectList();
             o.set(0, false);
             o.set(1, new UserInfo("", "", "", "", "", "", 13));
             new ObjecSaver(o);

@@ -35,7 +35,7 @@ import javax.swing.table.JTableHeader;
 
 import Common.CPanel;
 import Common.Hotels;
-import Common.fileReader;
+import Common.FileReader;
 
 public class HotelTable implements CPanel {
 
@@ -67,7 +67,7 @@ public class HotelTable implements CPanel {
             g.drawImage(image, 0, 0, 270, 111, this);
         }
     };
-    private HashMap<String, LinkedList<Hotels>> hotelsList = new fileReader().hotelHashMap();
+    private HashMap<String, LinkedList<Hotels>> hotelsList = new FileReader().hotelHashMap();
     private Vector<String> vector = new Vector<>(hotelsList.keySet());
     private JPopupMenu option = new JPopupMenu();
     private JMenuItem remove = new JMenuItem("Remove");

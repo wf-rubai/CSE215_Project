@@ -31,7 +31,7 @@ import Common.CPanel;
 import Common.HotelInfoButton;
 import Common.Hotels;
 import Common.ArrayList;
-import Common.fileReader;
+import Common.FileReader;
 
 public class infoPanel implements CPanel {
 
@@ -302,7 +302,7 @@ public class infoPanel implements CPanel {
     }
 
     private void allHotels(String city){
-        HashMap<String, LinkedList<Hotels>> hm = new fileReader().hotelHashMap();
+        HashMap<String, LinkedList<Hotels>> hm = new FileReader().hotelHashMap();
         if(hm.containsKey(city)){
             LinkedList<Hotels> ll = hm.get(city);
             int[] a;

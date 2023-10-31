@@ -26,7 +26,7 @@ import javax.swing.border.EmptyBorder;
 import Common.CPanel;
 import Common.ObjecSaver;
 import Common.UserInfo;
-import Common.fileReader;
+import Common.FileReader;
 
 public class UserLogPanel implements CPanel {
 
@@ -102,7 +102,7 @@ public class UserLogPanel implements CPanel {
     private JLabel createPass = new JLabel("Password");
     private JLabel createNewPass = new JLabel("Confirm Password");
     private JLabel logBack = new JLabel(new ImageIcon("Images/Icons/back.png"));
-    private static LinkedList<Object> object = new fileReader().objectList();
+    private static LinkedList<Object> object = new FileReader().objectList();
     public static boolean isLoged = (boolean)object.get(0);
     public static UserInfo logerID = (UserInfo)object.get(1);
     
@@ -266,21 +266,21 @@ public class UserLogPanel implements CPanel {
     }
 
     public void log(String name, String pass){
-        HashMap<String,UserInfo> loger = new fileReader().userHashMap();
+        HashMap<String,UserInfo> loger = new FileReader().userHashMap();
         if(loger.containsKey(pass)){
             UserInfo u = loger.get(pass);
             if(!u.status.equals("Active")){
                 isLoged = false;
             }else if(u.name.equals(name)){
                 isLoged = true;
-                logerID = u;LinkedList<Object> o = new fileReader().objectList();
+                logerID = u;LinkedList<Object> o = new FileReader().objectList();
                 o.set(0, true);
                 o.set(1, u);
                 new ObjecSaver(o);
             }else if(u.mail.equals(name)){
                 isLoged = true;
                 logerID = u;
-                logerID = u;LinkedList<Object> o = new fileReader().objectList();
+                logerID = u;LinkedList<Object> o = new FileReader().objectList();
                 o.set(0, true);
                 o.set(1, u);
                 new ObjecSaver(o);

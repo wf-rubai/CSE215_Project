@@ -36,7 +36,7 @@ import Common.HotelInfoPanel;
 import Common.Hotels;
 import Common.UserInfo;
 import Common.ArrayList;
-import Common.fileReader;
+import Common.FileReader;
 
 public class MapMain implements CPanel {
 
@@ -188,9 +188,9 @@ public class MapMain implements CPanel {
     private JComboBox<String> tMonth = new JComboBox<>();
     private JComboBox<String> tYear = new JComboBox<>();
     private JPopupMenu popSearch = new JPopupMenu();
-    private HashMap<String, LinkedList<Hotels>> hashHotel = new fileReader().hotelHashMap();
+    private HashMap<String, LinkedList<Hotels>> hashHotel = new FileReader().hotelHashMap();
     private String[] citys = new ArrayList().cityName;
-    private LinkedList<Object> obj = new fileReader().objectList();
+    private LinkedList<Object> obj = new FileReader().objectList();
     private String bookHotel;
     private String bookCity;
     private double bookPrice = 0;
@@ -441,7 +441,7 @@ public class MapMain implements CPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for(int i = 0; i<citys.length; i++){
-                    if(citys[i].toLowerCase().equals(tfSearch.getText().toLowerCase())){
+                    if(citys[i].toLowerCase().equals(tfSearch.getText().toLowerCase()) && !(hashHotel.get(citys[i]) == null)){
                         backPanel.remove(lError);
                         pMap.remove(bdl);
                         mi.change(i);
@@ -527,7 +527,7 @@ public class MapMain implements CPanel {
     }
 
     private void allHotels(String city){
-        HashMap<String, LinkedList<Hotels>> hm = new fileReader().hotelHashMap();
+        HashMap<String, LinkedList<Hotels>> hm = new FileReader().hotelHashMap();
         if(hm.containsKey(city)){
             LinkedList<Hotels> ll = hm.get(city);
             int[] a;

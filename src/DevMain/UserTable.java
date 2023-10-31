@@ -33,7 +33,7 @@ import Common.DevInfo;
 import Common.ResaveDev;
 import Common.ResaveUser;
 import Common.UserInfo;
-import Common.fileReader;
+import Common.FileReader;
 
 public class UserTable {
 	 
@@ -96,8 +96,8 @@ public class UserTable {
 	private JComboBox<String> position = new JComboBox<>();
 	private JComboBox<String> state = new JComboBox<>();
 	private HashMap<String, LinkedList<DevInfo>> devMap = new HashMap<>();
-	private HashMap<String, DevInfo> dhm = new fileReader().devoloperHashMap();
-	private HashMap<String,UserInfo> uInfo = new fileReader().userHashMap();
+	private HashMap<String, DevInfo> dhm = new FileReader().devoloperHashMap();
+	private HashMap<String,UserInfo> uInfo = new FileReader().userHashMap();
     private JPopupMenu option = new JPopupMenu();
     private JMenuItem remove = new JMenuItem("Remove");
     private JMenuItem update = new JMenuItem("Update");
@@ -196,19 +196,6 @@ public class UserTable {
 		dev.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				position.removeAllItems();
-				pTableMain.remove(bAdd);
-				if(dev.getSelectedIndex() == 0){
-					position.addItem("Admin");
-					position.addItem("Editor");
-					pTableMain.add(bAdd);
-				}else if(dev.getSelectedIndex() == 1){
-					position.addItem("Editor");
-					pTableMain.add(bAdd);
-				}else if(dev.getSelectedIndex() == 2){
-					pTableMain.remove(bAdd);
-				}
-				SwingUtilities.updateComponentTreeUI(pTableMain);
 				setDevTable();
 			}
 		});
@@ -268,7 +255,9 @@ public class UserTable {
 				if(mode.getSelectedItem().equals("Developer")){
 					for(DevInfo d: dhm.values()){
 						if(d.name.equals((String)devTable.getValueAt(devTable.getSelectedRow(), 2))){
-							dhm.remove(d.pass);
+							if(!d.position.equals("CEO")){
+								dhm.remove(d.pass);
+							}
 							break;
 						}
 					}
@@ -469,7 +458,7 @@ public class UserTable {
 	private void setDevTable(){
 
 		devMap.clear();
-		for(DevInfo d: new fileReader().devoloperHashMap().values()){
+		for(DevInfo d: new FileReader().devoloperHashMap().values()){
 			if(!devMap.containsKey(d.position)){
 				LinkedList<DevInfo> ll = new LinkedList<>();
 				ll.add(d);

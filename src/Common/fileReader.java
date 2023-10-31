@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-public class fileReader {
+public class FileReader {
     
     private HashMap<String, LinkedList<Hotels>> hotMap = new HashMap<>();
     private HashMap<String, LinkedList<String[]>> travelInfo = new HashMap<>();
@@ -116,7 +116,6 @@ public class fileReader {
         }catch(IOException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }catch(Exception e){
-            // JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return devMap;
     }
@@ -185,7 +184,6 @@ public class fileReader {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "File reading error", JOptionPane.ERROR_MESSAGE);
         }catch(Exception e){
-            // JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return objects;
     }

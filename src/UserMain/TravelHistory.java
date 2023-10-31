@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
 import Common.CPanel;
 import Common.TravelPanel;
 import Common.UserInfo;
-import Common.fileReader;
+import Common.FileReader;
 
 public class TravelHistory implements CPanel {
 
@@ -36,7 +36,7 @@ public class TravelHistory implements CPanel {
         }
     };
     private UserInfo uInfo = UserLogPanel.logerID;
-    private HashMap<String, LinkedList<String[]>> travel = new fileReader().travelHashMap();
+    private HashMap<String, LinkedList<String[]>> travel = new FileReader().travelHashMap();
 
     @Override
     public JPanel panel() {

@@ -38,8 +38,8 @@ public class ProfileScrollPanel implements CPanel {
     private JPanel selectPanel = new JPanel();
     private JPanel spPanel = new JPanel();
     private ImageIcon[] images = new ArrayList().profile;
-    private LinkedList<Object> object = new fileReader().objectList();
-    private HashMap<String,UserInfo> uInfo = new fileReader().userHashMap();
+    private LinkedList<Object> object = new FileReader().objectList();
+    private HashMap<String,UserInfo> uInfo = new FileReader().userHashMap();
     private UserInfo user = (UserInfo) object.get(1);
     private int imageIndex = user.imgIndex;
     private JPanel currentProfile = setSP(imageIndex);

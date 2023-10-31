@@ -19,7 +19,7 @@ import javax.swing.border.EmptyBorder;
 // import Common.HotelInfoPanel;
 // import Common.Hotels;
 import Common.TravelPanel;
-import Common.fileReader;
+import Common.FileReader;
 
 public class C {
     private static JFrame f = new JFrame("test");
@@ -36,7 +36,7 @@ public class C {
         f.setBackground(Color.gray);
 
         // LinkedList<Hotels> ll = hm.get("Bogura");
-        LinkedList<String[]> ss = new fileReader().travelHashMap().get("Washio Ferdous Rubai");
+        LinkedList<String[]> ss = new FileReader().travelHashMap().get("Washio Ferdous Rubai");
 
         pp.setLayout(new BoxLayout(pp, BoxLayout.Y_AXIS));
         pp.setOpaque(false);

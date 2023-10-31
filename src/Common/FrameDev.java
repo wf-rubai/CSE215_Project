@@ -70,7 +70,7 @@ public class FrameDev {
     private JLabel lCPass = new JLabel("Confirm password :");
     private JPasswordField tfPass = new JPasswordField();
     private JPasswordField tfCPass = new JPasswordField();
-    private HashMap<String, DevInfo> uInfo = new fileReader().devoloperHashMap();
+    private HashMap<String, DevInfo> uInfo = new FileReader().devoloperHashMap();
     
     public FrameDev(){
 
@@ -129,7 +129,7 @@ public class FrameDev {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setUndecorated(true);
         f.setLayout(null);
-        f.setOpacity(0.85f);
+        // f.setOpacity(0.85f);
 
         bExit.setBounds(350, 18, 32, 32);
         bExit.setOpaque(false);

@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 import Common.CPanel;
 import Common.DevInfo;
 import Common.ThreadLogin;
-import Common.fileReader;
+import Common.FileReader;
 
 public class DevLogInPanel implements CPanel {
     
@@ -101,7 +101,7 @@ public class DevLogInPanel implements CPanel {
     }
 
     public boolean isLoged(){
-        HashMap<String, DevInfo> hashDev = new fileReader().devoloperHashMap();
+        HashMap<String, DevInfo> hashDev = new FileReader().devoloperHashMap();
 
         if(hashDev.containsKey(new String(pf.getPassword()))){
             DevInfo d = hashDev.get(new String(pf.getPassword()));
