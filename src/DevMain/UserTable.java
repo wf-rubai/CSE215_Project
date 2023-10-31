@@ -184,6 +184,8 @@ public class UserTable {
 						pTableMain.add(bAdd);
 					}else if(devInfo.position.equals("Admin")){
 						pTableMain.add(bAdd);
+					}else if(devInfo.position.equals("Editor")){
+						pTableMain.remove(bAdd);
 					}
 					setDevTable();
 				}
@@ -194,6 +196,19 @@ public class UserTable {
 		dev.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				position.removeAllItems();
+				pTableMain.remove(bAdd);
+				if(dev.getSelectedIndex() == 0){
+					position.addItem("Admin");
+					position.addItem("Editor");
+					pTableMain.add(bAdd);
+				}else if(dev.getSelectedIndex() == 1){
+					position.addItem("Editor");
+					pTableMain.add(bAdd);
+				}else if(dev.getSelectedIndex() == 2){
+					pTableMain.remove(bAdd);
+				}
+				SwingUtilities.updateComponentTreeUI(pTableMain);
 				setDevTable();
 			}
 		});
@@ -201,7 +216,6 @@ public class UserTable {
 		bAdd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				resetAll();
 				position.removeAllItems();
 				if(devInfo.position.equals("CEO")){
 					position.addItem("Admin");
@@ -211,7 +225,6 @@ public class UserTable {
 				}
 				pTableDev.add(lPosition);
 				pTableDev.add(position);
-				pTableDev.add(reset);
 				pTableDev.add(cancel);
 				pTableDev.add(dSave);
 				pTableMain.add(pTableDev);
@@ -229,7 +242,7 @@ public class UserTable {
 					if(devInfo.position.equals("CEO")){
 						position.addItem("Admin");
 						position.addItem("Editor");
-					}else{
+					}else if(devInfo.position.equals("Admin")){
 						position.addItem("Editor");
 					}
 					pTableDev.add(lPosition);

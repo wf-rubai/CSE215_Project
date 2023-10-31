@@ -296,7 +296,7 @@ public class infoPanel implements CPanel {
         HotelInfoButton b = new HotelInfoButton(tf1.getText(), 
                                                 Double.parseDouble(lavg.getText()), 
                                                 Double.parseDouble(tfp.getText()), 
-                                                x, y);
+                                                x, y, 0);
         pPoint.add(b.panel());
         SwingUtilities.updateComponentTreeUI(pInfo);
     }
@@ -315,7 +315,7 @@ public class infoPanel implements CPanel {
                     ii+= a[i];
                 }
                 d = d/ii;
-                HotelInfoButton b = new HotelInfoButton(hot.hotName, d, hot.price, hot.x, hot.y);
+                HotelInfoButton b = new HotelInfoButton(hot.hotName, d, hot.price, hot.x, hot.y, 0);
                 pPoint.add(b.panel());
                 SwingUtilities.updateComponentTreeUI(pInfo);
             }

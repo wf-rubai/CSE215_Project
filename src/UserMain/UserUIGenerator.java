@@ -236,6 +236,7 @@ public class UserUIGenerator extends JFrame {
             pSB.remove(l1);
             pSB.remove(l2);
             pSB.remove(l3);
+            profile = new ProfilePanel(UserLogPanel.logerID.name, UserLogPanel.logerID.imgIndex);
             pSB.remove(profile.panel());
             tracOpt = 1;
             mapView = new MapMain();
@@ -245,10 +246,7 @@ public class UserUIGenerator extends JFrame {
                 mainPanel.add(new TravelHistory().panel());
             }
         }else if(i == 3){
-            JPanel p2 = new JPanel();
-            p2.setBounds(70, 0, 1180, 850);
-            p2.setBackground(Color.BLUE);
-            mainPanel.add(p2);
+            mainPanel.add(new SettingPanel().panel());
         }else if(i == 4){
             pSB.setBounds(0, 0,70, 850);
             option.setLocation(10, 30);

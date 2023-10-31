@@ -15,7 +15,6 @@ public class ThreadLogin implements Runnable, CPanel {
     private int ii;
     private Color c = getRandomColor();
     private int a = (int)(Math.random()*2);
-    // private int iii = (int) -(Math.random()*700);
 
     public ThreadLogin(){
         int i = (int) (30+Math.random()*300);
@@ -33,11 +32,10 @@ public class ThreadLogin implements Runnable, CPanel {
                 }
             }
         };
-        this.x = (int)((Math.random()*800));
+        this.x = (int)((Math.random()*1100)-50);
         this.s = (int)(2+(Math.random()*8));
         p.setBounds(x, -i, i, i);
         p.setOpaque(false);
-        // p.setBackground(Color.black);
     }
 
     @Override
@@ -48,7 +46,6 @@ public class ThreadLogin implements Runnable, CPanel {
     @Override
     public void run() {
         int iii = (int) (ii + 700+ Math.random()*1100);
-        // int iii = 0;
         while(true){
             p.setLocation(x, iii-ii);
             iii--;

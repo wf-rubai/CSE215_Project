@@ -116,7 +116,7 @@ public class fileReader {
         }catch(IOException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }catch(Exception e){
-            // JOptionPane.showMessageDialog(null, "File ends with an empty line");
+            // JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return devMap;
     }
@@ -179,12 +179,13 @@ public class fileReader {
                 objects.add(new UserInfo("", "", "", "", "", "", 14));
                 sc.next();
             }
+            objects.add(sc.nextInt());
 
             sc.close();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "File reading error", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e){
-            // JOptionPane.showMessageDialog(null, e.getMessage(), "File reading error", JOptionPane.ERROR_MESSAGE);
+        }catch(Exception e){
+            // JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return objects;
     }

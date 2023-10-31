@@ -26,6 +26,8 @@ public class ObjecSaver {
             }else{
                 fw.write("null");
             }
+            fw.write("\n" + o.get(2));
+
             fw.close();
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage(), "File reading error", JOptionPane.ERROR_MESSAGE);

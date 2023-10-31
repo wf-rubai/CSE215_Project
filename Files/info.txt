@@ -1,0 +1,10 @@
+Welcome, Traveler, to our project. The traveler, who can readily identify hotels in 
+various Bangladeshi areas, is the primary target audience for this project. Among 
+the various features included in this project are a search bar, hotel symbols, hotel 
+listings and ratings. A login panel, profile, update profile, settings panel, hotel 
+search and booking, cost per day calculation, and—most importantly—the creation of 
+an additional framework for the developers are the features we have in our project. 
+The developer site allows us to add new hotels, modify existing ones, alter their 
+prices, update user and hotel information, delete existing hotels, and more. Travelers 
+who intend to travel with their loved ones would profit from this initiative.
+asldkfjalskdjfasdfghjkjhgfdfghjkhgfdfghjhgfdfghjhgfdfghjhgfdfghjhgnnnnnnn

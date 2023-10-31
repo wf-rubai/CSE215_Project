@@ -190,6 +190,7 @@ public class MapMain implements CPanel {
     private JPopupMenu popSearch = new JPopupMenu();
     private HashMap<String, LinkedList<Hotels>> hashHotel = new fileReader().hotelHashMap();
     private String[] citys = new ArrayList().cityName;
+    private LinkedList<Object> obj = new fileReader().objectList();
     private String bookHotel;
     private String bookCity;
     private double bookPrice = 0;
@@ -398,8 +399,7 @@ public class MapMain implements CPanel {
         cancel2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mapPanel.remove(pBook);
-                mapPanel.remove(spHotel);
+                mapPanel.remove(pBookTime);
                 SwingUtilities.updateComponentTreeUI(mapPanel);
             }
         });
@@ -540,7 +540,7 @@ public class MapMain implements CPanel {
                     ii+= a[i];
                 }
                 d = d/ii;
-                HotelInfoButton b = new HotelInfoButton(hot.hotName, d, hot.price, hot.x, hot.y);
+                HotelInfoButton b = new HotelInfoButton(hot.hotName, d, hot.price, hot.x, hot.y, (int)obj.get(2));
                 pointPanel.add(b.panel());
                 SwingUtilities.updateComponentTreeUI(mapPanel);
             }

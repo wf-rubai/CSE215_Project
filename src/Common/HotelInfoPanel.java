@@ -59,7 +59,7 @@ public class HotelInfoPanel extends JPanel implements CPanel {
         g2.setColor(color);
         g2.fillRoundRect(0, 5+yShift, 290, hight, 35, 35);
         g2.fillRoundRect(0, 5, 290, btnh, 35, 35);
-        g2.setColor(new Color(255, 255, 255, 100));
+        g2.setColor(new Color(255, 255, 255, 150));
         int s = 290;
         g2.fillRoundRect(80, -190+yShift, s, s, s, s);
         s = 400;

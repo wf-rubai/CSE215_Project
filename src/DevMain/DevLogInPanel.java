@@ -4,8 +4,10 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.util.HashMap;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -43,6 +45,15 @@ public class DevLogInPanel implements CPanel {
             g2.drawRoundRect(5, 5, 240, 30, 30, 30);
         }
     };
+    private JPanel logo = new JPanel() {
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            ImageIcon imageIcon = new ImageIcon("Images/HotelImage/cover.png");
+            Image image = imageIcon.getImage();
+            g.drawImage(image, 0, 0, 310, 128, this);
+        }
+    };
+    private JLabel lImage = new JLabel(new ImageIcon("Images/HotelImage/BGI3.jpg"));
     private JLabel lname = new JLabel("ID or name");
     private JLabel lpass = new JLabel("Password");
     private JButton bLog = new JButton("Log in");
@@ -52,6 +63,11 @@ public class DevLogInPanel implements CPanel {
     public JPanel panel(){
         pLog.setBounds(0, 0, 1250, 850);
         pLog.setLayout(null);
+        // pLog.setBackground(new Color(0, 89, 255));
+        // lImage.setBounds(0, 0, 1250, 850);
+        logo.setBounds(470, 310, 310, 128);
+        logo.setOpaque(false);
+
         
         tf.setBounds(500, 500, 250, 40);
         tf.setBackground(new Color(0, 0, 0, 0));
@@ -78,6 +94,8 @@ public class DevLogInPanel implements CPanel {
             t.start();
             pLog.add(d.panel());
         }
+        pLog.add(logo);
+        pLog.add(lImage);
 
         return pLog;
     }

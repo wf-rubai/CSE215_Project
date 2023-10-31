@@ -16,7 +16,7 @@ public class StaticUser {
     }
 
     public static void reset(){
-        frame.setVisible(false);
+        frame.dispose();;
         frame = new UserUIGenerator("User Window");
         frame.setVisible(true);
     }

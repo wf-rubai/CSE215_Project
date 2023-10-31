@@ -20,6 +20,8 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
+import UserMain.UserLogPanel;
+
 public class ProfileScrollPanel implements CPanel {
     
     private JPanel mainPanel = new JPanel(){
@@ -61,6 +63,7 @@ public class ProfileScrollPanel implements CPanel {
                 new ObjecSaver(object);
                 uInfo.replace(user.pass, user);
                 new ResaveUser(uInfo);
+                UserLogPanel.logerID.imgIndex = imageIndex;
                 SwingUtilities.updateComponentTreeUI(mainPanel);
             }
         });

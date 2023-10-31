@@ -31,15 +31,17 @@ public class HotelInfoButton extends JButton implements CPanel {
     private JLabel hml = new JLabel();
     private JLabel hrl = new JLabel();
     private JLabel hpl = new JLabel();
-    // private JLabel l = new JLabel();
+    private ImageIcon[] pin = new ArrayList().mapPin;
+    ImageIcon ii;
     private int x, y, i = 1;
 
-    public HotelInfoButton(String n, double r, double p, int x, int y){
+    public HotelInfoButton(String n, double r, double p, int x, int y, int pin){
         hml = new JLabel(n);
         hrl = new JLabel("Ratigns :\t" + String.format("%.2f", r));
         hpl = new JLabel("Pricing  :\t" + Double.toString(p));
         this.x = x;
         this.y = y;
+        ii = this.pin[pin];
     }
 
     @Override
@@ -62,8 +64,6 @@ public class HotelInfoButton extends JButton implements CPanel {
         popPanel.add(hrl);
         popPanel.add(hpl);
 
-
-        ImageIcon ii = new ImageIcon("Images/MapPointer/pin0.png");
         setBounds(94, 68, 32, 32);
         setIcon(ii);
         setOpaque(false);
