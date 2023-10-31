@@ -33,7 +33,7 @@ import Common.Hotels;
 import Common.ArrayList;
 import Common.FileReader;
 
-public class infoPanel implements CPanel {
+public class InfoPanel implements CPanel {
 
     private JPanel logo = new JPanel() {
         protected void paintComponent(Graphics g){

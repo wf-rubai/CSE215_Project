@@ -15,7 +15,7 @@ public class MapView implements CPanel {
         pMain.setLayout(null);
         pMain.setOpaque(false);
         
-        pMain.add(new infoPanel().panel());
+        pMain.add(new InfoPanel().panel());
         
         return pMain;
     }
