@@ -453,7 +453,7 @@ public class MapMain implements CPanel {
                         SwingUtilities.updateComponentTreeUI(backPanel);
                         break;
                     }else{
-                        lError.setText("⛒ No city found called " + tfSearch.getText());
+                        lError.setText("⛒ No hotels are available in " + tfSearch.getText());
                         backPanel.add(lError);
                         SwingUtilities.updateComponentTreeUI(backPanel);
                     }

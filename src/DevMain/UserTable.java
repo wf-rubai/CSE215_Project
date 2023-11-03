@@ -210,6 +210,14 @@ public class UserTable {
 				}else{
 					position.addItem("Editor");
 				}
+
+				tfId.setText("");
+				tfName.setText("");
+				tfMail.setText("");
+				tfPhone.setText("");
+				tfNid.setText("");
+
+				pTableDev.remove(reset);
 				pTableDev.add(lPosition);
 				pTableDev.add(position);
 				pTableDev.add(cancel);
@@ -304,7 +312,7 @@ public class UserTable {
 				di.phone = tfPhone.getText();
 				di.nid = tfNid.getText();
 				if(dSave.getText().equals("Add")){
-					di.pass = "new" + dhm.size();
+					di.pass = "new" + (dhm.size()+1);
 					di.position = (String) position.getSelectedItem();
 					if(di.position.equals("Editor")){
 						di.imgIndex = 1;

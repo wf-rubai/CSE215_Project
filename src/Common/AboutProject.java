@@ -25,7 +25,7 @@ public class AboutProject extends JPanel implements CPanel {
     private JLabel l6 = new JLabel("Image Process (6%)");
     private JLabel l1 = new JLabel(" Washio Ferdous Rubai");
     private JLabel l2 = new JLabel(" Nabila Tabassum Oyshi");
-    private JLabel l3 = new JLabel(" Mahmuda Jannat ");
+    private JLabel l3 = new JLabel(" Mahmuda Zannat ");
     private JLabel l4 = new JLabel(" Wasif Haider ");
     private JLabel id1 = new JLabel("2231107642");
     private JLabel id2 = new JLabel("2231386042");
