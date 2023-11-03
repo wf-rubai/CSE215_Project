@@ -390,7 +390,6 @@ public class UserTable {
                 option.show(e.getComponent(), e.getX(), e.getY());            
             } 
 
-
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				doPopup(e);

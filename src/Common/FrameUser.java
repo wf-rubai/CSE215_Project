@@ -188,18 +188,32 @@ public class FrameUser extends JFrame {
         done1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!tfName.getText().equals("")){
-                    user.name = tfName.getText();
-                }else if(!tfMail.getText().equals("")){
-                    user.mail = tfMail.getText();
-                }else if(!tfPhn.getText().equals("")){
-                    user.phone = tfPhn.getText();
-                }else if(!tfNID.getText().equals("")){
-                    user.nid = tfNID.getText();
+                try{
+                    if(!tfName.getText().equals("")){
+                        user.name = tfName.getText();
+                    }else {
+                        throw new CustomExeption("Your name is empty");
+                    }
+                    if(!tfMail.getText().equals("")){
+                        user.mail = tfMail.getText();
+                    }else {
+                        throw new CustomExeption("Your Email is empty");
+                    }
+                    if(!tfPhn.getText().equals("")){
+                        user.phone = tfPhn.getText();
+                    }else {
+                        throw new CustomExeption("Your phone numer is empty");
+                    }
+                    if(!tfNID.getText().equals("")){
+                        user.nid = tfNID.getText();
+                    }else {
+                        throw new CustomExeption("Your NID is empty");
+                    }
+                    uInfo.replace(user.pass, user);
+                    saveInfo();
+                }catch(CustomExeption ce){
+                    JOptionPane.showMessageDialog(null, ce.getMessage(), "Void Information", JOptionPane.ERROR_MESSAGE);
                 }
-                uInfo.replace(user.pass, user);
-                saveInfo();
-
                 f.remove(bBack);
                 f.remove(pUpdate);
                 f.remove(pPass);
@@ -334,9 +348,20 @@ public class FrameUser extends JFrame {
         pOthers.setOpaque(false);
 
         lName.setBounds(50, 100, 300, 20);
+        lName.setForeground(Color.white);
+        lName.setFont(new Font(Font.SERIF, Font.PLAIN, 14));
+
         lMail.setBounds(50, 160, 300, 20);
+        lMail.setForeground(Color.white);
+        lMail.setFont(new Font(Font.SERIF, Font.PLAIN, 14));
+
         lPhn.setBounds(50, 220, 300, 20);
+        lPhn.setForeground(Color.white);
+        lPhn.setFont(new Font(Font.SERIF, Font.PLAIN, 14));
+
         lNID.setBounds(50, 280, 300, 20);
+        lNID.setForeground(Color.white);
+        lNID.setFont(new Font(Font.SERIF, Font.PLAIN, 14));
 
         tfName.setBounds(50, 120, 300, 30);
         tfMail.setBounds(50, 180, 300, 30);
@@ -380,7 +405,12 @@ public class FrameUser extends JFrame {
         done2.setFocusable(false);
 
         lPass.setBounds(50, 160, 300, 20);
+        lPass.setForeground(Color.white);
+        lPass.setFont(new Font(Font.SERIF, Font.PLAIN, 14));
+
         lCPass.setBounds(50, 220, 300, 20);
+        lCPass.setForeground(Color.white);
+        lCPass.setFont(new Font(Font.SERIF, Font.PLAIN, 14));
 
         tfPass.setBounds(50, 180, 300, 30);
         tfCPass.setBounds(50, 240, 300, 30);

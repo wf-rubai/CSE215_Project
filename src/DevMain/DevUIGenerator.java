@@ -314,6 +314,10 @@ public class DevUIGenerator extends JFrame{
         l5.setBounds(10, 400, 50, 50);
         l6.setBounds(10, 480, 50, 50);
 
+        l1.setForeground(Color.black);
+        l2.setForeground(Color.black);
+        l3.setForeground(Color.black);
+
         option.setIcon(i1);
         option.setOpaque(false);
         option.setContentAreaFilled(false);

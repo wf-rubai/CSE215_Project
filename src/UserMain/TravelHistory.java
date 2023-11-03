@@ -51,8 +51,8 @@ public class TravelHistory implements CPanel {
         jsPane.setOpaque(false);
         jsPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 
-        spPanel.setOpaque(false);
-        spPanel.setBackground(new Color(0, 0, 0, 0));
+        // spPanel.setOpaque(false);
+        spPanel.setBackground(new Color(49, 0, 117));
         spPanel.setLayout(new BoxLayout(spPanel, BoxLayout.Y_AXIS));
 
         if(travel.containsKey(uInfo.name)){

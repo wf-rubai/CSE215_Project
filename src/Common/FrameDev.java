@@ -196,7 +196,12 @@ public class FrameDev {
         done2.setFocusable(false);
 
         lPass.setBounds(50, 160, 300, 20);
+        lPass.setForeground(Color.white);
+        lPass.setFont(new Font(Font.SERIF, Font.PLAIN, 14));
+
         lCPass.setBounds(50, 220, 300, 20);
+        lCPass.setForeground(Color.white);
+        lCPass.setFont(new Font(Font.SERIF, Font.PLAIN, 14));
 
         tfPass.setBounds(50, 180, 300, 30);
         tfCPass.setBounds(50, 240, 300, 30);

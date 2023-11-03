@@ -3,7 +3,7 @@ package Common;
 public class UserInfo {
     
     public String name ,mail , phone , nid , pass, status = "Active";
-    public int imgIndex = 3;
+    public int imgIndex = 11;
 
     public UserInfo(String name, String mail, String phone, String nid, String pass, String status, int imgIndex) {
         this.name = name;
