@@ -312,7 +312,11 @@ public class UserTable {
 				di.phone = tfPhone.getText();
 				di.nid = tfNid.getText();
 				if(dSave.getText().equals("Add")){
-					di.pass = "new" + (dhm.size()+1);
+					int n = 0;
+					for(int i = 0; i<5; i++){
+						n = (int) ((n*10)+(Math.random()*10));
+					}
+					di.pass = "new" + n;
 					di.position = (String) position.getSelectedItem();
 					if(di.position.equals("Editor")){
 						di.imgIndex = 1;

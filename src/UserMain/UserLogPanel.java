@@ -271,13 +271,13 @@ public class UserLogPanel implements CPanel {
             UserInfo u = loger.get(pass);
             if(!u.status.equals("Active")){
                 isLoged = false;
-            }else if(u.name.equals(name)){
+            }else if(u.name.equalsIgnoreCase(name)){
                 isLoged = true;
                 logerID = u;LinkedList<Object> o = new FileReader().objectList();
                 o.set(0, true);
                 o.set(1, u);
                 new ObjecSaver(o);
-            }else if(u.mail.equals(name)){
+            }else if(u.mail.equalsIgnoreCase(name)){
                 isLoged = true;
                 logerID = u;
                 logerID = u;LinkedList<Object> o = new FileReader().objectList();

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -108,12 +109,14 @@ public class DevLogInPanel implements CPanel {
             if(tf.getText().equals(d.id)){
                 logerInfo = d;
                 return true;
-            }else if(tf.getText().equals(d.name)){
+            }else if(tf.getText().equalsIgnoreCase(d.name)){
                 logerInfo = d;
                 return true;
-            }else if(tf.getText().equals(d.mail)){
+            }else if(tf.getText().equalsIgnoreCase(d.mail)){
                 logerInfo = d;
                 return true;
+            }else{
+                JOptionPane.showMessageDialog(null, "Your id or password is wrong", "Lon in error", JOptionPane.WARNING_MESSAGE);
             }
         }
         
