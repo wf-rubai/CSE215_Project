@@ -247,7 +247,7 @@ public class FrameUser extends JFrame {
         
         new ResaveUser(uInfo);
         o.set(1, user);
-        new ObjecSaver(o);
+        new ObjectSaver(o);
     }
 
     private void setUp(){

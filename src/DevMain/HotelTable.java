@@ -86,10 +86,10 @@ public class HotelTable implements CPanel {
                                     "Price",
                                     "Phone"
                                     };
+    private JComboBox<String> cityName;
     private DefaultTableModel model = new DefaultTableModel(columnNames, 0);
     private JTable table = new JTable(model);
     private JTableHeader tableHeader = table.getTableHeader();
-    private JComboBox<String> cityName;
     private JTextField tfName;
     private JTextField tfPhone;
     private JTextField tfX;

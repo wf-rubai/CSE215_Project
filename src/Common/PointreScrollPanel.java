@@ -33,10 +33,10 @@ public class PointreScrollPanel implements CPanel {
             g2.fillRoundRect(5, 490, 160, 35, 30, 30);
         }
     };
-    private JPanel selectPanel = new JPanel();
-    private JPanel spPanel = new JPanel();
     private ImageIcon[] images = new ArrayList().mapPin;
     private LinkedList<Object> object = new FileReader().objectList();
+    private JPanel selectPanel = new JPanel();
+    private JPanel spPanel = new JPanel();
     private int imageIndex = (int)object.get(2);
     private JPanel currentProfile = setSP(imageIndex);
     private JButton save = new JButton("Save Profile");
@@ -55,7 +55,7 @@ public class PointreScrollPanel implements CPanel {
                 mainPanel.add(lTic);
                 mainPanel.add(selectPanel);
                 object.set(2, imageIndex);
-                new ObjecSaver(object);
+                new ObjectSaver(object);
                 object = new FileReader().objectList();
                 StaticUser.update();
                 SwingUtilities.updateComponentTreeUI(mainPanel);

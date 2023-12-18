@@ -6,9 +6,9 @@ import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
-public class ObjecSaver {
+public class ObjectSaver {
     
-    public ObjecSaver(LinkedList<Object> o){
+    public ObjectSaver(LinkedList<Object> o){
         try{
             File file = new File("Files/object.txt");
             file.delete();
@@ -38,6 +38,6 @@ public class ObjecSaver {
         LinkedList<Object> o = new LinkedList<>();
         o.add(false);
         o.add(null);
-        new ObjecSaver(o);
+        new ObjectSaver(o);
     }
 }

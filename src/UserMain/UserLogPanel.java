@@ -24,7 +24,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import Common.CPanel;
-import Common.ObjecSaver;
+import Common.ObjectSaver;
 import Common.UserInfo;
 import Common.FileReader;
 
@@ -276,14 +276,14 @@ public class UserLogPanel implements CPanel {
                 logerID = u;LinkedList<Object> o = new FileReader().objectList();
                 o.set(0, true);
                 o.set(1, u);
-                new ObjecSaver(o);
+                new ObjectSaver(o);
             }else if(u.mail.equalsIgnoreCase(name)){
                 isLoged = true;
                 logerID = u;
                 logerID = u;LinkedList<Object> o = new FileReader().objectList();
                 o.set(0, true);
                 o.set(1, u);
-                new ObjecSaver(o);
+                new ObjectSaver(o);
             }else{
                 isLoged = false;
             }

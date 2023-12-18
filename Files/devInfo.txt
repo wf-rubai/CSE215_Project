@@ -1,8 +1,9 @@
 
-Kuddus_Shorker	new37284	1111	kuddus@gmail.com	019283747473	919298384747210033	Editor	1	
+Wasif_Haider	new3	0004	wasif@potato.com	017421635765	34981239479132497	Admin	2	
 Rohim_Mia	new62761	3333	rohim@mia.com	016237812111	723182324234123321	Editor	1	
+Mahmuda_Zannat_Punny	new2	0003	punny@akkas.com	018237581234	347123174888172364	Admin	2	
 Nabila_Tabassum_Oishi	new1	0002	oishi@alu.com	0191234567890	823749817398479813	Admin	2	
 Akkas_Ali	new68813	2222	akkas@ali.com	012348719823	123471238748929384	Editor	1	
-Wasif_Haider	new3	0004	wasif@potato.com	017421635765	34981239479132497	Admin	2	
-Mahmuda_Zannat_Punny	new2	0003	punny@akkas.com	018237581234	347123174888172364	Admin	2	
+Kuddus_Shorker	new37284	1111	kuddus@gmail.com	019283747473	919298384747210033	Editor	1	
+Tanjila_MIM_apu	new43977	1234	mim@gmail.com	0112345678	9381749812734212	Admin	2	
 Washio_Ferdous_Rubai	akkas1234	0001	rubai4483302@gmail.com	01912653657	10287384891743	CEO	0	

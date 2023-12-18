@@ -60,7 +60,7 @@ public class ProfileScrollPanel implements CPanel {
                 mainPanel.add(selectPanel);
                 user.imgIndex = imageIndex;
                 object.set(1, user);
-                new ObjecSaver(object);
+                new ObjectSaver(object);
                 uInfo.replace(user.pass, user);
                 new ResaveUser(uInfo);
                 UserLogPanel.logerID.imgIndex = imageIndex;

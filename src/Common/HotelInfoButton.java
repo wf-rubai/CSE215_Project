@@ -32,7 +32,7 @@ public class HotelInfoButton extends JButton implements CPanel {
     private JLabel hrl = new JLabel();
     private JLabel hpl = new JLabel();
     private ImageIcon[] pin = new ArrayList().mapPin;
-    ImageIcon ii;
+    private ImageIcon ii;
     private int x, y, i = 1;
 
     public HotelInfoButton(String n, double r, double p, int x, int y, int pin){

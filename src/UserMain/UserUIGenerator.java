@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import Common.ObjecSaver;
+import Common.ObjectSaver;
 import Common.ProfilePanel;
 import Common.UserInfo;
 import Common.FileReader;
@@ -90,7 +90,6 @@ public class UserUIGenerator extends JFrame {
     private JButton logBack = new JButton(new ImageIcon("Images/Icons/back.png"));
     private JButton log = new JButton();
     private MapMain mapView = new MapMain();
-
     private ImageIcon i1 = new ImageIcon("Images/Icons/option.png");
     private ImageIcon i2 = new ImageIcon("Images/Icons/home.png");
     private ImageIcon i3 = new ImageIcon("Images/Icons/travle.png");
@@ -98,7 +97,6 @@ public class UserUIGenerator extends JFrame {
     private ImageIcon i5 = new ImageIcon("Images/Icons/back.png");
     private ImageIcon i6 = new ImageIcon("Images/Icons/logout.png");
     private ImageIcon i7 = new ImageIcon("Images/Icons/login.png");
-
     private JLabel l1 = new JLabel("Home");
     private JLabel l2 = new JLabel("Travel History");
     private JLabel l3 = new JLabel("Settings");
@@ -266,7 +264,7 @@ public class UserUIGenerator extends JFrame {
             swap(1);LinkedList<Object> o = new FileReader().objectList();
             o.set(0, false);
             o.set(1, new UserInfo("", "", "", "", "", "", 13));
-            new ObjecSaver(o);
+            new ObjectSaver(o);
             pSB.removeAll();
             pSB.add(option);
             pSB.add(l4);

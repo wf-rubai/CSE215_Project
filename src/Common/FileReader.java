@@ -13,7 +13,7 @@ public class FileReader {
     private HashMap<String, LinkedList<Hotels>> hotMap = new HashMap<>();
     private HashMap<String, LinkedList<String[]>> travelInfo = new HashMap<>();
     private HashMap<String, DevInfo> devMap = new HashMap<>();
-    private HashMap<String,UserInfo> userMap = new HashMap<>();
+    private HashMap<String, UserInfo> userMap = new HashMap<>();
     private LinkedList<Object> objects = new LinkedList<>();
 
     public HashMap<String, LinkedList<Hotels>> hotelHashMap(){

@@ -181,20 +181,20 @@ public class MapMain implements CPanel {
     private JButton cancel1 = new JButton(new ImageIcon("Images/Icons/cross.png"));
     private JButton cancel2 = new JButton(new ImageIcon("Images/Icons/cross.png"));
     private JButton cancel3 = new JButton(new ImageIcon("Images/Icons/cross.png"));
+    private JPopupMenu popSearch = new JPopupMenu();
+    private String bookHotel;
+    private String bookCity;
+    private double bookPrice = 0;
+    private int i = 1;
     private JComboBox<String> fDay = new JComboBox<>();
     private JComboBox<String> fMonth = new JComboBox<>();
     private JComboBox<String> fYear = new JComboBox<>();
     private JComboBox<String> tDay = new JComboBox<>();
     private JComboBox<String> tMonth = new JComboBox<>();
     private JComboBox<String> tYear = new JComboBox<>();
-    private JPopupMenu popSearch = new JPopupMenu();
     private HashMap<String, LinkedList<Hotels>> hashHotel = new FileReader().hotelHashMap();
     private String[] citys = new ArrayList().cityName;
     private LinkedList<Object> obj = new FileReader().objectList();
-    private String bookHotel;
-    private String bookCity;
-    private double bookPrice = 0;
-    private int i = 1;
 
     @Override
     public JPanel panel(){

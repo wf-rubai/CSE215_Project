@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 
 public class HotelInfoPanel extends JPanel implements CPanel {
 
-    private String cityName, hotName, phn;
     private int[] r = new int[5];
+    private String cityName, hotName, phn;
     private double p;
     private Color color = randomColor();
     private JPanel container = new JPanel();

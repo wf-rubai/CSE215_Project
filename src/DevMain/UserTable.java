@@ -29,13 +29,14 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import Common.CPanel;
 import Common.DevInfo;
 import Common.ResaveDev;
 import Common.ResaveUser;
 import Common.UserInfo;
 import Common.FileReader;
 
-public class UserTable {
+public class UserTable implements CPanel {
 	 
 	private JPanel pTableMain = new JPanel(){
         protected void paintComponent(Graphics g){
@@ -65,8 +66,6 @@ public class UserTable {
             g.drawImage(image, 0, 0, 270, 111, this);
         }
     };
-	private JPanel pTableUser = new JPanel();
-	private JPanel pTableDev = new JPanel();
 	private String[] userCollumn = {"SL",
 									"Name",
 									"Email",
@@ -82,6 +81,8 @@ public class UserTable {
 							       "NID No.",
 							       "Position"
 								   };
+	private JPanel pTableUser = new JPanel();
+	private JPanel pTableDev = new JPanel();
 	private DefaultTableModel modelUser = new DefaultTableModel(userCollumn,0);
 	private DefaultTableModel modelDev = new DefaultTableModel(devCollumn,0);
 	private JTable userTable = new JTable(modelUser);
@@ -91,13 +92,6 @@ public class UserTable {
 	private JButton cancel = new JButton("Cancel");
 	private JButton dSave = new JButton("Save");
 	private JButton uSave = new JButton("Update");
-	private JComboBox<String> mode = new JComboBox<>();
-	private JComboBox<String> dev = new JComboBox<>();
-	private JComboBox<String> position = new JComboBox<>();
-	private JComboBox<String> state = new JComboBox<>();
-	private HashMap<String, LinkedList<DevInfo>> devMap = new HashMap<>();
-	private HashMap<String, DevInfo> dhm = new FileReader().devoloperHashMap();
-	private HashMap<String,UserInfo> uInfo = new FileReader().userHashMap();
     private JPopupMenu option = new JPopupMenu();
     private JMenuItem remove = new JMenuItem("Remove");
     private JMenuItem update = new JMenuItem("Update");
@@ -122,6 +116,13 @@ public class UserTable {
 	private JTableHeader DTH = devTable.getTableHeader();
 	private JTableHeader UTH = userTable.getTableHeader();
 	private DevInfo devInfo = DevLogInPanel.logerInfo;
+	private JComboBox<String> mode = new JComboBox<>();
+	private JComboBox<String> dev = new JComboBox<>();
+	private JComboBox<String> position = new JComboBox<>();
+	private JComboBox<String> state = new JComboBox<>();
+	private HashMap<String, LinkedList<DevInfo>> devMap = new HashMap<>();
+	private HashMap<String, DevInfo> dhm = new FileReader().devoloperHashMap();
+	private HashMap<String, UserInfo> uInfo = new FileReader().userHashMap();
 	
 	public JPanel panel() {
 
